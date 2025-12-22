@@ -15,6 +15,8 @@ class_name LevelParent
 @onready var enemies = get_node("/root/Level/Enemies").get_children() ##array of ALL enemy nodes
 
 var zombie
+var bullet
+var sound
 
 func _ready() -> void:
 	for i in range(patrols.size()):
@@ -30,12 +32,10 @@ func _ready() -> void:
 				patrol_zombie.append(patrol_whole.get(rand))
 				patrol_whole.remove_at(rand)
 			
-			# TODO: make zombie actually patrol on it's own
 			spawn_enemy(i, patrol_zombie.get(0), patrol_zombie)
-	
+			zombie.connect("state_change_signal", self, "update_vision_length")
 
-var bullet
-var sound
+
 
 ##spawns a zombie in a Patrol node corresponding to the patrol of the zombie.
 ##if there is an odd number of patrol points, it's all good, the enemies will simply have one more point to choose, without one additional 
@@ -57,6 +57,7 @@ func get_patrol(index: int) -> Array:
 	
 	return patrol_positions
 
+##spawns a bullet at the player's gun position, which then travels away from the gun barrel
 func create_bullet(pos: Vector2, direction: Vector2) -> void:
 	bullet = bullet_scene.instantiate() as Node2D
 	

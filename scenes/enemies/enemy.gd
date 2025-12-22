@@ -9,8 +9,8 @@ class_name EnemyWalking
 
 # vision vars
 @export_range(0, 360, 0.1, "degrees") var fov: float = 90.0
-@export var default_vision_length: int = 300
-var vision_length: Vector2 = Vector2(default_vision_length, 0)
+@export var default_vision_length: int = 500
+var vision_length: Vector2 = Vector2.RIGHT * default_vision_length
 
 # basic functionality vars
 @export var speed: float = 100.0
@@ -47,20 +47,23 @@ func _ready() -> void:
 	patrol_timer.wait_time = randf_range(patrol_time_min, patrol_time_max)
 	vision.target_position = vision_length
 	
+	# set the vision length of all walker enemies
+	Globals.walk_enemy_vis_length = default_vision_length
+	
 	lose_player_timer.wait_time = 30.0
 	search_timer.wait_time = 180.0
 
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
+	update_vision_cone()
 	handle_vision()
-	update_awareness(delta)
+	update_awareness()
 	
 	var next_path_pos = nav.get_next_path_position()
 	var dir = (next_path_pos - global_position).normalized()
 	
 	state_machine(next_path_pos, dir)
-	update_vision_cone()
 	
 	if nav.is_navigation_finished():
 		velocity = Vector2.ZERO
@@ -82,7 +85,7 @@ func handle_vision() -> void:
 		if collider.is_in_group("Player"):
 			player_seen = true
 			sound_heard = false
-			lose_player_timer.start()
+			lose_player_timer.start() # TODO: find out why
 		else:
 			player_seen = false
 	else:
@@ -91,17 +94,15 @@ func handle_vision() -> void:
 
 
 # AWARENESS LOGIC
-func update_awareness(delta: float) -> void:
+func update_awareness() -> void:
 	if player_seen:
 		var distance := global_position.distance_to(Globals.player_pos) / 20000
 		
-		awareness += delta / distance
+		awareness += distance
 		awareness = clamp(awareness, 0.0, max_awareness)
-		
-		
 	else:
 		# gradual linear decay
-		awareness -= 40 * delta
+		awareness -= 4
 		awareness = clamp(awareness, 0.0, max_awareness)
 		
 	if awareness >= max_awareness and current_state != state.ATTACKING:
@@ -109,7 +110,9 @@ func update_awareness(delta: float) -> void:
 	
 	print(awareness)
 
-
+func update_vision_length() -> void:
+	vision_length = Vector2.RIGHT * Globals.walk_enemy_vis_length
+	vision.target_position = vision_length
 
 # STATE MACHINE
 func state_machine(targeted_pos: Vector2, path_direction: Vector2) -> void:
@@ -133,7 +136,7 @@ func process_patrolling(targeted_pos: Vector2, path_direction: Vector2) -> void:
 	if awareness >= max_awareness:
 		enter_attacking()
 	
-	vision_length = Vector2.RIGHT * default_vision_length
+	vision_length = Vector2.RIGHT * Globals.walk_enemy_vis_length
 	vision.target_position = vision_length
 	velocity = Vector2.ZERO
 	
@@ -149,7 +152,7 @@ func process_investigating() -> void:
 	if nav.is_navigation_finished():
 		enter_searching()
 	
-	vision_length = Vector2.RIGHT * default_vision_length
+	vision_length = Vector2.RIGHT * Globals.walk_enemy_vis_length
 	vision.target_position = vision_length
 
 
@@ -174,7 +177,7 @@ func process_attacking() -> void:
 	else:
 		look_at(last_interest_pos)
 
-	vision_length = Vector2.RIGHT * 3000
+	vision_length = Vector2.RIGHT * 5000
 	make_path(last_interest_pos)
 
 	if nav.is_navigation_finished() and !player_seen:
@@ -239,7 +242,7 @@ func die():
 
 
 
-# SIGNALS
+# premade signals
 func _on_patrol_timer_timeout() -> void:
 	get_next_patrol_pos()
 
