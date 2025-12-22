@@ -55,26 +55,23 @@ func _ready() -> void:
 func _physics_process(delta):
 	handle_vision()
 	update_awareness(delta)
-
+	
 	var next_path_pos = nav.get_next_path_position()
 	var dir = (next_path_pos - global_position).normalized()
-
+	
 	state_machine(next_path_pos, dir)
 	update_vision_cone()
-
+	
 	if nav.is_navigation_finished():
 		velocity = Vector2.ZERO
 		return
-
+	
 	var desired_velocity = dir * speed
 	nav.set_velocity(desired_velocity)
-	velocity = nav.get_velocity()
-
-	# ✔ smooth rotation for ALL states
+	
+	# smooth rotation for ALL states
 	if dir.length() > 0.1:
 		rotation = lerp_angle(rotation, dir.angle(), 0.1)
-
-	move_and_slide()
 
 
 
@@ -83,11 +80,6 @@ func handle_vision() -> void:
 	if vision.is_colliding():
 		var collider = vision.get_collider()
 		if collider.is_in_group("Player"):
-			
-			# ❌ REMOVED THE INSTANT-SPOT LOGIC
-			# DO NOT enter attacking instantly
-			# Awareness system will handle detection gradually
-
 			player_seen = true
 			sound_heard = false
 			lose_player_timer.start()
@@ -101,22 +93,21 @@ func handle_vision() -> void:
 # AWARENESS LOGIC
 func update_awareness(delta: float) -> void:
 	if player_seen:
-		var dist := global_position.distance_to(Globals.player_pos)
+		var distance := global_position.distance_to(Globals.player_pos) / 20000
 		
-		# closer → faster buildup
-		var distance_factor = clamp(1.0 - (dist / 1000.0), 0.05, 1.0)
-		
-		awareness += distance_factor * 300.0 * delta
+		awareness += delta / distance
 		awareness = clamp(awareness, 0.0, max_awareness)
+		
 		
 	else:
-		# gradual decay
-		awareness -= 200.0 * delta
+		# gradual linear decay
+		awareness -= 40 * delta
 		awareness = clamp(awareness, 0.0, max_awareness)
 		
-	# ✔ awareness now TRIGGERS spotting correctly
 	if awareness >= max_awareness and current_state != state.ATTACKING:
 		enter_attacking()
+	
+	print(awareness)
 
 
 
@@ -141,7 +132,7 @@ func process_patrolling(targeted_pos: Vector2, path_direction: Vector2) -> void:
 	
 	if awareness >= max_awareness:
 		enter_attacking()
-
+	
 	vision_length = Vector2.RIGHT * default_vision_length
 	vision.target_position = vision_length
 	velocity = Vector2.ZERO
@@ -154,10 +145,10 @@ func process_patrolling(targeted_pos: Vector2, path_direction: Vector2) -> void:
 func process_investigating() -> void:
 	if awareness >= max_awareness:
 		enter_attacking()
-
+	
 	if nav.is_navigation_finished():
 		enter_searching()
-
+	
 	vision_length = Vector2.RIGHT * default_vision_length
 	vision.target_position = vision_length
 
@@ -166,12 +157,12 @@ func process_investigating() -> void:
 func process_searching() -> void:
 	if awareness >= max_awareness:
 		enter_attacking()
-
+	
 	if nav.is_navigation_finished():
 		var rand_offset = Vector2(randi_range(-500, 500), randi_range(-500, 500))
 		last_interest_pos = global_position + rand_offset
 		make_path(last_interest_pos)
-
+	
 	if search_timer.is_stopped():
 		enter_patrolling()
 
@@ -257,3 +248,8 @@ func _on_lose_player_timer_timeout() -> void:
 
 func _on_search_timer_timeout() -> void:
 	enter_patrolling()
+
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity = safe_velocity
+	move_and_slide()
