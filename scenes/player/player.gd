@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 signal bullet_signal(pos: Vector2, direction: Vector2)
 signal sound_signal(pos: Vector2, loudness: float)
-signal state_change_signal()
+signal state_change_signal(vis_length: int, awareness_mult: float)
 
 @onready var bullet: PackedScene = preload("res://scenes/player/bullet.tscn")
 @onready var camera: Camera2D = $Camera2D
@@ -119,26 +119,20 @@ func handle_hold_press() -> void:
 
 # --- STATE TRANSITIONS ---
 func enter_stand() -> void:
-	current_state = state.STAND
-	speed = 300
-	Globals.walk_enemy_vis_length = 700
-	state_change_signal.emit()
-	# TODO: collider, animation...
+	state_update(state.STAND, 300, 1.0, 2.0)
 
 func enter_crouch() -> void:
-	current_state = state.CROUCH
-	speed = 175
-	Globals.walk_enemy_vis_length = 500
-	state_change_signal.emit()
-	# TODO: collider, animation...
+	state_update(state.CROUCH, 175, 0.8, 1.5)
 
 func enter_prone() -> void:
-	current_state = state.PRONE
-	speed = 100
-	Globals.walk_enemy_vis_length = 300
-	state_change_signal.emit()
-	# TODO: collider, animation...
+	state_update(state.PRONE, 100, 0.6, 0.8)
 
+# --- VAR UPDATER FOR STATES ---
+func state_update(this_state, new_speed: int, new_vision_mult: float, new_awareness_mult: float) -> void:
+	current_state = this_state
+	speed = new_speed
+	emit_signal("state_change_signal", new_vision_mult, new_awareness_mult)
+	# TODO: collider, animation...
 
 # premade signals
 

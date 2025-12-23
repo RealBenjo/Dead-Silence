@@ -20,6 +20,7 @@ var vision_length: Vector2 = Vector2.RIGHT * default_vision_length
 # awareness
 @export var max_awareness: float = 300.0
 var awareness: float = 0.0
+var awareness_mult: float = 1.0
 
 # state vars
 enum state {PATROLLING, INVESTIGATING, SEARCHING, ATTACKING}
@@ -45,10 +46,9 @@ var patrol_index: int = 0
 func _ready() -> void:
 	get_next_patrol_pos()
 	patrol_timer.wait_time = randf_range(patrol_time_min, patrol_time_max)
-	vision.target_position = vision_length
 	
-	# set the vision length of all walker enemies
-	Globals.walk_enemy_vis_length = default_vision_length
+	# set the vision length
+	update_vision_length(1.0)
 	
 	lose_player_timer.wait_time = 30.0
 	search_timer.wait_time = 180.0
@@ -78,7 +78,7 @@ func _physics_process(_delta):
 
 
 
-# VISION HANDLING
+# --- VISION HANDLING ---
 func handle_vision() -> void:
 	if vision.is_colliding():
 		var collider = vision.get_collider()
@@ -93,12 +93,12 @@ func handle_vision() -> void:
 
 
 
-# AWARENESS LOGIC
+# --- AWARENESS LOGIC ---
 func update_awareness() -> void:
 	if player_seen:
-		var distance := global_position.distance_to(Globals.player_pos) / 20000
+		var distance := ( vision_length.x + 50 - global_position.distance_to(Globals.player_pos) ) / 250
 		
-		awareness += distance
+		awareness +=  distance * awareness_mult
 		awareness = clamp(awareness, 0.0, max_awareness)
 	else:
 		# gradual linear decay
@@ -108,13 +108,21 @@ func update_awareness() -> void:
 	if awareness >= max_awareness and current_state != state.ATTACKING:
 		enter_attacking()
 	
-	print(awareness)
+	#print(awareness)
 
-func update_vision_length() -> void:
-	vision_length = Vector2.RIGHT * Globals.walk_enemy_vis_length
+
+# --- PLAYER STATE CHANGES HANDLING ---
+func player_state_handler(vis_mult: float, aware_mult: float) -> void:
+	update_vision_length(vis_mult)
+	awareness_mult = aware_mult
+
+func update_vision_length(new_vision_mult: float) -> void:
+	vision_length = Vector2.RIGHT * default_vision_length * new_vision_mult
 	vision.target_position = vision_length
 
-# STATE MACHINE
+
+
+# --- STATE MACHINE ---
 func state_machine(targeted_pos: Vector2, path_direction: Vector2) -> void:
 	match current_state:
 		state.PATROLLING:
@@ -128,16 +136,14 @@ func state_machine(targeted_pos: Vector2, path_direction: Vector2) -> void:
 
 
 
-# STATE PROCESS FUNCTIONS
-func process_patrolling(targeted_pos: Vector2, path_direction: Vector2) -> void:
+# --- STATE PROCESS FUNCTIONS ---
+func process_patrolling(_targeted_pos: Vector2, _path_direction: Vector2) -> void:
 	if sound_heard:
 		enter_investigating()
 	
 	if awareness >= max_awareness:
 		enter_attacking()
 	
-	vision_length = Vector2.RIGHT * Globals.walk_enemy_vis_length
-	vision.target_position = vision_length
 	velocity = Vector2.ZERO
 	
 	if nav.is_navigation_finished() and patrol_timer.is_stopped():
@@ -151,9 +157,6 @@ func process_investigating() -> void:
 	
 	if nav.is_navigation_finished():
 		enter_searching()
-	
-	vision_length = Vector2.RIGHT * Globals.walk_enemy_vis_length
-	vision.target_position = vision_length
 
 
 
@@ -177,7 +180,7 @@ func process_attacking() -> void:
 	else:
 		look_at(last_interest_pos)
 
-	vision_length = Vector2.RIGHT * 5000
+	update_vision_length(10.0)
 	make_path(last_interest_pos)
 
 	if nav.is_navigation_finished() and !player_seen:
@@ -186,7 +189,7 @@ func process_attacking() -> void:
 
 
 
-# VISION CONE
+# --- VISION CONE ---
 func update_vision_cone() -> void:
 	var player_direction = (vision.get_parent().to_local(Globals.player_pos) - vision.position).angle()
 	if rad_to_deg(player_direction) > fov/2:
@@ -198,7 +201,7 @@ func update_vision_cone() -> void:
 
 
 
-# AUX
+# --- AUX ---
 func get_next_patrol_pos() -> void:
 	if patrol_index > 1:
 		patrol_index = 0
@@ -210,7 +213,7 @@ func make_path(interest_position: Vector2) -> void:
 
 
 
-# STATE ENTER
+# --- STATE ENTER ---
 func enter_patrolling() -> void:
 	current_state = state.PATROLLING
 	patrol_timer.start()
@@ -231,7 +234,7 @@ func enter_searching() -> void:
 
 
 
-# DAMAGE
+# --- DAMAGE ---
 func take_damage(amount: int):
 	health -= amount
 	if health <= 0:
@@ -251,7 +254,6 @@ func _on_lose_player_timer_timeout() -> void:
 
 func _on_search_timer_timeout() -> void:
 	enter_patrolling()
-
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity

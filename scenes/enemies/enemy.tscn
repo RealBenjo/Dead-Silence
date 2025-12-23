@@ -21,6 +21,7 @@ target_desired_distance = 4.0
 simplify_path = true
 avoidance_enabled = true
 radius = 35.0
+max_neighbors = 3
 debug_enabled = true
 
 [node name="Timers" type="Node" parent="."]

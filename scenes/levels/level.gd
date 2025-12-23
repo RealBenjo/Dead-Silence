@@ -24,7 +24,7 @@ func _ready() -> void:
 		
 		# at least 2 patrol points need to be avalaible for a zombie
 		while patrol_whole.size() >= 2:
-			var patrol_zombie: Array = []
+			var patrol_zombie: Array = [] ##the dedicated patrol points for zombies
 			
 			# gives zombie 2 patrol points, no 2 zombies have the same patrol points
 			for j in range(2):
@@ -33,7 +33,6 @@ func _ready() -> void:
 				patrol_whole.remove_at(rand)
 			
 			spawn_enemy(i, patrol_zombie.get(0), patrol_zombie)
-			zombie.connect("state_change_signal", self, "update_vision_length")
 
 
 
@@ -45,7 +44,9 @@ func spawn_enemy(index: int, pos: Vector2, patrol: Array) -> void: #TODO: make m
 	zombie = zombie_scene.instantiate()
 	zombie.global_position = pos
 	zombie.patrol = patrol
-	zombie.last_interest_pos = patrol.get(1) #TODO: rmv line when zombies will patrol on their own
+	# connect the player's state change signal to this zombie so it updates its vision length
+	if player and player.has_signal("state_change_signal"):
+		player.connect("state_change_signal", Callable(zombie, "player_state_handler"))
 	enemy_par_node.add_child(zombie)
 
 ##returns array of all marker positions in a patrol

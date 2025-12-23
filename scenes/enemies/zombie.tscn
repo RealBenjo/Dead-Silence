@@ -10,7 +10,7 @@ radius = 35.0
 [node name="Zombie" instance=ExtResource("1_3pt6v")]
 slide_on_ceiling = false
 script = ExtResource("2_gl10n")
-default_vision_length = 600
+default_vision_length = 1000
 health = 30
 patrol_time_min = 20.0
 patrol_time_max = 40.0
