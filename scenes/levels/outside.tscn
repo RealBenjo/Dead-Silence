@@ -30,11 +30,11 @@ texture = ExtResource("3_qwwmc")
 
 [node name="Patrol1" type="Node2D" parent="Patrols" index="0"]
 
-[node name="Marker2D27" type="Marker2D" parent="Patrols/Patrol1" index="0"]
-position = Vector2(-306, 117)
+[node name="Marker2D32" type="Marker2D" parent="Patrols/Patrol1" index="0"]
+position = Vector2(-315, 127)
 
-[node name="Marker2D39" type="Marker2D" parent="Patrols/Patrol1" index="1"]
-position = Vector2(-423, 119)
+[node name="Marker2D33" type="Marker2D" parent="Patrols/Patrol1" index="1"]
+position = Vector2(-90, 126)
 
 [node name="Patrol2" type="Node2D" parent="Patrols" index="1"]
 

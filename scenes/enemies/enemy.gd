@@ -59,6 +59,7 @@ func _physics_process(_delta):
 	update_vision_cone()
 	handle_vision()
 	update_awareness()
+	print(current_state)
 	
 	var next_path_pos = nav.get_next_path_position()
 	var dir = (next_path_pos - global_position).normalized()
@@ -146,8 +147,10 @@ func process_patrolling(_targeted_pos: Vector2, _path_direction: Vector2) -> voi
 	
 	velocity = Vector2.ZERO
 	
-	if nav.is_navigation_finished() and patrol_timer.is_stopped():
+	if nav.is_navigation_finished():
 		patrol_timer.start()
+	#if nav.is_navigation_finished() and patrol_timer.is_stopped():
+		#patrol_timer.start()
 
 
 
