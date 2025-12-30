@@ -34,7 +34,7 @@ texture = ExtResource("3_qwwmc")
 position = Vector2(-315, 127)
 
 [node name="Marker2D33" type="Marker2D" parent="Patrols/Patrol1" index="1"]
-position = Vector2(-90, 126)
+position = Vector2(597, -172)
 
 [node name="Patrol2" type="Node2D" parent="Patrols" index="1"]
 

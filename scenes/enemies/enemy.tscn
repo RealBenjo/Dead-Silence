@@ -28,6 +28,7 @@ debug_enabled = true
 [node name="Timers" type="Node" parent="."]
 
 [node name="PatrolTimer" type="Timer" parent="Timers"]
+one_shot = true
 
 [node name="LosePlayerTimer" type="Timer" parent="Timers"]
 

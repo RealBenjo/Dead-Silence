@@ -40,6 +40,7 @@ var sound_position: Vector2
 @export var patrol_time_max: float = 30.0
 var patrol: Array
 var patrol_index: int = 0
+var can_patrol: bool = true
 
 
 
@@ -59,16 +60,27 @@ func _physics_process(_delta):
 	update_vision_cone()
 	handle_vision()
 	update_awareness()
-	print(current_state)
+	state_machine()
 	
-	var next_path_pos = nav.get_next_path_position()
-	var dir = (next_path_pos - global_position).normalized()
+	print(patrol_timer.time_left)
+	#
+	#match current_state:
+		#state.PATROLLING:
+			#print("patrolling")
+		#state.INVESTIGATING:
+			#print("investigating")
+		#state.SEARCHING:
+			#print("searching")
+		#state.ATTACKING:
+			#print("attacking")
 	
-	state_machine(next_path_pos, dir)
-	
+	# if an enemy is not pathfinding anymore, don't go further than this if statement
 	if nav.is_navigation_finished():
 		velocity = Vector2.ZERO
 		return
+	
+	var next_path_pos = nav.get_next_path_position()
+	var dir = (next_path_pos - global_position).normalized()
 	
 	var desired_velocity = dir * speed
 	nav.set_velocity(desired_velocity)
@@ -124,10 +136,12 @@ func update_vision_length(new_vision_mult: float) -> void:
 
 
 # --- STATE MACHINE ---
-func state_machine(targeted_pos: Vector2, path_direction: Vector2) -> void:
+##called every physics frame, simply switches what behaviour an enemy will have depending
+##on which state it currently is in (current_state)
+func state_machine() -> void:
 	match current_state:
 		state.PATROLLING:
-			process_patrolling(targeted_pos, path_direction)
+			process_patrolling()
 		state.INVESTIGATING:
 			process_investigating()
 		state.SEARCHING:
@@ -137,44 +151,42 @@ func state_machine(targeted_pos: Vector2, path_direction: Vector2) -> void:
 
 
 
-# --- STATE PROCESS FUNCTIONS ---
-func process_patrolling(_targeted_pos: Vector2, _path_direction: Vector2) -> void:
+# --- STATE PROCESSING ---
+func process_patrolling() -> void:
 	if sound_heard:
 		enter_investigating()
+		last_interest_pos = sound_position
 	
-	if awareness >= max_awareness:
-		enter_attacking()
+	check_awareness()
 	
-	velocity = Vector2.ZERO
+	if !nav.is_navigation_finished():
+		can_patrol = false
 	
 	if nav.is_navigation_finished():
-		patrol_timer.start()
-	#if nav.is_navigation_finished() and patrol_timer.is_stopped():
-		#patrol_timer.start()
-
+		can_patrol = true
+		if patrol_timer.is_stopped():
+			patrol_timer.start()
 
 
 func process_investigating() -> void:
-	if awareness >= max_awareness:
-		enter_attacking()
+	check_awareness()
 	
+	nav.target_position = last_interest_pos
+	# TODO: after reaching the last_interest_pos, go back to patrolling after some time
 	if nav.is_navigation_finished():
-		enter_searching()
-
+		enter_patrolling()
 
 
 func process_searching() -> void:
-	if awareness >= max_awareness:
-		enter_attacking()
+	check_awareness()
 	
+	# TODO: slow this tf down. this ends up looking like ants on an ant hill. yuck
 	if nav.is_navigation_finished():
-		var rand_offset = Vector2(randi_range(-500, 500), randi_range(-500, 500))
-		last_interest_pos = global_position + rand_offset
+		last_interest_pos = vector_offset(global_position, 500)
 		make_path(last_interest_pos)
 	
 	if search_timer.is_stopped():
 		enter_patrolling()
-
 
 
 func process_attacking() -> void:
@@ -186,15 +198,36 @@ func process_attacking() -> void:
 	update_vision_length(10.0)
 	make_path(last_interest_pos)
 
-	if nav.is_navigation_finished() and !player_seen:
-		if lose_player_timer.is_stopped():
-			lose_player_timer.start()
+	if nav.is_navigation_finished() and !player_seen and lose_player_timer.is_stopped():
+		lose_player_timer.start()
 
 
 
-# --- VISION CONE ---
+# --- STATE ENTER ---
+func enter_patrolling() -> void:
+	current_state = state.PATROLLING
+	#patrol_timer.start()
+
+func enter_investigating() -> void:
+	current_state = state.INVESTIGATING
+	sound_heard = false
+
+func enter_searching() -> void:
+	current_state = state.SEARCHING
+	search_timer.start()
+
+func enter_attacking() -> void:
+	current_state = state.ATTACKING
+	lose_player_timer.start()
+
+
+
+# --- AUX ---
 func update_vision_cone() -> void:
+	# get the global player direction from the enemy in radiants
 	var player_direction = (vision.get_parent().to_local(Globals.player_pos) - vision.position).angle()
+	
+	# clamp the vision cone depending on the FOV (in degrees)
 	if rad_to_deg(player_direction) > fov/2:
 		player_direction = deg_to_rad(fov/2)
 	elif rad_to_deg(player_direction) < -fov/2:
@@ -202,38 +235,29 @@ func update_vision_cone() -> void:
 	
 	vision.rotation = player_direction
 
-
-
-# --- AUX ---
 func get_next_patrol_pos() -> void:
-	if patrol_index > 1:
+	if patrol_index > patrol.size() - 1:
 		patrol_index = 0
 	last_interest_pos = patrol.get(patrol_index)
 	patrol_index += 1
 
+##will offset the given Vector2D by an integer amount in a square fashion, not a circle
+func vector_offset(pos: Vector2, offset_amount: int) -> Vector2:
+	var amount = randi_range(offset_amount * -1, offset_amount)
+	var rand_offset = Vector2(amount, amount)
+	return pos + rand_offset
+
 func make_path(interest_position: Vector2) -> void:
 	nav.target_position = interest_position
 
-
-
-# --- STATE ENTER ---
-func enter_patrolling() -> void:
-	current_state = state.PATROLLING
-	patrol_timer.start()
-
-func enter_investigating() -> void:
-	current_state = state.INVESTIGATING
-	sound_heard = false
-	last_interest_pos = sound_position
-	make_path(last_interest_pos)
-
-func enter_attacking() -> void:
-	current_state = state.ATTACKING
-	lose_player_timer.start()
-
-func enter_searching() -> void:
-	current_state = state.SEARCHING
-	search_timer.start()
+##if an enemy is more aware than a certain max_awareness percentage, it will enter the appropriate state
+func check_awareness() -> void:
+	if awareness > max_awareness * 0.5:
+		enter_investigating()
+	elif awareness > max_awareness * 0.7:
+		enter_searching()
+	elif awareness >= max_awareness:
+		enter_attacking()
 
 
 
@@ -244,13 +268,15 @@ func take_damage(amount: int):
 		die()
 
 func die():
+	# TODO: animation or whatever
 	queue_free()
 
 
 
 # premade signals
 func _on_patrol_timer_timeout() -> void:
-	get_next_patrol_pos()
+	if can_patrol:
+		get_next_patrol_pos()
 
 func _on_lose_player_timer_timeout() -> void:
 	enter_searching()

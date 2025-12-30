@@ -12,8 +12,8 @@ slide_on_ceiling = false
 script = ExtResource("2_gl10n")
 default_vision_length = 1000
 health = 30
-patrol_time_min = 20.0
-patrol_time_max = 40.0
+patrol_time_min = 5.0
+patrol_time_max = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="1"]
 position = Vector2(35, 3)
