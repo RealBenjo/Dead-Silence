@@ -11,6 +11,7 @@ class_name EnemyWalking
 @export_range(0, 360, 0.1, "degrees") var fov: float = 90.0
 @export var default_vision_length: int = 500
 var vision_length: Vector2 = Vector2.RIGHT * default_vision_length
+var vision_mult: float = 1.0
 
 # basic functionality vars
 @export var speed: float = 100.0
@@ -46,13 +47,6 @@ var patrol_index: int = 0
 func _ready() -> void:
 	get_next_patrol_pos()
 	patrol_timer.wait_time = randf_range(patrol_time_min, patrol_time_max)
-	
-	# set the vision length
-	update_vision_length(1.0)
-	
-	lose_player_timer.wait_time = 30.0
-	search_timer.wait_time = 180.0
-
 
 
 func _physics_process(_delta):
@@ -60,10 +54,9 @@ func _physics_process(_delta):
 	handle_vision()
 	update_awareness()
 	state_machine()
+	update_vision_length(vision_mult)
 	
-	print(patrol_timer.time_left)
 	
-	#
 	#match current_state:
 		#state.PATROLLING:
 			#print("patrolling")
@@ -127,7 +120,7 @@ func update_awareness() -> void:
 
 # --- PLAYER STATE CHANGES HANDLING ---
 func player_state_handler(vis_mult: float, aware_mult: float) -> void:
-	update_vision_length(vis_mult)
+	vision_mult = vis_mult
 	awareness_mult = aware_mult
 
 func update_vision_length(new_vision_mult: float) -> void:
@@ -193,7 +186,7 @@ func process_attacking() -> void:
 	else:
 		look_at(interest_pos)
 
-	update_vision_length(10.0)
+	vision_mult = 10.0
 	make_path(interest_pos)
 
 	if nav.is_navigation_finished() and !player_seen and lose_player_timer.is_stopped():

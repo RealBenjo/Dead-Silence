@@ -41,9 +41,11 @@ func _ready() -> void:
 ##zombie patroling the map
 func spawn_enemy(index: int, pos: Vector2, patrol: Array) -> void: #TODO: make more dynamic, spawn ANY enemy with this function
 	var enemy_par_node = enemies.get(index)
+	
 	zombie = zombie_scene.instantiate()
 	zombie.global_position = pos
 	zombie.patrol = patrol
+	
 	# connect the player's state change signal to this zombie so it updates its vision length
 	if player and player.has_signal("state_change_signal"):
 		player.connect("state_change_signal", Callable(zombie, "player_state_handler"))

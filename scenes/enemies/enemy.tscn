@@ -30,9 +30,11 @@ debug_enabled = true
 one_shot = true
 
 [node name="LosePlayerTimer" type="Timer" parent="Timers"]
+wait_time = 30.0
 one_shot = true
 
 [node name="SearchTimer" type="Timer" parent="Timers"]
+wait_time = 180.0
 one_shot = true
 
 [node name="Vision" type="RayCast2D" parent="."]

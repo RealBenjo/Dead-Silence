@@ -1,5 +1,6 @@
 res://scenes/enemies/enemy.tscn
+res://scenes/levels/level.gd
 res://scenes/enemies/enemy.gd
 res://scenes/enemies/zombie.tscn
+res://scenes/player/player.gd
 res://scenes/levels/outside.tscn
-res://scenes/enemies/zombie.gd
