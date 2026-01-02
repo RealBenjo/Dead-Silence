@@ -31,12 +31,15 @@ texture = ExtResource("3_qwwmc")
 [node name="Patrol1" type="Node2D" parent="Patrols" index="0"]
 
 [node name="Marker2D32" type="Marker2D" parent="Patrols/Patrol1" index="0"]
-position = Vector2(-315, 127)
+position = Vector2(-1050, -479)
 
 [node name="Marker2D33" type="Marker2D" parent="Patrols/Patrol1" index="1"]
-position = Vector2(597, -172)
+position = Vector2(-606, -535)
 
 [node name="Patrol2" type="Node2D" parent="Patrols" index="1"]
+
+[node name="NavigationRegion2D" parent="." index="7"]
+visible = true
 
 [node name="Player" parent="." index="8"]
 position = Vector2(622, 372)

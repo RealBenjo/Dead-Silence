@@ -31,7 +31,7 @@ var sound_heard: bool = false
 @onready var search_timer: Timer = $Timers/SearchTimer
 
 # pathfinding vars
-var last_interest_pos: Vector2
+var interest_pos: Vector2
 var sound_position: Vector2
 
 # patrol vars
@@ -40,7 +40,6 @@ var sound_position: Vector2
 @export var patrol_time_max: float = 30.0
 var patrol: Array
 var patrol_index: int = 0
-var can_patrol: bool = true
 
 
 
@@ -63,6 +62,7 @@ func _physics_process(_delta):
 	state_machine()
 	
 	print(patrol_timer.time_left)
+	
 	#
 	#match current_state:
 		#state.PATROLLING:
@@ -98,7 +98,6 @@ func handle_vision() -> void:
 		if collider.is_in_group("Player"):
 			player_seen = true
 			sound_heard = false
-			lose_player_timer.start() # TODO: find out why
 		else:
 			player_seen = false
 	else:
@@ -109,6 +108,8 @@ func handle_vision() -> void:
 # --- AWARENESS LOGIC ---
 func update_awareness() -> void:
 	if player_seen:
+		# 50 is so the distance is never negative (player's hitbox size matters)
+		# 250 is just so it is not as extreme and we can manage it easier with the awareness_mult
 		var distance := ( vision_length.x + 50 - global_position.distance_to(Globals.player_pos) ) / 250
 		
 		awareness +=  distance * awareness_mult
@@ -116,7 +117,7 @@ func update_awareness() -> void:
 	else:
 		# gradual linear decay
 		awareness -= 4
-		awareness = clamp(awareness, 0.0, max_awareness)
+		awareness = clamp(awareness, 0.0, max_awareness) # awareness can only be between 0 and max_awareness
 		
 	if awareness >= max_awareness and current_state != state.ATTACKING:
 		enter_attacking()
@@ -154,25 +155,22 @@ func state_machine() -> void:
 # --- STATE PROCESSING ---
 func process_patrolling() -> void:
 	if sound_heard:
-		enter_investigating()
-		last_interest_pos = sound_position
+		enter_investigating(sound_position)
 	
 	check_awareness()
 	
 	if !nav.is_navigation_finished():
-		can_patrol = false
+		patrol_timer.stop()
 	
-	if nav.is_navigation_finished():
-		can_patrol = true
-		if patrol_timer.is_stopped():
-			patrol_timer.start()
+	if nav.is_navigation_finished() and patrol_timer.is_stopped():
+		patrol_timer.start()
 
 
 func process_investigating() -> void:
 	check_awareness()
 	
-	nav.target_position = last_interest_pos
-	# TODO: after reaching the last_interest_pos, go back to patrolling after some time
+	nav.target_position = interest_pos
+	# TODO: after reaching the interest_pos, go back to patrolling after some time
 	if nav.is_navigation_finished():
 		enter_patrolling()
 
@@ -182,8 +180,8 @@ func process_searching() -> void:
 	
 	# TODO: slow this tf down. this ends up looking like ants on an ant hill. yuck
 	if nav.is_navigation_finished():
-		last_interest_pos = vector_offset(global_position, 500)
-		make_path(last_interest_pos)
+		interest_pos = vector_offset(global_position, 500)
+		make_path(interest_pos)
 	
 	if search_timer.is_stopped():
 		enter_patrolling()
@@ -191,12 +189,12 @@ func process_searching() -> void:
 
 func process_attacking() -> void:
 	if player_seen:
-		last_interest_pos = Globals.player_pos
+		interest_pos = Globals.player_pos
 	else:
-		look_at(last_interest_pos)
+		look_at(interest_pos)
 
 	update_vision_length(10.0)
-	make_path(last_interest_pos)
+	make_path(interest_pos)
 
 	if nav.is_navigation_finished() and !player_seen and lose_player_timer.is_stopped():
 		lose_player_timer.start()
@@ -208,8 +206,10 @@ func enter_patrolling() -> void:
 	current_state = state.PATROLLING
 	#patrol_timer.start()
 
-func enter_investigating() -> void:
+##enemy will investigate the given position
+func enter_investigating(invest_pos: Vector2) -> void:
 	current_state = state.INVESTIGATING
+	interest_pos = invest_pos
 	sound_heard = false
 
 func enter_searching() -> void:
@@ -238,7 +238,7 @@ func update_vision_cone() -> void:
 func get_next_patrol_pos() -> void:
 	if patrol_index > patrol.size() - 1:
 		patrol_index = 0
-	last_interest_pos = patrol.get(patrol_index)
+	interest_pos = patrol.get(patrol_index)
 	patrol_index += 1
 
 ##will offset the given Vector2D by an integer amount in a square fashion, not a circle
@@ -247,16 +247,17 @@ func vector_offset(pos: Vector2, offset_amount: int) -> Vector2:
 	var rand_offset = Vector2(amount, amount)
 	return pos + rand_offset
 
-func make_path(interest_position: Vector2) -> void:
-	nav.target_position = interest_position
+func make_path(target_position: Vector2) -> void:
+	nav.target_position = target_position
 
 ##if an enemy is more aware than a certain max_awareness percentage, it will enter the appropriate state
 func check_awareness() -> void:
-	if awareness > max_awareness * 0.5:
-		enter_investigating()
-	elif awareness > max_awareness * 0.7:
+	# TODO: test if entering a state only once is actually OK (probs is but who knows)
+	if awareness > max_awareness * 0.5 and current_state != state.INVESTIGATING:
+		enter_investigating(Globals.player_pos)
+	elif awareness > max_awareness * 0.7 and current_state != state.SEARCHING:
 		enter_searching()
-	elif awareness >= max_awareness:
+	elif awareness >= max_awareness and current_state != state.ATTACKING:
 		enter_attacking()
 
 
@@ -275,8 +276,7 @@ func die():
 
 # premade signals
 func _on_patrol_timer_timeout() -> void:
-	if can_patrol:
-		get_next_patrol_pos()
+	get_next_patrol_pos()
 
 func _on_lose_player_timer_timeout() -> void:
 	enter_searching()

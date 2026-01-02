@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1767122450
+::res://::1767347396
 icon.svg::CompressedTexture2D::2422177589770406009::1764490898::1766589932::1::::<><><>0<>0<>78ffe3a77afdfc07f9a36f7d490c69b5<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile::-1::1766430524::0::1::::<><><>0<>0<><>::
 ::res://globals/::1766511453
@@ -9,9 +9,9 @@ Globals.gd::GDScript::8296628980239061919::1766511453::0::1::::<>Node<><>0<>0<><
 bullet.png::CompressedTexture2D::6911963285751368242::1764490898::1764490898::1::::<><><>0<>0<>06a3d74a69cdf8b1a3e0632ec90a7623<>res://.godot/imported/bullet.png-462b3ecf457569cee77913b1c11b9a42.ctex::
 player.png::CompressedTexture2D::1991049937089083136::1764490898::1764490898::1::::<><><>0<>0<>0ffdfc3f74354b519a2834dc35481869<>res://.godot/imported/player.png-e4437c4145437b871280b7b3efe90850.ctex::
 ::res://scenes/::1764490898
-::res://scenes/enemies/::1767114693
+::res://scenes/enemies/::1767122545
 enemy.gd::GDScript::7312265314680376541::1767114553::0::1::::EnemyWalking<>CharacterBody2D<><>0<>0<><>::
-enemy.tscn::PackedScene::455468903893230479::1767114693::0::1::::<><><>0<>0<><>::uid://dcgd7aixko1d6::::res://scenes/enemies/enemy.gd
+enemy.tscn::PackedScene::455468903893230479::1767122545::0::1::::<><><>0<>0<><>::uid://dcgd7aixko1d6::::res://scenes/enemies/enemy.gd
 zombie.gd::GDScript::142979714435087363::1765122037::0::1::::<>EnemyWalking<><>0<>0<><>::
 zombie.tscn::PackedScene::5631592283169754458::1767112264::0::1::::<><><>0<>0<><>::uid://gqvrhjx732xv::::res://scenes/enemies/enemy.tscn<>uid://cbi4cng3khkd::::res://scenes/enemies/zombie.gd<>uid://3mqkiu262lmu::::res://graphics/player/player.png
 ::res://scenes/levels/::1767114100
