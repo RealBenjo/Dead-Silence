@@ -41,7 +41,7 @@ one_shot = true
 target_position = Vector2(500, 0)
 collision_mask = 5
 
-[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_nav_velocity_computed"]
 [connection signal="timeout" from="Timers/PatrolTimer" to="." method="_on_patrol_timer_timeout"]
 [connection signal="timeout" from="Timers/LosePlayerTimer" to="." method="_on_lose_player_timer_timeout"]
 [connection signal="timeout" from="Timers/SearchTimer" to="." method="_on_search_timer_timeout"]

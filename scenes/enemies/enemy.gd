@@ -50,27 +50,29 @@ func _ready() -> void:
 
 
 func _physics_process(_delta):
+	update_vision_length(vision_mult)
 	update_vision_cone()
 	handle_vision()
 	update_awareness()
 	state_machine()
-	update_vision_length(vision_mult)
 	
-	
-	#match current_state:
-		#state.PATROLLING:
-			#print("patrolling")
-		#state.INVESTIGATING:
-			#print("investigating")
-		#state.SEARCHING:
-			#print("searching")
-		#state.ATTACKING:
-			#print("attacking")
+	#print(patrol_timer.time_left)
+	match current_state:
+		state.PATROLLING:
+			print("patrolling")
+		state.INVESTIGATING:
+			print("investigating")
+		state.SEARCHING:
+			print("searching")
+		state.ATTACKING:
+			print("attacking")
 	
 	# if an enemy is not pathfinding anymore, don't go further than this if statement
 	if nav.is_navigation_finished():
 		velocity = Vector2.ZERO
 		return
+	else:
+		patrol_timer.stop()
 	
 	var next_path_pos = nav.get_next_path_position()
 	var dir = (next_path_pos - global_position).normalized()
@@ -97,7 +99,6 @@ func handle_vision() -> void:
 		player_seen = false
 
 
-
 # --- AWARENESS LOGIC ---
 func update_awareness() -> void:
 	if player_seen:
@@ -105,7 +106,7 @@ func update_awareness() -> void:
 		# 250 is just so it is not as extreme and we can manage it easier with the awareness_mult
 		var distance := ( vision_length.x + 50 - global_position.distance_to(Globals.player_pos) ) / 250
 		
-		awareness +=  distance * awareness_mult
+		awareness += distance * awareness_mult
 		awareness = clamp(awareness, 0.0, max_awareness)
 	else:
 		# gradual linear decay
@@ -148,12 +149,10 @@ func state_machine() -> void:
 # --- STATE PROCESSING ---
 func process_patrolling() -> void:
 	if sound_heard:
-		enter_investigating(sound_position)
+		interest_pos = sound_position
+		enter_investigating()
 	
 	check_awareness()
-	
-	if !nav.is_navigation_finished():
-		patrol_timer.stop()
 	
 	if nav.is_navigation_finished() and patrol_timer.is_stopped():
 		patrol_timer.start()
@@ -162,7 +161,10 @@ func process_patrolling() -> void:
 func process_investigating() -> void:
 	check_awareness()
 	
-	nav.target_position = interest_pos
+	if sound_heard:
+		interest_pos = sound_position
+	
+	make_path(interest_pos)
 	# TODO: after reaching the interest_pos, go back to patrolling after some time
 	if nav.is_navigation_finished():
 		enter_patrolling()
@@ -181,28 +183,28 @@ func process_searching() -> void:
 
 
 func process_attacking() -> void:
+	if sound_heard:
+		interest_pos = sound_position
+	
 	if player_seen:
+		lose_player_timer.stop()
 		interest_pos = Globals.player_pos
 	else:
-		look_at(interest_pos)
-
+		lose_player_timer.start()
+	
 	vision_mult = 10.0
 	make_path(interest_pos)
-
-	if nav.is_navigation_finished() and !player_seen and lose_player_timer.is_stopped():
-		lose_player_timer.start()
 
 
 
 # --- STATE ENTER ---
+# all of these only run once when called
 func enter_patrolling() -> void:
 	current_state = state.PATROLLING
-	#patrol_timer.start()
 
 ##enemy will investigate the given position
-func enter_investigating(invest_pos: Vector2) -> void:
+func enter_investigating() -> void:
 	current_state = state.INVESTIGATING
-	interest_pos = invest_pos
 	sound_heard = false
 
 func enter_searching() -> void:
@@ -245,11 +247,10 @@ func make_path(target_position: Vector2) -> void:
 
 ##if an enemy is more aware than a certain max_awareness percentage, it will enter the appropriate state
 func check_awareness() -> void:
-	# TODO: test if entering a state only once is actually OK (probs is but who knows)
-	if awareness > max_awareness * 0.5 and current_state != state.INVESTIGATING:
-		enter_investigating(Globals.player_pos)
-	elif awareness > max_awareness * 0.7 and current_state != state.SEARCHING:
-		enter_searching()
+	if awareness > max_awareness * 0.5:
+		interest_pos = Globals.player_pos
+		if current_state != state.INVESTIGATING:
+			enter_investigating()
 	elif awareness >= max_awareness and current_state != state.ATTACKING:
 		enter_attacking()
 
@@ -277,6 +278,6 @@ func _on_lose_player_timer_timeout() -> void:
 func _on_search_timer_timeout() -> void:
 	enter_patrolling()
 
-func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+func _on_nav_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
 	move_and_slide()
