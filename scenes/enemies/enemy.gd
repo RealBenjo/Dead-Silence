@@ -8,6 +8,7 @@ class_name EnemyWalking
 @onready var vision: RayCast2D = $Vision
 @onready var lose_player_timer: Timer = $Timers/LosePlayerTimer
 @onready var stop_search_timer: Timer = $Timers/StopSearchTimer
+@onready var investigate_timer: Timer = $Timers/InvestigationTimer
 @onready var search_timer: Timer = $Timers/SearchTimer
 @onready var patrol_timer: Timer = $Timers/PatrolTimer
 
@@ -58,7 +59,8 @@ func _physics_process(_delta):
 	update_awareness()
 	state_machine()
 	
-	print(search_timer.time_left)
+	#print(patrol_timer.time_left)
+	#print(search_timer.time_left)
 	#match current_state:
 		#state.PATROLLING:
 			#print("patrolling")
@@ -74,6 +76,7 @@ func _physics_process(_delta):
 		velocity = Vector2.ZERO
 		return
 	else:
+		# TODO: find a way to avoid the usage of this dumb line here (it is so dumb grrrrr)
 		patrol_timer.stop()
 	
 	var next_path_pos = nav.get_next_path_position()
@@ -165,9 +168,9 @@ func process_investigating() -> void:
 	check_awareness()
 	
 	make_path(interest_pos)
-	# TODO: after reaching the interest_pos, go back to patrolling after some time
-	if nav.is_navigation_finished():
-		enter_patrolling()
+	
+	if nav.is_navigation_finished() and investigate_timer.is_stopped():
+		investigate_timer.start()
 
 
 func process_searching() -> void:
@@ -280,6 +283,9 @@ func die():
 # premade signals
 func _on_patrol_timer_timeout() -> void:
 	get_next_patrol_pos()
+
+func _on_investigation_timer_timeout() -> void:
+	enter_patrolling()
 
 func _on_lose_player_timer_timeout() -> void:
 	enter_searching()
