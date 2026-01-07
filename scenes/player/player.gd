@@ -29,7 +29,8 @@ var is_button_held: bool = false
 var has_triggered_hold: bool = false
 
 var direction: Vector2
-var speed: int = 300
+const SPEED: float = 300
+var speed: float = SPEED
 var weapon_zoom: float = 2.5
 var can_shoot: bool = true
 
@@ -119,18 +120,18 @@ func handle_hold_press() -> void:
 
 # --- STATE TRANSITIONS ---
 func enter_stand() -> void:
-	state_update(state.STAND, 300, 1.0, 2.0)
+	state_update(state.STAND, 1.0, 1.0, 2.0)
 
 func enter_crouch() -> void:
-	state_update(state.CROUCH, 175, 0.8, 1.5)
+	state_update(state.CROUCH, 0.66, 0.8, 1.5)
 
 func enter_prone() -> void:
-	state_update(state.PRONE, 100, 0.6, 0.8)
+	state_update(state.PRONE, 0.33, 0.6, 0.8)
 
 # --- VAR UPDATER FOR STATES ---
-func state_update(this_state, new_speed: int, new_vision_mult: float, new_awareness_mult: float) -> void:
+func state_update(this_state, new_speed_mult: float, new_vision_mult: float, new_awareness_mult: float) -> void:
 	current_state = this_state
-	speed = new_speed
+	speed = SPEED * new_speed_mult
 	emit_signal("state_change_signal", new_vision_mult, new_awareness_mult)
 	# TODO: collider, animation...
 

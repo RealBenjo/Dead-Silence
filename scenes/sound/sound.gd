@@ -2,6 +2,7 @@ extends Area2D
 
 
 var loudness: int = 10
+var sound_listener: Node2D
 
 func _ready() -> void:
 	$CollisionShape2D.shape.radius = loudness
@@ -11,9 +12,12 @@ func _ready() -> void:
 
 # tells the enemy the sound position
 func _on_body_entered(body: Node2D) -> void:
-	body.sound_position = position
-	body.sound_heard = true
+	sound_listener = body
+	sound_listener.sound_position = position
+	sound_listener.sound_heard = true
 
 # just deletes the sound after short delay
 func _on_destroy_sound_timeout() -> void:
+	if sound_listener != null:
+		sound_listener.sound_heard = false
 	queue_free()

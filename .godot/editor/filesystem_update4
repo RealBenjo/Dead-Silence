@@ -4,3 +4,4 @@ res://scenes/enemies/enemy.gd
 res://scenes/enemies/zombie.tscn
 res://scenes/player/player.gd
 res://scenes/levels/outside.tscn
+res://scenes/sound/sound.gd
