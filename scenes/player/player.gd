@@ -37,34 +37,17 @@ var can_shoot: bool = true
 var player_direction
 
 func _process(delta: float) -> void:
-	# -- HANDLES PLAYER MOVEMENT INPUTS --
-	if is_button_held:
-		state_button_held_time += delta
-		
-		if state_button_held_time >= hold_threshold and !has_triggered_hold:
-			handle_hold_press()
-			has_triggered_hold = true
-	
-	direction = Input.get_vector("left", "right", "up", "down")
-	velocity = direction * speed # direction is ALWAYS A VECTOR
+	check_state_change_button(delta)
+	check_player_input()
 	move_and_slide()
-	Globals.player_pos = global_position
-	
-	# -- HANDLES MOVEMENT SOUND --
-	if velocity != Vector2.ZERO and can_emit_move_sound:
-		can_emit_move_sound = false
-		
-		# calculates the current speed which is good as a loudness meter aparently (works on controller too!)
-		moving_loudness = sqrt( pow(velocity.x, 2) + pow(velocity.y, 2) )
-		sound_signal.emit(global_position, moving_loudness)
-		move_sound_timer.start()
-	elif velocity == Vector2.ZERO:
-		can_emit_move_sound = true
-	
+	handle_move_sound()
 	
 	# TODO: add controller support for this
 	# rotate player
-	look_at(get_global_mouse_position())
+	look_at( get_global_mouse_position() )
+	
+	Globals.player_pos = global_position
+	
 	
 	# ADS zoom type shi (this is probably temporary, DONT try to make it nice just yet)
 	if Input.is_action_pressed("secondary_action"):
@@ -73,18 +56,12 @@ func _process(delta: float) -> void:
 		weapon_zoom = 10.0
 	camera.offset = (get_global_mouse_position() - position) / weapon_zoom
 	
+	
 	# get player direction for bullet placement and rotation
 	player_direction = (get_global_mouse_position() - position).normalized()
 	
-	# -- HANDLES SHOOTING --
-	if Input.is_action_pressed("primary_action") and can_shoot and Globals.ammo > 0:
-		can_shoot = false
-		Globals.ammo -= 1
-		shoot_timer.start()
-		
-		# emit the corresponding signals
-		bullet_signal.emit(muzzle_end.global_position, player_direction)
-		sound_signal.emit(muzzle_end.global_position, BULLET_LOUDNESS)
+	handle_shooting()
+
 
 
 func _input(event: InputEvent) -> void:
@@ -97,8 +74,46 @@ func _input(event: InputEvent) -> void:
 		is_button_held = false
 	
 		# If we never triggered the hold, treat it as a tap
-		if !has_triggered_hold:
+		if not has_triggered_hold:
 			handle_tap()
+
+
+
+# -- AUX ---
+func check_state_change_button(delta: float) -> void:
+	if is_button_held:
+		state_button_held_time += delta
+		
+		if state_button_held_time >= hold_threshold and not has_triggered_hold:
+			handle_hold_press()
+			has_triggered_hold = true
+
+func check_player_input() -> void:
+	direction = Input.get_vector("left", "right", "up", "down")
+	velocity = direction * speed # direction is ALWAYS A VECTOR
+
+func handle_shooting() -> void:
+	if Input.is_action_pressed("primary_action") and can_shoot and Globals.ammo > 0:
+		can_shoot = false
+		Globals.ammo -= 1
+		shoot_timer.start()
+		
+		# emit the corresponding signals
+		bullet_signal.emit(muzzle_end.global_position, player_direction)
+		sound_signal.emit(muzzle_end.global_position, BULLET_LOUDNESS)
+
+func handle_move_sound() -> void:
+	if velocity != Vector2.ZERO and can_emit_move_sound:
+		can_emit_move_sound = false
+		
+		# calculates the current speed which is good as a loudness meter aparently (works on controller too!)
+		moving_loudness = sqrt( pow(velocity.x, 2) + pow(velocity.y, 2) )
+		sound_signal.emit(global_position, moving_loudness)
+		move_sound_timer.start()
+	elif velocity == Vector2.ZERO:
+		can_emit_move_sound = true
+
+
 
 # --- STATE HANDLERS ---
 func handle_tap() -> void:
@@ -120,20 +135,31 @@ func handle_hold_press() -> void:
 
 # --- STATE TRANSITIONS ---
 func enter_stand() -> void:
-	state_update(state.STAND, 1.0, 1.0, 2.0)
+	var speed_mult = 1.0
+	var vision_mult = 1.0
+	var awareness_mult = 2.0
+	state_update(state.STAND, speed_mult, vision_mult, awareness_mult)
 
 func enter_crouch() -> void:
-	state_update(state.CROUCH, 0.66, 0.8, 1.5)
+	var speed_mult = 0.66
+	var vision_mult = 0.8
+	var awareness_mult = 1.5
+	state_update(state.STAND, speed_mult, vision_mult, awareness_mult)
 
 func enter_prone() -> void:
-	state_update(state.PRONE, 0.33, 0.6, 0.8)
+	var speed_mult = 0.33
+	var vision_mult = 0.6
+	var awareness_mult = 0.8
+	state_update(state.STAND, speed_mult, vision_mult, awareness_mult)
 
 # --- VAR UPDATER FOR STATES ---
-func state_update(this_state, new_speed_mult: float, new_vision_mult: float, new_awareness_mult: float) -> void:
+func state_update(this_state: state, new_speed_mult: float, new_vision_mult: float, new_awareness_mult: float) -> void:
 	current_state = this_state
 	speed = SPEED * new_speed_mult
 	emit_signal("state_change_signal", new_vision_mult, new_awareness_mult)
 	# TODO: collider, animation...
+
+
 
 # premade signals
 
