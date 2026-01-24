@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmh8rcpigum0y"]
+[gd_scene load_steps=6 format=3 uid="uid://cmh8rcpigum0y"]
 
 [ext_resource type="PackedScene" uid="uid://gqvrhjx732xv" path="res://scenes/enemies/enemy.tscn" id="1_3pt6v"]
 [ext_resource type="Script" uid="uid://cbi4cng3khkd" path="res://scenes/enemies/zombie.gd" id="2_gl10n"]
@@ -7,11 +7,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_rdvt3"]
 radius = 35.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdvt3"]
+size = Vector2(89, 68)
+
 [node name="Zombie" instance=ExtResource("1_3pt6v")]
 slide_on_ceiling = false
 script = ExtResource("2_gl10n")
-default_vision_length = 1000
 health = 30
+default_vision_length = 1000
 patrol_time_min = 7.0
 patrol_time_max = 7.0
 
@@ -22,6 +25,10 @@ texture = ExtResource("3_rdvt3")
 
 [node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CircleShape2D_rdvt3")
+
+[node name="CollisionShape2D" parent="AttackArea" index="0"]
+position = Vector2(34.5, 0)
+shape = SubResource("RectangleShape2D_rdvt3")
 
 [node name="PathFindTimer" type="Timer" parent="Timers" index="0"]
 wait_time = 0.3

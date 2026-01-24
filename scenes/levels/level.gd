@@ -47,9 +47,13 @@ func spawn_enemy(index: int, pos: Vector2, patrol: Array) -> void: #TODO: make m
 	zombie.patrol = patrol
 	
 	# connect the player's state change signal to this zombie so it updates its vision length
-	if player and player.has_signal("state_change_signal"):
+	if player and player.has_signal("state_change_signal") and player.has_signal("movement_signal"):
 		player.connect("state_change_signal", Callable(zombie, "player_state_handler"))
+		player.connect("movement_signal", Callable(zombie, "player_speed_handler"))
+		
 	enemy_par_node.add_child(zombie)
+
+
 
 ##returns array of all marker positions in a patrol
 func get_patrol(index: int) -> Array:
@@ -60,6 +64,8 @@ func get_patrol(index: int) -> Array:
 	
 	return patrol_positions
 
+
+
 ##spawns a bullet at the player's gun position, which then travels away from the gun barrel
 func create_bullet(pos: Vector2, direction: Vector2) -> void:
 	bullet = bullet_scene.instantiate() as Node2D
@@ -69,6 +75,8 @@ func create_bullet(pos: Vector2, direction: Vector2) -> void:
 	bullet.direction = direction
 	
 	$Projectiles.add_child(bullet)
+
+
 
 func create_sound(pos: Vector2, loudness: float) -> void:
 	sound = sound_scene.instantiate() as Area2D

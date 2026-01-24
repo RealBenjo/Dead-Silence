@@ -1,3 +1,5 @@
+CollisionShape2D
+Area2D
 Timer
 Marker2D
 Node

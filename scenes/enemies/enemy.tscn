@@ -13,6 +13,10 @@ script = ExtResource("1_6xk8f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -52,6 +56,8 @@ one_shot = true
 target_position = Vector2(500, 0)
 collision_mask = 5
 
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_nav_velocity_computed"]
 [connection signal="timeout" from="Timers/PatrolTimer" to="." method="_on_patrol_timer_timeout"]
 [connection signal="timeout" from="Timers/InvestigationTimer" to="." method="_on_investigation_timer_timeout"]
