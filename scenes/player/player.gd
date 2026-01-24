@@ -52,6 +52,9 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	handle_move_sound()
 	
+	#if Input.is_action_pressed("secondary_action"):
+		#Engine.time_scale = 2.0
+	
 	# TODO: add controller support for this
 	# rotate player
 	look_at( get_global_mouse_position() )

@@ -8,7 +8,7 @@
 radius = 35.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdvt3"]
-size = Vector2(89, 68)
+size = Vector2(79, 68)
 
 [node name="Zombie" instance=ExtResource("1_3pt6v")]
 slide_on_ceiling = false
@@ -27,7 +27,7 @@ texture = ExtResource("3_rdvt3")
 shape = SubResource("CircleShape2D_rdvt3")
 
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
-position = Vector2(34.5, 0)
+position = Vector2(39.5, 0)
 shape = SubResource("RectangleShape2D_rdvt3")
 
 [node name="PathFindTimer" type="Timer" parent="Timers" index="0"]

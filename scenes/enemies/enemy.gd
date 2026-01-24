@@ -86,6 +86,7 @@ func _physics_process(_delta):
 	var next_path_pos = nav.get_next_path_position()
 	var dir = (next_path_pos - global_position).normalized()
 	
+	# the actual velocity used by the enemy is a so called safe_velocity. it is a signal from the nav agent
 	var desired_velocity = dir * speed
 	nav.set_velocity(desired_velocity)
 	
@@ -121,9 +122,7 @@ func update_awareness() -> void:
 		# gradual linear decay
 		awareness -= 4
 		awareness = clamp(awareness, 0.0, max_awareness) # awareness can only be between 0 and max_awareness
-		
-	if awareness >= max_awareness and current_state != state.ATTACKING:
-		enter_attacking()
+	
 	
 	#print(awareness)
 
@@ -197,6 +196,11 @@ func process_attacking() -> void:
 	if player_seen:
 		lose_player_timer.stop()
 		interest_pos = Globals.player_pos
+		
+		if can_attack:
+			# TODO: play an animation, at a certain frame of the animation, the player takes big damage or something
+			print("attack")
+		
 	elif lose_player_timer.is_stopped():
 		lose_player_timer.start()
 	
@@ -230,13 +234,15 @@ func enter_attacking() -> void:
 # --- AUX ---
 ##if an enemy is more aware than a certain max_awareness percentage, it will enter the appropriate state
 func check_awareness() -> void:
-	if awareness > max_awareness * 0.5:
+	if awareness >= max_awareness and current_state != state.ATTACKING:
+		Engine.time_scale = 0.1
+		enter_attacking()
+		
+	elif awareness > max_awareness * 0.5:
 		# if an enemy sees a player for more than 50% awareness they will know the player's exact position
 		interest_pos = Globals.player_pos
 		if current_state == state.PATROLLING:
 			enter_investigating()
-	elif awareness >= max_awareness and current_state != state.ATTACKING:
-		enter_attacking()
 
 func update_vision_cone() -> void:
 	# get the global player direction from the enemy in radiants

@@ -3,3 +3,5 @@ res://scenes/enemies/enemy.gd
 res://scenes/levels/level.gd
 res://scenes/player/player.gd
 res://globals/Globals.gd
+res://scenes/enemies/zombie.tscn
+res://scenes/levels/outside.tscn
