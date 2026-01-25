@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://ysls7iwu7faj" path="res://scenes/player/player.tscn" id="2_bovvr"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bovvr"]
-vertices = PackedVector2Array(938, 617, 938, -362.75, 3093.9922, 150.27344, 3200.2734, 1652.2031, 3119.8281, -1397.4219, 813.9219, -1495.9922, -1690.0703, 1749.7891, 762.0078, 617, -1713.9219, -1447.1875, 760.9922, -367.2578)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1, 5), PackedInt32Array(0, 3, 6, 7), PackedInt32Array(7, 6, 8, 9), PackedInt32Array(9, 8, 5, 1)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(3130, -1407, 814, -1506, 771, -357, 928, -353, 928, 607, 3104, 150), PackedVector2Array(814, -1506, 771, -357, 772, 607, 928, 607, 3104, 150, 3211, 1662, -1700, 1760, -1724, -1457)])
+vertices = PackedVector2Array(3093.9922, 150.27344, 937.9297, 617, 945.0703, -367, 3119.8281, -1397.4219, 813.9219, -1495.9922, 760.9922, -367, -1713.9219, -1447.1875, 3200.2734, 1652.2031, -1690.0703, 1749.7891, 762.0078, 617)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5, 6), PackedInt32Array(1, 0, 7, 8), PackedInt32Array(9, 1, 8), PackedInt32Array(9, 8, 6, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(3130, -1407, 814, -1506, 771, -357, 935, -357, 928, 607, 3104, 150), PackedVector2Array(814, -1506, 771, -357, 772, 607, 928, 607, 3104, 150, 3211, 1662, -1700, 1760, -1724, -1457)])
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_377w7")

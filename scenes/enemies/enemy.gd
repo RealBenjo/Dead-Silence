@@ -52,6 +52,9 @@ var player_speed_mult: float = 1.0 ##it is clamped between 1.0 - 2.0
 
 
 func _ready() -> void:
+	# the nav agent REALLY needs to know the max_speed for avoidance!
+	nav.max_speed = speed
+	
 	get_next_patrol_pos()
 	patrol_timer.wait_time = randf_range(patrol_time_min, patrol_time_max)
 
@@ -128,10 +131,12 @@ func update_awareness() -> void:
 
 
 # --- PLAYER STATE CHANGES HANDLING ---
+##the player tells the enemy the new player dependent multiplier
 func player_state_handler(vis_mult: float, aware_mult: float) -> void:
 	vision_mult = vis_mult
 	awareness_mult = aware_mult
 
+##the player tells the enemy it's new speed
 func player_speed_handler(new_velocity_length: float) -> void:
 	player_velocity = new_velocity_length
 	player_speed_mult = player_velocity / Globals.player_max_speed + 1.0
@@ -199,6 +204,7 @@ func process_attacking() -> void:
 		
 		if can_attack:
 			# TODO: play an animation, at a certain frame of the animation, the player takes big damage or something
+			Globals.health -= damage
 			print("attack")
 		
 	elif lose_player_timer.is_stopped():
@@ -235,7 +241,8 @@ func enter_attacking() -> void:
 ##if an enemy is more aware than a certain max_awareness percentage, it will enter the appropriate state
 func check_awareness() -> void:
 	if awareness >= max_awareness and current_state != state.ATTACKING:
-		Engine.time_scale = 0.1
+		#TODO: implement slow-mo when getting detected by an enemy
+		#Engine.time_scale = 0.1
 		enter_attacking()
 		
 	elif awareness > max_awareness * 0.5:
