@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ba5sduufhjqin"]
 
-[ext_resource type="Script" uid="uid://dminjnr5k540h" path="res://scenes/levels/level.gd" id="1_377w7"]
+[ext_resource type="Script" uid="uid://dminjnr5k540h" path="res://scripts/levels/Level.gd" id="1_377w7"]
 [ext_resource type="PackedScene" uid="uid://ysls7iwu7faj" path="res://scenes/player/player.tscn" id="2_bovvr"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bovvr"]

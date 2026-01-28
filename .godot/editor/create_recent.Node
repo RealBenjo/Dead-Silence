@@ -1,6 +1,12 @@
+EnemyAttacking
+EnemySearching
+EnemyInvestigating
+EnemyIdle
+Node
+Sprite2D
+AnimationPlayer
 CollisionShape2D
 Area2D
 Timer
 Marker2D
-Node
 Node2D
