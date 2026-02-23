@@ -4,6 +4,7 @@ extends Node
 
 var current_state: State
 var states: Dictionary = {}
+var last_state_name: String = ""
 
 func _ready() -> void:
 	# gets all the states that are it's children
@@ -40,6 +41,7 @@ func on_child_transition(state, new_state_name):
 		print(new_state)
 		return
 	
+	last_state_name = current_state.name
 	current_state.exit()
 	new_state.enter()
 	

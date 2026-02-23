@@ -16,7 +16,7 @@ func physics_update(_delta: float):
 	if enemy.check_sound():
 		search_timer.stop()
 	
-	check_awareness(enemy.awareness, enemy.max_awareness, "Searching")
+	check_awareness(enemy.awareness, enemy.max_awareness)
 	
 	if enemy.nav.is_navigation_finished() and search_timer.is_stopped():
 		search_timer.start()

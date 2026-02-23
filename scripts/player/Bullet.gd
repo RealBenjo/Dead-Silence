@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 	
 	if bullet_path.is_colliding():
 		var collider = bullet_path.get_collider()
+		print(collider)
 		var layer = collider.collision_layer
 	
 		# Only layers 1 and 2 should trigger the hit signal

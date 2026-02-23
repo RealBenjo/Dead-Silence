@@ -12,8 +12,6 @@ class_name EnemyWalking
 @export var speed: float = 100.0
 @export var health: int = 100
 @export var damage: int = 10
-##the frame where the enemy will deal damage (look at the animated sprite's attack animation)
-@export_range(0, 500) var damage_frame: int = 1
 var can_attack: bool = false
 
 # vision vars

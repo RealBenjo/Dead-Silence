@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ysls7iwu7faj"]
+[gd_scene load_steps=8 format=3 uid="uid://ysls7iwu7faj"]
 
 [ext_resource type="Script" uid="uid://cn31g24g63foj" path="res://scripts/player/Player.gd" id="1_1kbk7"]
 [ext_resource type="Texture2D" uid="uid://3mqkiu262lmu" path="res://graphics/player/player.png" id="1_cyojo"]
+[ext_resource type="Script" uid="uid://65rh80fn4fp0" path="res://scripts/state/player/PlayerStand.gd" id="3_gmlin"]
+[ext_resource type="Script" uid="uid://bn1es8rnf5vtr" path="res://scripts/state/StateMachine.gd" id="3_lvxji"]
+[ext_resource type="Script" uid="uid://bia1cjakqmuvf" path="res://scripts/state/player/PlayerCrouch.gd" id="5_75vfm"]
+[ext_resource type="Script" uid="uid://dg4qljreiu7ax" path="res://scripts/state/player/PlayerProne.gd" id="6_0owmy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gqjuk"]
 radius = 34.0
@@ -9,7 +13,6 @@ radius = 34.0
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 30
 script = ExtResource("1_1kbk7")
-hold_threshold = 0.13
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(35, 2)
@@ -36,6 +39,25 @@ one_shot = true
 [node name="MoveSoundTimer" type="Timer" parent="Timers"]
 wait_time = 0.5
 one_shot = true
+
+[node name="StanceMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_lvxji")
+initial_state = NodePath("Stand")
+
+[node name="Stand" type="Node" parent="StanceMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("3_gmlin")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://65rh80fn4fp0"
+
+[node name="Crouch" type="Node" parent="StanceMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("5_75vfm")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://bia1cjakqmuvf"
+
+[node name="Prone" type="Node" parent="StanceMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("6_0owmy")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dg4qljreiu7ax"
 
 [connection signal="timeout" from="Timers/ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="Timers/MoveSoundTimer" to="." method="_on_move_sound_timer_timeout"]

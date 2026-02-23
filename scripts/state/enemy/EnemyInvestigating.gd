@@ -12,7 +12,7 @@ func enter():
 
 func physics_update(_delta: float):
 	enemy.check_sound()
-	check_awareness(enemy.awareness, enemy.max_awareness, "Investigating")
+	check_awareness(enemy.awareness, enemy.max_awareness)
 	
 	enemy.make_path(enemy.interest_pos)
 	

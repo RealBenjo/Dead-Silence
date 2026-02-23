@@ -1,5 +1,5 @@
 extends EnemyWalker
-class_name EnemyIdle
+class_name EnemyPatrolling
 
 
 @onready var patrol_timer: Timer = $"../../Timers/PatrolTimer"
@@ -20,7 +20,7 @@ func physics_update(_delta: float):
 		transitioned.emit(self, "Investigating")
 		return
 	
-	check_awareness(enemy.awareness, enemy.max_awareness, "Patrolling")
+	check_awareness(enemy.awareness, enemy.max_awareness)
 	
 	if enemy.nav.is_navigation_finished() and patrol_timer.is_stopped():
 		patrol_timer.start()
