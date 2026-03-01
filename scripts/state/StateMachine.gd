@@ -30,14 +30,14 @@ func _physics_process(delta: float) -> void:
 
 func on_child_transition(state, new_state_name):
 	if state != current_state:
-		print("ERROR. the following states are NOT the same:")
+		print("!ERROR! current_state and the actual state's self are NOT the same:")
 		print(state)
 		print(current_state)
 		return
 	
-	var new_state = states.get(new_state_name.to_lower())
+	var new_state = states.get( new_state_name.to_lower() )
 	if !new_state:
-		print("ERROR. the new state does NOT exist:")
+		print("!ERROR! the new state does NOT exist:")
 		print(new_state)
 		return
 	

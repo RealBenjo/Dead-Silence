@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmh8rcpigum0y"]
+[gd_scene load_steps=7 format=3 uid="uid://cmh8rcpigum0y"]
 
 [ext_resource type="PackedScene" uid="uid://gqvrhjx732xv" path="res://scenes/enemies/enemy.tscn" id="1_3pt6v"]
 [ext_resource type="Script" uid="uid://cbi4cng3khkd" path="res://scripts/enemies/Zombie.gd" id="2_gl10n"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rdvt3"]
 radius = 35.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a0lpg"]
+radius = 39.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdvt3"]
 size = Vector2(79, 68)
@@ -18,13 +21,16 @@ default_vision_length = 1000
 patrol_time_min = 7.0
 patrol_time_max = 7.0
 
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_rdvt3")
+
 [node name="Sprite2D" type="Sprite2D" parent="." index="1"]
 position = Vector2(35, 3)
 rotation = 1.5707964
 texture = ExtResource("3_rdvt3")
 
-[node name="CollisionShape2D" parent="." index="2"]
-shape = SubResource("CircleShape2D_rdvt3")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+shape = SubResource("CircleShape2D_a0lpg")
 
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
 position = Vector2(39.5, 0)

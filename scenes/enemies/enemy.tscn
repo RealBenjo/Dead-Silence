@@ -1,13 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://gqvrhjx732xv"]
+[gd_scene load_steps=9 format=3 uid="uid://gqvrhjx732xv"]
 
 [ext_resource type="Script" uid="uid://dcgd7aixko1d6" path="res://scripts/enemies/Enemy.gd" id="1_6xk8f"]
 [ext_resource type="Script" uid="uid://bn1es8rnf5vtr" path="res://scripts/state/StateMachine.gd" id="2_8e3ao"]
+[ext_resource type="PackedScene" uid="uid://ngsivlkhd748" path="res://scenes/aux/components/health_component.tscn" id="2_n7575"]
 [ext_resource type="Script" uid="uid://bci2nb0pokbkr" path="res://scripts/state/enemy/EnemyPatrolling.gd" id="3_38ino"]
+[ext_resource type="PackedScene" uid="uid://csxuoh0l5iehp" path="res://scenes/aux/components/hitbox_component.tscn" id="3_n7575"]
 [ext_resource type="Script" uid="uid://f27t0j1fswru" path="res://scripts/state/enemy/EnemyInvestigating.gd" id="4_fcftc"]
 [ext_resource type="Script" uid="uid://bd5kgtlulah45" path="res://scripts/state/enemy/EnemySearching.gd" id="5_lu5c6"]
 [ext_resource type="Script" uid="uid://xopl505afwk5" path="res://scripts/state/enemy/EnemyAttacking.gd" id="6_nb6gf"]
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8e3ao"]
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -16,12 +16,12 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_6xk8f")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_8e3ao")
-}
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_n7575")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_n7575")]
+health_component = NodePath("../HealthComponent")
 
 [node name="AttackArea" type="Area2D" parent="."]
 
@@ -37,7 +37,6 @@ neighbor_distance = 300.0
 max_neighbors = 3
 time_horizon_agents = 0.8
 time_horizon_obstacles = 0.1
-debug_enabled = true
 
 [node name="Timers" type="Node" parent="."]
 

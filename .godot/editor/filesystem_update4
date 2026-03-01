@@ -1,7 +1,7 @@
-res://scenes/player/player.tscn
-res://scripts/state/player/PlayerStand.gd
-res://scripts/state/player/PlayerProne.gd
-res://scripts/state/player/PlayerCrouch.gd
-res://scripts/state/player/PlayerStance.gd
-res://scripts/state/StateMachine.gd
-res://scripts/state/State.gd
+res://scenes/enemies/enemy.tscn
+res://scripts/aux/components/HealthComponent.gd
+res://scripts/aux/components/HitboxComponent.gd
+res://scenes/enemies/zombie.tscn
+res://scenes/player/bullet.tscn
+res://scripts/player/Bullet.gd
+res://scripts/enemies/Enemy.gd

@@ -24,10 +24,14 @@ func _process(delta: float) -> void:
 	if bullet_path.is_colliding():
 		var collider = bullet_path.get_collider()
 		print(collider)
-		var layer = collider.collision_layer
-	
+		
 		# Only layers 1 and 2 should trigger the hit signal
-		if layer & ((1 << 0) | (1 << 1)):
+		if collider.has_method("damage"):
+			var attack = Attack.new()
+			attack.attack_damage = DAMAGE
+			attack.attack_position = global_position
+			
+			collider.damage(attack)
 			collider.take_damage(DAMAGE)
 		queue_free()
 	

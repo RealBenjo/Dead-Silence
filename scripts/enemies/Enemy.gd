@@ -3,7 +3,6 @@ class_name EnemyWalking
 
 
 # node vars
-@onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var vision: RayCast2D = $Vision
 @onready var patrol_timer: Timer = $Timers/PatrolTimer

@@ -18,5 +18,6 @@ autostart = true
 [node name="BulletPath" type="RayCast2D" parent="."]
 target_position = Vector2(30, 0)
 collision_mask = 6
+collide_with_areas = true
 
 [connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]

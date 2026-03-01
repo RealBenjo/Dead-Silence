@@ -6,7 +6,7 @@ static var holding := false
 static var held_time := 0.0
 static var start_stance := ""
 
-var transition_time := 0.3
+var transition_time := 0.25
 
 func update(delta: float) -> void:
 	# 1. Start the sequence
@@ -48,4 +48,6 @@ func update(delta: float) -> void:
 func current_state_name() -> String:
 	if not current_state: return "" # Safeguard during transitions
 	var state_name = current_state.get_script().get_global_name()
+	
+	# 6 removes the "Player" from the name of the script
 	return state_name.substr(6, state_name.length())
