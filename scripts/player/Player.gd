@@ -7,6 +7,7 @@ signal movement_signal(current_speed: float)
 signal state_change_signal(vis_length: int, awareness_mult: float)
 
 @onready var bullet: PackedScene = preload("res://scenes/player/bullet.tscn")
+@onready var player_animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera: Camera2D = $Camera2D
 @onready var shoot_timer: Timer = $Timers/ShootTimer
 @onready var move_sound_timer: Timer = $Timers/MoveSoundTimer
@@ -46,7 +47,8 @@ func _process(_delta: float) -> void:
 	
 	# TODO: add controller support for this
 	# rotate player
-	look_at( get_global_mouse_position() )
+	if velocity != Vector2.ZERO:
+		rotation = velocity.angle()
 	
 	Globals.player_pos = global_position
 	
@@ -69,8 +71,14 @@ func handle_player_input() -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed # direction is ALWAYS A VECTOR
 	
+	if velocity != Vector2.ZERO:
+		player_animation.play("s_walking")
+	else:
+		player_animation.pause()
+		
 	velocity_length = velocity.distance_to(Vector2.ZERO)
-	emit_signal("movement_signal", velocity_length)
+	
+	movement_signal.emit(velocity_length)
 
 func handle_shooting() -> void:
 	#TODO: make it work with any weapon

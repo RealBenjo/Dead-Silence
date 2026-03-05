@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ngsivlkhd748"]
+
+[ext_resource type="Script" uid="uid://dum5b3jgs706q" path="res://scripts/helpers/components/HealthComponent.gd" id="1_kvijm"]
+
+[node name="HealthComponent" type="Node"]
+editor_description = "keeps track of the real-time health of an entity and holds it's maximum health"
+script = ExtResource("1_kvijm")

@@ -9,7 +9,6 @@ class_name EnemyWalking
 
 # basic functionality vars
 @export var speed: float = 100.0
-@export var health: int = 100
 @export var damage: int = 10
 var can_attack: bool = false
 
@@ -162,12 +161,6 @@ func check_sound() -> bool:
 	return false
 
 
-# --- DAMAGE ---
-func take_damage(amount: int):
-	health -= amount
-	if health <= 0:
-		die()
-
 func die():
 	# TODO: animation or whatever
 	queue_free()
@@ -181,10 +174,5 @@ func _on_nav_velocity_computed(safe_velocity: Vector2) -> void:
 	move_and_slide()
 
 
-func _on_attack_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		can_attack = true
-
-func _on_attack_area_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		can_attack = false
+func _on_death() -> void:
+	queue_free()

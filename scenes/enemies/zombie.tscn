@@ -5,35 +5,43 @@
 [ext_resource type="Texture2D" uid="uid://3mqkiu262lmu" path="res://graphics/player/player.png" id="3_rdvt3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rdvt3"]
-radius = 35.0
+radius = 34.058773
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a0lpg"]
 radius = 39.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdvt3"]
-size = Vector2(79, 68)
+size = Vector2(51, 78)
 
 [node name="Zombie" instance=ExtResource("1_3pt6v")]
 slide_on_ceiling = false
 script = ExtResource("2_gl10n")
-health = 30
 default_vision_length = 1000
 patrol_time_min = 7.0
 patrol_time_max = 7.0
 
-[node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource("CircleShape2D_rdvt3")
-
-[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 position = Vector2(35, 3)
 rotation = 1.5707964
 texture = ExtResource("3_rdvt3")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_rdvt3")
+
+[node name="HealthComponent" parent="." index="3"]
+MAX_HEALTH = 30.0
+
+[node name="HitboxComponent" parent="." index="4"]
+collision_layer = 16
+collision_mask = 0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
 shape = SubResource("CircleShape2D_a0lpg")
 
-[node name="CollisionShape2D" parent="AttackArea" index="0"]
-position = Vector2(39.5, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent" index="1"]
+position = Vector2(53.5, 0)
 shape = SubResource("RectangleShape2D_rdvt3")
 
 [node name="PathFindTimer" type="Timer" parent="Timers" index="0"]

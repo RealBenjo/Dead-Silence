@@ -23,17 +23,15 @@ func _process(delta: float) -> void:
 	
 	if bullet_path.is_colliding():
 		var collider = bullet_path.get_collider()
-		print(collider)
 		
-		# Only layers 1 and 2 should trigger the hit signal
-		if collider.has_method("damage"):
+		# if a bullet hits a hitboxcomponent, the hitbox will take damage
+		if collider is HitboxComponent:
 			var attack = Attack.new()
 			attack.attack_damage = DAMAGE
 			attack.attack_position = global_position
 			
 			collider.damage(attack)
-			collider.take_damage(DAMAGE)
-		queue_free()
+		queue_free() # if the bullet hits anything -> gets deleted
 	
 	global_position = new_global
 

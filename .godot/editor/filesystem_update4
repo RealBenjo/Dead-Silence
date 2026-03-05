@@ -1,7 +1,3 @@
+res://scenes/aux/components/attack_component.tscn
 res://scenes/enemies/enemy.tscn
-res://scripts/aux/components/HealthComponent.gd
-res://scripts/aux/components/HitboxComponent.gd
-res://scenes/enemies/zombie.tscn
-res://scenes/player/bullet.tscn
-res://scripts/player/Bullet.gd
-res://scripts/enemies/Enemy.gd
+res://scenes/player/player.tscn
