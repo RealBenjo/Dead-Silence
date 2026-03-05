@@ -1,3 +1,2 @@
-res://scenes/aux/components/attack_component.tscn
-res://scenes/enemies/enemy.tscn
 res://scenes/player/player.tscn
+res://scripts/player/Player.gd

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ysls7iwu7faj"]
+[gd_scene format=3 uid="uid://ysls7iwu7faj"]
 
 [ext_resource type="Script" uid="uid://cn31g24g63foj" path="res://scripts/player/Player.gd" id="1_1kbk7"]
 [ext_resource type="Texture2D" uid="uid://badaf375v6nio" path="res://graphics/player/animations/stand/walking/0001.png" id="2_kxw46"]
@@ -146,11 +146,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_gqjuk"]
 radius = 35.014282
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1065015688 groups=["Player"]]
 collision_mask = 30
 script = ExtResource("1_1kbk7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=40980965]
 rotation = 1.5707964
 scale = Vector2(0.27766937, 0.27766937)
 sprite_frames = SubResource("SpriteFrames_pwfqx")
@@ -159,42 +159,42 @@ autoplay = "s_idle"
 frame = 28
 frame_progress = 0.2932709
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=459724363]
 shape = SubResource("CircleShape2D_gqjuk")
 
-[node name="MuzzleEnd" type="Marker2D" parent="."]
+[node name="MuzzleEnd" type="Marker2D" parent="." unique_id=1119670339]
 position = Vector2(39, 21)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1726784057]
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="Timers" type="Node" parent="."]
+[node name="Timers" type="Node" parent="." unique_id=1085566402]
 
-[node name="ShootTimer" type="Timer" parent="Timers"]
+[node name="ShootTimer" type="Timer" parent="Timers" unique_id=479848016]
 wait_time = 0.1
 one_shot = true
 
-[node name="MoveSoundTimer" type="Timer" parent="Timers"]
+[node name="MoveSoundTimer" type="Timer" parent="Timers" unique_id=1912082245]
 wait_time = 0.5
 one_shot = true
 
-[node name="StanceMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StanceMachine" type="Node" parent="." unique_id=1496953717 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_lvxji")
 initial_state = NodePath("Stand")
 
-[node name="Stand" type="Node" parent="StanceMachine" node_paths=PackedStringArray("player")]
+[node name="Stand" type="Node" parent="StanceMachine" unique_id=2035756779 node_paths=PackedStringArray("player")]
 script = ExtResource("3_gmlin")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://65rh80fn4fp0"
 
-[node name="Crouch" type="Node" parent="StanceMachine" node_paths=PackedStringArray("player")]
+[node name="Crouch" type="Node" parent="StanceMachine" unique_id=178518343 node_paths=PackedStringArray("player")]
 script = ExtResource("5_75vfm")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://bia1cjakqmuvf"
 
-[node name="Prone" type="Node" parent="StanceMachine" node_paths=PackedStringArray("player")]
+[node name="Prone" type="Node" parent="StanceMachine" unique_id=4825605 node_paths=PackedStringArray("player")]
 script = ExtResource("6_0owmy")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://dg4qljreiu7ax"

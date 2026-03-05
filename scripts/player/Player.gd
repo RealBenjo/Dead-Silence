@@ -48,7 +48,7 @@ func _process(_delta: float) -> void:
 	# TODO: add controller support for this
 	# rotate player
 	if velocity != Vector2.ZERO:
-		rotation = velocity.angle()
+		rotation = lerp_angle(rotation, velocity.angle(), 0.1)
 	
 	Globals.player_pos = global_position
 	
