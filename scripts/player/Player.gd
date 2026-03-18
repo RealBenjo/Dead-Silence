@@ -17,7 +17,8 @@ signal state_change_signal(vis_length: int, awareness_mult: float)
 const BULLET_LOUDNESS: float = 2000.0
 var can_emit_move_sound: bool = true
 
-# state vars
+# stance vars
+var current_stance
 var velocity_length: float ##real time speed of the player so the enemy AI can use it
 
 #multiplier vars
@@ -72,10 +73,16 @@ func handle_player_input() -> void:
 	velocity = direction * speed # direction is ALWAYS A VECTOR
 	
 	if velocity != Vector2.ZERO:
-		player_animation.play("s_walking")
+		match current_stance.get_script().get_global_name():
+			"PlayerStand":
+				player_animation.play("s_walking")
+			"PlayerCrouch":
+				player_animation.play("c_crouching")
+			"PlayerProne":
+				player_animation.play("p_prone")
 	else:
 		player_animation.pause()
-		
+	
 	velocity_length = velocity.distance_to(Vector2.ZERO)
 	
 	movement_signal.emit(velocity_length)

@@ -1,50 +1,44 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmh8rcpigum0y"]
+[gd_scene format=3 uid="uid://cmh8rcpigum0y"]
 
 [ext_resource type="PackedScene" uid="uid://gqvrhjx732xv" path="res://scenes/enemies/enemy.tscn" id="1_3pt6v"]
 [ext_resource type="Script" uid="uid://cbi4cng3khkd" path="res://scripts/enemies/Zombie.gd" id="2_gl10n"]
-[ext_resource type="Texture2D" uid="uid://3mqkiu262lmu" path="res://graphics/player/player.png" id="3_rdvt3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rdvt3"]
 radius = 34.058773
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a0lpg"]
-radius = 39.0
+radius = 40.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdvt3"]
 size = Vector2(51, 78)
 
-[node name="Zombie" instance=ExtResource("1_3pt6v")]
+[node name="Zombie" unique_id=1992327125 instance=ExtResource("1_3pt6v")]
 slide_on_ceiling = false
 script = ExtResource("2_gl10n")
 default_vision_length = 1000
 patrol_time_min = 7.0
 patrol_time_max = 7.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
-position = Vector2(35, 3)
-rotation = 1.5707964
-texture = ExtResource("3_rdvt3")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=814942990]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
-
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_rdvt3")
 
-[node name="HealthComponent" parent="." index="3"]
+[node name="HealthComponent" parent="." index="2"]
 MAX_HEALTH = 30.0
 
-[node name="HitboxComponent" parent="." index="4"]
+[node name="HitboxComponent" parent="." index="3"]
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0" unique_id=1807252084]
 shape = SubResource("CircleShape2D_a0lpg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent" index="1" unique_id=1616804287]
 position = Vector2(53.5, 0)
 shape = SubResource("RectangleShape2D_rdvt3")
 
-[node name="PathFindTimer" type="Timer" parent="Timers" index="0"]
+[node name="PathFindTimer" type="Timer" parent="Timers" index="0" unique_id=1803485712]
 wait_time = 0.3
 autostart = true
 

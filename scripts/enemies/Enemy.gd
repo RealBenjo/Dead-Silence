@@ -161,11 +161,6 @@ func check_sound() -> bool:
 	return false
 
 
-func die():
-	# TODO: animation or whatever
-	queue_free()
-
-
 # engine signals
 
 # very important so enemies try to avoid each other and not just run into each other

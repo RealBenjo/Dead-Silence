@@ -8,6 +8,7 @@ static var start_stance := ""
 
 var transition_time := 0.25
 
+
 func update(delta: float) -> void:
 	# 1. Start the sequence
 	if Input.is_action_just_pressed("state_toggle"):
@@ -43,11 +44,15 @@ func update(delta: float) -> void:
 		# ONLY stand up on a quick tap if we actually started the whole chain in Crouch.
 		if start_stance == "Crouch":
 			transitioned.emit(self, "Stand")
+	
+	#match shit:
+		#animations.walk:
+			#player_animation.pause()
 
 # AUX #
 func current_state_name() -> String:
 	if not current_state: return "" # Safeguard during transitions
-	var state_name = current_state.get_script().get_global_name()
+	var cur_state_name = current_state.get_script().get_global_name()
 	
 	# 6 removes the "Player" from the name of the script
-	return state_name.substr(6, state_name.length())
+	return cur_state_name.substr(6, cur_state_name.length())

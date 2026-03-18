@@ -1,2 +1,12 @@
 res://scenes/player/player.tscn
+res://scripts/state/player/PlayerStand.gd
+res://scripts/state/player/PlayerStance.gd
 res://scripts/player/Player.gd
+res://scripts/state/player/PlayerCrouch.gd
+res://scripts/state/player/PlayerProne.gd
+res://scripts/state/State.gd
+res://scenes/enemies/zombie.tscn
+res://scripts/helpers/components/HitboxComponent.gd
+res://scripts/enemies/Zombie.gd
+res://scripts/enemies/Enemy.gd
+res://scripts/helpers/components/AttackComponent.gd

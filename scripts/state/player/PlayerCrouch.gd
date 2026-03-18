@@ -6,6 +6,12 @@ class_name PlayerCrouch
 func enter():
 	current_state = self
 	
+	if not player.is_node_ready():
+		await player.ready
+	
+	player.current_stance = current_state
+	
+	player.player_animation.play("c_crouching")
 	player.speed_mult = 0.66
 	player.vision_mult = 0.8
 	player.awareness_mult = 1.5
