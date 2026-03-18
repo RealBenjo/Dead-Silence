@@ -14,31 +14,32 @@ signal state_change_signal(vis_length: int, awareness_mult: float)
 @onready var muzzle_end: Marker2D = $MuzzleEnd
 
 # sound vars
-const BULLET_LOUDNESS: float = 2000.0
-var can_emit_move_sound: bool = true
+const BULLET_LOUDNESS := 2000.0
+var can_emit_move_sound := true
 
 # stance vars
 var current_stance
 var velocity_length: float ##real time speed of the player so the enemy AI can use it
+var rotation_speed := 10.0 ##has no effect on gameplay
 
 #multiplier vars
-var speed_mult: float = 1.0
-var vision_mult: float = 1.0
-var awareness_mult: float = 1.0
+var speed_mult := 1.0
+var vision_mult := 1.0
+var awareness_mult := 1.0
 
 # player attribute vars
 var direction: Vector2
-const SPEED: float = 300
-var speed: float = SPEED
-var weapon_zoom: float = 2.5
-var can_attack: bool = true
+const SPEED := 300
+var speed := SPEED
+var weapon_zoom := 2.5
+var can_attack := true
 var player_direction: Vector2
 
 
 func _ready() -> void:
 	Globals.player_max_speed = SPEED
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	handle_player_input()
 	move_and_slide()
 	handle_move_sound()
@@ -49,7 +50,7 @@ func _process(_delta: float) -> void:
 	# TODO: add controller support for this
 	# rotate player
 	if velocity != Vector2.ZERO:
-		rotation = lerp_angle(rotation, velocity.angle(), 0.1)
+		rotation = lerp_angle(rotation, velocity.angle(), rotation_speed * delta)
 	
 	Globals.player_pos = global_position
 	
