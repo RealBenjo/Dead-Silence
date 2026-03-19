@@ -2,6 +2,936 @@
 
 [ext_resource type="PackedScene" uid="uid://gqvrhjx732xv" path="res://scenes/enemies/enemy.tscn" id="1_3pt6v"]
 [ext_resource type="Script" uid="uid://cbi4cng3khkd" path="res://scripts/enemies/Zombie.gd" id="2_gl10n"]
+[ext_resource type="Texture2D" uid="uid://1n7lyik2n0va" path="res://graphics/zombie/animations/idle/0001.png" id="3_gqi05"]
+[ext_resource type="Texture2D" uid="uid://c3gjbg6kpn6dl" path="res://graphics/zombie/animations/idle/0002.png" id="4_p1orr"]
+[ext_resource type="Texture2D" uid="uid://ct58txvaexxci" path="res://graphics/zombie/animations/idle/0003.png" id="5_ajiaw"]
+[ext_resource type="Texture2D" uid="uid://k0nbaidx1x30" path="res://graphics/zombie/animations/idle/0004.png" id="6_bnjsc"]
+[ext_resource type="Texture2D" uid="uid://bu4dckd3v44xc" path="res://graphics/zombie/animations/idle/0005.png" id="7_i7hc8"]
+[ext_resource type="Texture2D" uid="uid://7jn7j4eo13ki" path="res://graphics/zombie/animations/idle/0006.png" id="8_dbsoc"]
+[ext_resource type="Texture2D" uid="uid://cs2k565c1djlr" path="res://graphics/zombie/animations/idle/0007.png" id="9_fuv4j"]
+[ext_resource type="Texture2D" uid="uid://d3g8h51oahwiw" path="res://graphics/zombie/animations/idle/0008.png" id="10_2avaa"]
+[ext_resource type="Texture2D" uid="uid://1qxl48aoifyo" path="res://graphics/zombie/animations/idle/0009.png" id="11_m3s23"]
+[ext_resource type="Texture2D" uid="uid://c5lg2y84muawx" path="res://graphics/zombie/animations/idle/0010.png" id="12_8n1ry"]
+[ext_resource type="Texture2D" uid="uid://bbnnjxppxyc7u" path="res://graphics/zombie/animations/idle/0011.png" id="13_f4i1s"]
+[ext_resource type="Texture2D" uid="uid://pcsok88aqydc" path="res://graphics/zombie/animations/idle/0012.png" id="14_umy7h"]
+[ext_resource type="Texture2D" uid="uid://xhhgmvwt0to6" path="res://graphics/zombie/animations/idle/0013.png" id="15_sngsr"]
+[ext_resource type="Texture2D" uid="uid://d24a87jhnc871" path="res://graphics/zombie/animations/idle/0014.png" id="16_wbhsa"]
+[ext_resource type="Texture2D" uid="uid://bm40vmd4dsob8" path="res://graphics/zombie/animations/idle/0015.png" id="17_pybmv"]
+[ext_resource type="Texture2D" uid="uid://cub3nkgjcw767" path="res://graphics/zombie/animations/idle/0016.png" id="18_khuhn"]
+[ext_resource type="Texture2D" uid="uid://bxpeob3x7yi0a" path="res://graphics/zombie/animations/idle/0017.png" id="19_n47p1"]
+[ext_resource type="Texture2D" uid="uid://bb8seusnognol" path="res://graphics/zombie/animations/idle/0018.png" id="20_00m5k"]
+[ext_resource type="Texture2D" uid="uid://dvawtphyd2tem" path="res://graphics/zombie/animations/idle/0019.png" id="21_lchbx"]
+[ext_resource type="Texture2D" uid="uid://dx4edk3wa0pap" path="res://graphics/zombie/animations/idle/0020.png" id="22_kvj4a"]
+[ext_resource type="Texture2D" uid="uid://d21fdi3m80x0g" path="res://graphics/zombie/animations/idle/0021.png" id="23_4uwmp"]
+[ext_resource type="Texture2D" uid="uid://dpp1aiivjwn54" path="res://graphics/zombie/animations/idle/0022.png" id="24_h2v3p"]
+[ext_resource type="Texture2D" uid="uid://ccgsynfcwsy2s" path="res://graphics/zombie/animations/idle/0023.png" id="25_ld8rt"]
+[ext_resource type="Texture2D" uid="uid://boxvbjnrabfpr" path="res://graphics/zombie/animations/idle/0024.png" id="26_dfmkr"]
+[ext_resource type="Texture2D" uid="uid://c1jwkgorxdht7" path="res://graphics/zombie/animations/idle/0025.png" id="27_emqpr"]
+[ext_resource type="Texture2D" uid="uid://bc4jj0o8738pn" path="res://graphics/zombie/animations/idle/0026.png" id="28_q4usi"]
+[ext_resource type="Texture2D" uid="uid://ctxuqeo6krpb6" path="res://graphics/zombie/animations/idle/0027.png" id="29_5i1bf"]
+[ext_resource type="Texture2D" uid="uid://18ot6ik8pael" path="res://graphics/zombie/animations/idle/0028.png" id="30_j828m"]
+[ext_resource type="Texture2D" uid="uid://q2n3iydjf7cd" path="res://graphics/zombie/animations/idle/0029.png" id="31_8gabw"]
+[ext_resource type="Texture2D" uid="uid://cn51ord5ywplq" path="res://graphics/zombie/animations/idle/0030.png" id="32_lkjtu"]
+[ext_resource type="Texture2D" uid="uid://dufi7phk10lgk" path="res://graphics/zombie/animations/idle/0031.png" id="33_kweyo"]
+[ext_resource type="Texture2D" uid="uid://dd6uwy5q4mh7b" path="res://graphics/zombie/animations/idle/0032.png" id="34_y0mv1"]
+[ext_resource type="Texture2D" uid="uid://qa6apov6xyo7" path="res://graphics/zombie/animations/idle/0033.png" id="35_875f4"]
+[ext_resource type="Texture2D" uid="uid://hk5lq0b2psbb" path="res://graphics/zombie/animations/idle/0034.png" id="36_qp5ih"]
+[ext_resource type="Texture2D" uid="uid://smy4eosytybp" path="res://graphics/zombie/animations/idle/0035.png" id="37_0044e"]
+[ext_resource type="Texture2D" uid="uid://cwlh58g7bvkry" path="res://graphics/zombie/animations/idle/0036.png" id="38_87ao6"]
+[ext_resource type="Texture2D" uid="uid://c284giln0jip5" path="res://graphics/zombie/animations/idle/0037.png" id="39_j008a"]
+[ext_resource type="Texture2D" uid="uid://dp75dqyscdwy5" path="res://graphics/zombie/animations/idle/0038.png" id="40_wn37o"]
+[ext_resource type="Texture2D" uid="uid://i7kfg1v4hoh5" path="res://graphics/zombie/animations/idle/0039.png" id="41_xaqv6"]
+[ext_resource type="Texture2D" uid="uid://fbyg8bnbh715" path="res://graphics/zombie/animations/idle/0040.png" id="42_588c5"]
+[ext_resource type="Texture2D" uid="uid://c2lniwcj2b2di" path="res://graphics/zombie/animations/idle/0041.png" id="43_o8bks"]
+[ext_resource type="Texture2D" uid="uid://cj3f5tb4id0kn" path="res://graphics/zombie/animations/idle/0042.png" id="44_2sdpr"]
+[ext_resource type="Texture2D" uid="uid://xyxp8m7ux5fc" path="res://graphics/zombie/animations/idle/0043.png" id="45_korbm"]
+[ext_resource type="Texture2D" uid="uid://br7wo31yncjgl" path="res://graphics/zombie/animations/idle/0044.png" id="46_bmwpa"]
+[ext_resource type="Texture2D" uid="uid://crmu3ep3hl3w0" path="res://graphics/zombie/animations/idle/0045.png" id="47_naect"]
+[ext_resource type="Texture2D" uid="uid://b22vqvt3vbtsn" path="res://graphics/zombie/animations/idle/0046.png" id="48_ud7gc"]
+[ext_resource type="Texture2D" uid="uid://b4npdbovby6l0" path="res://graphics/zombie/animations/idle/0047.png" id="49_q4cs8"]
+[ext_resource type="Texture2D" uid="uid://bkc5yo4pwom40" path="res://graphics/zombie/animations/idle/0048.png" id="50_71omp"]
+[ext_resource type="Texture2D" uid="uid://c4wilfrpueqj0" path="res://graphics/zombie/animations/idle/0049.png" id="51_8k3f8"]
+[ext_resource type="Texture2D" uid="uid://b8qapj4jyq6a3" path="res://graphics/zombie/animations/idle/0050.png" id="52_kr225"]
+[ext_resource type="Texture2D" uid="uid://dlvql76md3yeh" path="res://graphics/zombie/animations/idle/0051.png" id="53_asouo"]
+[ext_resource type="Texture2D" uid="uid://djfjqu0jdp1h" path="res://graphics/zombie/animations/idle/0052.png" id="54_r8n82"]
+[ext_resource type="Texture2D" uid="uid://c0lbsts12u5qi" path="res://graphics/zombie/animations/idle/0053.png" id="55_pcuby"]
+[ext_resource type="Texture2D" uid="uid://bj557x3mddxwa" path="res://graphics/zombie/animations/idle/0054.png" id="56_3viwm"]
+[ext_resource type="Texture2D" uid="uid://cg0n31a8p66c8" path="res://graphics/zombie/animations/idle/0055.png" id="57_trbov"]
+[ext_resource type="Texture2D" uid="uid://bd5ax3rn8tjgr" path="res://graphics/zombie/animations/idle/0056.png" id="58_yv1pu"]
+[ext_resource type="Texture2D" uid="uid://c0el8qetlqtew" path="res://graphics/zombie/animations/idle/0057.png" id="59_iwxfs"]
+[ext_resource type="Texture2D" uid="uid://c5e48jvoin4lx" path="res://graphics/zombie/animations/idle/0058.png" id="60_ytoiq"]
+[ext_resource type="Texture2D" uid="uid://dibaf1i5vv170" path="res://graphics/zombie/animations/idle/0059.png" id="61_bdbg4"]
+[ext_resource type="Texture2D" uid="uid://37hs8hovkueg" path="res://graphics/zombie/animations/idle/0060.png" id="62_g5ar1"]
+[ext_resource type="Texture2D" uid="uid://bny2cj4mt25fg" path="res://graphics/zombie/animations/idle/0061.png" id="63_8qobs"]
+[ext_resource type="Texture2D" uid="uid://bldek35qwy4v4" path="res://graphics/zombie/animations/idle/0062.png" id="64_wdo1i"]
+[ext_resource type="Texture2D" uid="uid://bvrcki5c4al2c" path="res://graphics/zombie/animations/idle/0063.png" id="65_5qmmd"]
+[ext_resource type="Texture2D" uid="uid://duevi2pywu1gn" path="res://graphics/zombie/animations/idle/0064.png" id="66_gh3jy"]
+[ext_resource type="Texture2D" uid="uid://cbya3fcppu34" path="res://graphics/zombie/animations/idle/0065.png" id="67_8jhnq"]
+[ext_resource type="Texture2D" uid="uid://d4klw4sog603w" path="res://graphics/zombie/animations/idle/0066.png" id="68_xic8c"]
+[ext_resource type="Texture2D" uid="uid://d0dx4e6dw43tr" path="res://graphics/zombie/animations/idle/0067.png" id="69_pynm6"]
+[ext_resource type="Texture2D" uid="uid://bn1ciyyrusvya" path="res://graphics/zombie/animations/idle/0068.png" id="70_8tsq6"]
+[ext_resource type="Texture2D" uid="uid://epa68xbc3cxm" path="res://graphics/zombie/animations/idle/0069.png" id="71_4br18"]
+[ext_resource type="Texture2D" uid="uid://chddeauvo4jhg" path="res://graphics/zombie/animations/idle/0070.png" id="72_so2wn"]
+[ext_resource type="Texture2D" uid="uid://4k6slbvcvgva" path="res://graphics/zombie/animations/idle/0071.png" id="73_um0ex"]
+[ext_resource type="Texture2D" uid="uid://bbjxbaxdnldwq" path="res://graphics/zombie/animations/idle/0072.png" id="74_fna86"]
+[ext_resource type="Texture2D" uid="uid://ddbmgemwrxryp" path="res://graphics/zombie/animations/idle/0073.png" id="75_eip0u"]
+[ext_resource type="Texture2D" uid="uid://b68obj3flkuwl" path="res://graphics/zombie/animations/idle/0074.png" id="76_elo7l"]
+[ext_resource type="Texture2D" uid="uid://ci7bo5xbxhe22" path="res://graphics/zombie/animations/idle/0075.png" id="77_05r3r"]
+[ext_resource type="Texture2D" uid="uid://bc8r11ml1ey74" path="res://graphics/zombie/animations/idle/0076.png" id="78_nlgfh"]
+[ext_resource type="Texture2D" uid="uid://bvigvdyxaosvt" path="res://graphics/zombie/animations/idle/0077.png" id="79_l87yq"]
+[ext_resource type="Texture2D" uid="uid://brurlfdft2shv" path="res://graphics/zombie/animations/idle/0078.png" id="80_2tc7s"]
+[ext_resource type="Texture2D" uid="uid://jm85aw1ikniq" path="res://graphics/zombie/animations/idle/0079.png" id="81_a2i8f"]
+[ext_resource type="Texture2D" uid="uid://dncfr1w6ci0a8" path="res://graphics/zombie/animations/idle/0080.png" id="82_23nip"]
+[ext_resource type="Texture2D" uid="uid://bs65fgs42u57" path="res://graphics/zombie/animations/idle/0081.png" id="83_l4ogs"]
+[ext_resource type="Texture2D" uid="uid://ciwbj7o2nhovn" path="res://graphics/zombie/animations/idle/0082.png" id="84_3wu20"]
+[ext_resource type="Texture2D" uid="uid://dbogbg2g4s0xs" path="res://graphics/zombie/animations/idle/0083.png" id="85_pa57e"]
+[ext_resource type="Texture2D" uid="uid://btmyyfrtora0a" path="res://graphics/zombie/animations/idle/0084.png" id="86_24hxa"]
+[ext_resource type="Texture2D" uid="uid://2dkuymk2ahpg" path="res://graphics/zombie/animations/idle/0085.png" id="87_cbhu0"]
+[ext_resource type="Texture2D" uid="uid://dd0tyx5p5tx6q" path="res://graphics/zombie/animations/idle/0086.png" id="88_aumcd"]
+[ext_resource type="Texture2D" uid="uid://dlns232h5jfbp" path="res://graphics/zombie/animations/idle/0087.png" id="89_7nu87"]
+[ext_resource type="Texture2D" uid="uid://b1qmk55btygso" path="res://graphics/zombie/animations/idle/0088.png" id="90_vflng"]
+[ext_resource type="Texture2D" uid="uid://0x35bq48bd8o" path="res://graphics/zombie/animations/idle/0089.png" id="91_ncbuk"]
+[ext_resource type="Texture2D" uid="uid://75rn1rrwm54c" path="res://graphics/zombie/animations/idle/0090.png" id="92_5ltv7"]
+[ext_resource type="Texture2D" uid="uid://ya6mmkh6xbpr" path="res://graphics/zombie/animations/idle/0091.png" id="93_y83h4"]
+[ext_resource type="Texture2D" uid="uid://dpf4cwagu3527" path="res://graphics/zombie/animations/idle/0092.png" id="94_1vhxf"]
+[ext_resource type="Texture2D" uid="uid://cou6bbfxb0upk" path="res://graphics/zombie/animations/idle/0093.png" id="95_vagll"]
+[ext_resource type="Texture2D" uid="uid://dv2skh44i5ude" path="res://graphics/zombie/animations/idle/0094.png" id="96_8uwu6"]
+[ext_resource type="Texture2D" uid="uid://drqu72kjqtaqf" path="res://graphics/zombie/animations/idle/0095.png" id="97_k5npw"]
+[ext_resource type="Texture2D" uid="uid://dq8r2jknifduu" path="res://graphics/zombie/animations/idle/0096.png" id="98_wfe08"]
+[ext_resource type="Texture2D" uid="uid://rs7oy4sqk1ma" path="res://graphics/zombie/animations/idle/0097.png" id="99_n33wq"]
+[ext_resource type="Texture2D" uid="uid://bqsstn3dak6ty" path="res://graphics/zombie/animations/idle/0098.png" id="100_ux56m"]
+[ext_resource type="Texture2D" uid="uid://dxf0faccpig35" path="res://graphics/zombie/animations/idle/0099.png" id="101_8s7ww"]
+[ext_resource type="Texture2D" uid="uid://ciq5kxhmrun2" path="res://graphics/zombie/animations/idle/0100.png" id="102_icef4"]
+[ext_resource type="Texture2D" uid="uid://csfnkb7rhedko" path="res://graphics/zombie/animations/idle/0101.png" id="103_4clee"]
+[ext_resource type="Texture2D" uid="uid://dy6fwxhmxhcd6" path="res://graphics/zombie/animations/idle/0102.png" id="104_1vmm0"]
+[ext_resource type="Texture2D" uid="uid://csry16bxigmb4" path="res://graphics/zombie/animations/idle/0103.png" id="105_urpva"]
+[ext_resource type="Texture2D" uid="uid://nj3xfsp4xilh" path="res://graphics/zombie/animations/idle/0104.png" id="106_gqmc1"]
+[ext_resource type="Texture2D" uid="uid://dcki11fq3xy1o" path="res://graphics/zombie/animations/idle/0105.png" id="107_y5oks"]
+[ext_resource type="Texture2D" uid="uid://qdyrfc0m08yv" path="res://graphics/zombie/animations/idle/0106.png" id="108_3uudr"]
+[ext_resource type="Texture2D" uid="uid://d0f4atrondho6" path="res://graphics/zombie/animations/idle/0107.png" id="109_0hrbs"]
+[ext_resource type="Texture2D" uid="uid://d0yg2yr1fpryu" path="res://graphics/zombie/animations/idle/0108.png" id="110_bidi5"]
+[ext_resource type="Texture2D" uid="uid://cc2odwmjuunj0" path="res://graphics/zombie/animations/idle/0109.png" id="111_oe1nu"]
+[ext_resource type="Texture2D" uid="uid://6j4a1dwj37hr" path="res://graphics/zombie/animations/idle/0110.png" id="112_ljxh5"]
+[ext_resource type="Texture2D" uid="uid://b4ccn028ha6ny" path="res://graphics/zombie/animations/idle/0111.png" id="113_dhw2l"]
+[ext_resource type="Texture2D" uid="uid://drnjxqv8teb60" path="res://graphics/zombie/animations/idle/0112.png" id="114_m87n1"]
+[ext_resource type="Texture2D" uid="uid://bt6l1bbmtvksw" path="res://graphics/zombie/animations/idle/0113.png" id="115_nfwwn"]
+[ext_resource type="Texture2D" uid="uid://ci8on5s3fqb4e" path="res://graphics/zombie/animations/idle/0114.png" id="116_qwo7x"]
+[ext_resource type="Texture2D" uid="uid://dv5wg4rjikqjn" path="res://graphics/zombie/animations/idle/0115.png" id="117_u7a0o"]
+[ext_resource type="Texture2D" uid="uid://b4no1vfyd64s5" path="res://graphics/zombie/animations/idle/0116.png" id="118_1sc0l"]
+[ext_resource type="Texture2D" uid="uid://jvaucp11o20e" path="res://graphics/zombie/animations/idle/0117.png" id="119_tcwa0"]
+[ext_resource type="Texture2D" uid="uid://c666jja2jyrgw" path="res://graphics/zombie/animations/idle/0118.png" id="120_kyno1"]
+[ext_resource type="Texture2D" uid="uid://br33v33ljd7pg" path="res://graphics/zombie/animations/idle/0119.png" id="121_7esp6"]
+[ext_resource type="Texture2D" uid="uid://qn847my6ghrp" path="res://graphics/zombie/animations/idle/0120.png" id="122_n6k43"]
+[ext_resource type="Texture2D" uid="uid://cthrv2s27uo5g" path="res://graphics/zombie/animations/scream/0001.png" id="123_oe1nu"]
+[ext_resource type="Texture2D" uid="uid://cynqlq4xkenay" path="res://graphics/zombie/animations/scream/0002.png" id="124_ljxh5"]
+[ext_resource type="Texture2D" uid="uid://c2pd5lavtum67" path="res://graphics/zombie/animations/scream/0003.png" id="125_dhw2l"]
+[ext_resource type="Texture2D" uid="uid://1tejbpkle7h6" path="res://graphics/zombie/animations/scream/0004.png" id="126_m87n1"]
+[ext_resource type="Texture2D" uid="uid://45fhy2fq4xu4" path="res://graphics/zombie/animations/scream/0005.png" id="127_nfwwn"]
+[ext_resource type="Texture2D" uid="uid://va6wfbtfh5j7" path="res://graphics/zombie/animations/scream/0006.png" id="128_qwo7x"]
+[ext_resource type="Texture2D" uid="uid://l5u4tx1c3kjl" path="res://graphics/zombie/animations/scream/0007.png" id="129_u7a0o"]
+[ext_resource type="Texture2D" uid="uid://cpcpgwwbqtrg1" path="res://graphics/zombie/animations/scream/0008.png" id="130_1sc0l"]
+[ext_resource type="Texture2D" uid="uid://ldeymn45xvjp" path="res://graphics/zombie/animations/scream/0009.png" id="131_tcwa0"]
+[ext_resource type="Texture2D" uid="uid://bxl41jiih6kox" path="res://graphics/zombie/animations/scream/0010.png" id="132_kyno1"]
+[ext_resource type="Texture2D" uid="uid://d14ce1kcih7ju" path="res://graphics/zombie/animations/scream/0011.png" id="133_7esp6"]
+[ext_resource type="Texture2D" uid="uid://jdlv0yry1q8o" path="res://graphics/zombie/animations/scream/0012.png" id="134_n6k43"]
+[ext_resource type="Texture2D" uid="uid://udx4c81wdvwi" path="res://graphics/zombie/animations/scream/0013.png" id="135_112jq"]
+[ext_resource type="Texture2D" uid="uid://d0t4h0pdoeroc" path="res://graphics/zombie/animations/scream/0014.png" id="136_l2mqd"]
+[ext_resource type="Texture2D" uid="uid://br0mk5p6csvuj" path="res://graphics/zombie/animations/scream/0015.png" id="137_3hanv"]
+[ext_resource type="Texture2D" uid="uid://cde2oegj0ga3a" path="res://graphics/zombie/animations/scream/0016.png" id="138_lasst"]
+[ext_resource type="Texture2D" uid="uid://0e5duv801crw" path="res://graphics/zombie/animations/scream/0017.png" id="139_g15bw"]
+[ext_resource type="Texture2D" uid="uid://b75cm4j6101f8" path="res://graphics/zombie/animations/scream/0018.png" id="140_db38x"]
+[ext_resource type="Texture2D" uid="uid://bq03wljvwrslc" path="res://graphics/zombie/animations/scream/0019.png" id="141_wjlt6"]
+[ext_resource type="Texture2D" uid="uid://bfpp5dlqlwjeg" path="res://graphics/zombie/animations/scream/0020.png" id="142_ksv7y"]
+[ext_resource type="Texture2D" uid="uid://bl3scg30erv4w" path="res://graphics/zombie/animations/scream/0021.png" id="143_fhqwd"]
+[ext_resource type="Texture2D" uid="uid://ctoaokpbhpd81" path="res://graphics/zombie/animations/scream/0022.png" id="144_3ohxi"]
+[ext_resource type="Texture2D" uid="uid://8ikeu6f04w2t" path="res://graphics/zombie/animations/scream/0023.png" id="145_rxifa"]
+[ext_resource type="Texture2D" uid="uid://4p3kknhm6lpw" path="res://graphics/zombie/animations/scream/0024.png" id="146_kqtwx"]
+[ext_resource type="Texture2D" uid="uid://ctsikg2kv8i1m" path="res://graphics/zombie/animations/scream/0025.png" id="147_g7j1q"]
+[ext_resource type="Texture2D" uid="uid://c4uqmgptotqxr" path="res://graphics/zombie/animations/scream/0026.png" id="148_0d6e6"]
+[ext_resource type="Texture2D" uid="uid://qichhph562g1" path="res://graphics/zombie/animations/scream/0027.png" id="149_lpetu"]
+[ext_resource type="Texture2D" uid="uid://bqw7iyjob1n74" path="res://graphics/zombie/animations/scream/0028.png" id="150_k63yn"]
+[ext_resource type="Texture2D" uid="uid://v8p156igfn7a" path="res://graphics/zombie/animations/scream/0029.png" id="151_gc2su"]
+[ext_resource type="Texture2D" uid="uid://by1yrq5c56psk" path="res://graphics/zombie/animations/scream/0030.png" id="152_a7spx"]
+[ext_resource type="Texture2D" uid="uid://p6e5xvid7dqi" path="res://graphics/zombie/animations/scream/0031.png" id="153_majoc"]
+[ext_resource type="Texture2D" uid="uid://bsruoinevhgf0" path="res://graphics/zombie/animations/scream/0032.png" id="154_nakc3"]
+[ext_resource type="Texture2D" uid="uid://bk43vw18m3n3p" path="res://graphics/zombie/animations/scream/0033.png" id="155_ikknl"]
+[ext_resource type="Texture2D" uid="uid://b0tdt1o3ey5qn" path="res://graphics/zombie/animations/scream/0034.png" id="156_7ph8s"]
+[ext_resource type="Texture2D" uid="uid://dyv8j3kbsn6ip" path="res://graphics/zombie/animations/scream/0035.png" id="157_gw00y"]
+[ext_resource type="Texture2D" uid="uid://brncn0nbuay51" path="res://graphics/zombie/animations/scream/0036.png" id="158_k7hn4"]
+[ext_resource type="Texture2D" uid="uid://3gl2ad6byvte" path="res://graphics/zombie/animations/scream/0037.png" id="159_a2ybj"]
+[ext_resource type="Texture2D" uid="uid://b7piv20febwy2" path="res://graphics/zombie/animations/scream/0038.png" id="160_hk0ev"]
+[ext_resource type="Texture2D" uid="uid://ikpwyuo0350s" path="res://graphics/zombie/animations/scream/0039.png" id="161_suyqt"]
+[ext_resource type="Texture2D" uid="uid://d0ppnvrtlbp3i" path="res://graphics/zombie/animations/scream/0040.png" id="162_s1cen"]
+[ext_resource type="Texture2D" uid="uid://bm1pq3c8ehsq6" path="res://graphics/zombie/animations/scream/0041.png" id="163_5kges"]
+[ext_resource type="Texture2D" uid="uid://fgyqtxolrfno" path="res://graphics/zombie/animations/scream/0042.png" id="164_jybl6"]
+[ext_resource type="Texture2D" uid="uid://cfg1m58lo4gbh" path="res://graphics/zombie/animations/scream/0043.png" id="165_iqidi"]
+[ext_resource type="Texture2D" uid="uid://dafcqkx0xt7rq" path="res://graphics/zombie/animations/scream/0044.png" id="166_kcaoc"]
+[ext_resource type="Texture2D" uid="uid://d1t4acfgvow1g" path="res://graphics/zombie/animations/scream/0045.png" id="167_k2t4q"]
+[ext_resource type="Texture2D" uid="uid://cxp6yqg6jn580" path="res://graphics/zombie/animations/scream/0046.png" id="168_jo3ss"]
+[ext_resource type="Texture2D" uid="uid://duabrkbcdcmpb" path="res://graphics/zombie/animations/scream/0047.png" id="169_76xda"]
+[ext_resource type="Texture2D" uid="uid://b73u73aiahmxb" path="res://graphics/zombie/animations/scream/0048.png" id="170_g0vjw"]
+[ext_resource type="Texture2D" uid="uid://bbajpc7pcdugr" path="res://graphics/zombie/animations/scream/0049.png" id="171_uxh6v"]
+[ext_resource type="Texture2D" uid="uid://kkllgcnuho4b" path="res://graphics/zombie/animations/scream/0050.png" id="172_i7xfa"]
+[ext_resource type="Texture2D" uid="uid://bne6q0d81s5wo" path="res://graphics/zombie/animations/scream/0051.png" id="173_kcic3"]
+[ext_resource type="Texture2D" uid="uid://bre0qymivle4h" path="res://graphics/zombie/animations/scream/0052.png" id="174_2vohg"]
+[ext_resource type="Texture2D" uid="uid://c806l8w8m82ak" path="res://graphics/zombie/animations/scream/0053.png" id="175_aigxc"]
+[ext_resource type="Texture2D" uid="uid://qfgkrpaj7m4c" path="res://graphics/zombie/animations/scream/0054.png" id="176_n8f4x"]
+[ext_resource type="Texture2D" uid="uid://c8s8686x8y618" path="res://graphics/zombie/animations/scream/0055.png" id="177_ilat5"]
+[ext_resource type="Texture2D" uid="uid://bpbj1soxnrosu" path="res://graphics/zombie/animations/scream/0056.png" id="178_rcbck"]
+[ext_resource type="Texture2D" uid="uid://bq3l05agfeumi" path="res://graphics/zombie/animations/scream/0057.png" id="179_fcuq7"]
+[ext_resource type="Texture2D" uid="uid://b0yabn6vf2rnn" path="res://graphics/zombie/animations/scream/0058.png" id="180_5e1yg"]
+[ext_resource type="Texture2D" uid="uid://2gjpscmmjumc" path="res://graphics/zombie/animations/scream/0059.png" id="181_y7nuq"]
+[ext_resource type="Texture2D" uid="uid://qw30ixiphxuk" path="res://graphics/zombie/animations/scream/0060.png" id="182_kfjex"]
+[ext_resource type="Texture2D" uid="uid://dt8l40hn6estg" path="res://graphics/zombie/animations/scream/0061.png" id="183_tjwrx"]
+[ext_resource type="Texture2D" uid="uid://b77j3hrwc6hme" path="res://graphics/zombie/animations/scream/0062.png" id="184_styx0"]
+[ext_resource type="Texture2D" uid="uid://cmnkxk1yy3qgs" path="res://graphics/zombie/animations/scream/0063.png" id="185_635pm"]
+[ext_resource type="Texture2D" uid="uid://b8ltxv0a3ukg3" path="res://graphics/zombie/animations/scream/0064.png" id="186_kfmsm"]
+[ext_resource type="Texture2D" uid="uid://dvx0ib51yak5k" path="res://graphics/zombie/animations/scream/0065.png" id="187_c27h5"]
+[ext_resource type="Texture2D" uid="uid://ws3wf1qxc62i" path="res://graphics/zombie/animations/scream/0066.png" id="188_o468g"]
+[ext_resource type="Texture2D" uid="uid://dopgg1wqhmgav" path="res://graphics/zombie/animations/scream/0067.png" id="189_eo04s"]
+[ext_resource type="Texture2D" uid="uid://cnrds5jvlx8of" path="res://graphics/zombie/animations/scream/0068.png" id="190_bgcgs"]
+[ext_resource type="Texture2D" uid="uid://dgnrtxoobuf3h" path="res://graphics/zombie/animations/scream/0069.png" id="191_cukno"]
+[ext_resource type="Texture2D" uid="uid://c8l0nfbye30p1" path="res://graphics/zombie/animations/scream/0070.png" id="192_dmf16"]
+[ext_resource type="Texture2D" uid="uid://b3ytmmieh4raa" path="res://graphics/zombie/animations/scream/0071.png" id="193_5836u"]
+[ext_resource type="Texture2D" uid="uid://bqcfkv4t4m85t" path="res://graphics/zombie/animations/scream/0072.png" id="194_ehsli"]
+[ext_resource type="Texture2D" uid="uid://dcv8l2ovelinr" path="res://graphics/zombie/animations/scream/0073.png" id="195_d5lyj"]
+[ext_resource type="Texture2D" uid="uid://cketfowh2vi12" path="res://graphics/zombie/animations/scream/0074.png" id="196_si5ff"]
+[ext_resource type="Texture2D" uid="uid://dsxllsl7m0vwi" path="res://graphics/zombie/animations/scream/0075.png" id="197_stwvn"]
+[ext_resource type="Texture2D" uid="uid://dtqiti1iqo8am" path="res://graphics/zombie/animations/scream/0076.png" id="198_dra5l"]
+[ext_resource type="Texture2D" uid="uid://c5birfjt23ntx" path="res://graphics/zombie/animations/scream/0077.png" id="199_yaca7"]
+[ext_resource type="Texture2D" uid="uid://b52cvj7pwygm3" path="res://graphics/zombie/animations/scream/0078.png" id="200_02i4h"]
+[ext_resource type="Texture2D" uid="uid://3x416bsgr887" path="res://graphics/zombie/animations/scream/0079.png" id="201_el1kb"]
+[ext_resource type="Texture2D" uid="uid://cilghcvf8fphh" path="res://graphics/zombie/animations/scream/0080.png" id="202_xui12"]
+[ext_resource type="Texture2D" uid="uid://deyeyhdmlp3nb" path="res://graphics/zombie/animations/scream/0081.png" id="203_32swv"]
+[ext_resource type="Texture2D" uid="uid://dij1td2mjeba3" path="res://graphics/zombie/animations/scream/0082.png" id="204_304wr"]
+[ext_resource type="Texture2D" uid="uid://do0egkj6h57w" path="res://graphics/zombie/animations/scream/0083.png" id="205_su88v"]
+[ext_resource type="Texture2D" uid="uid://b3y6dl7vb8h1p" path="res://graphics/zombie/animations/scream/0084.png" id="206_g7klh"]
+[ext_resource type="Texture2D" uid="uid://786bapst65e" path="res://graphics/zombie/animations/walking/0001.png" id="207_s0von"]
+[ext_resource type="Texture2D" uid="uid://cm5bu0d12hvb3" path="res://graphics/zombie/animations/walking/0002.png" id="208_agmyy"]
+[ext_resource type="Texture2D" uid="uid://dyg65nhl876di" path="res://graphics/zombie/animations/walking/0003.png" id="209_eojdu"]
+[ext_resource type="Texture2D" uid="uid://dskwm6ssodx75" path="res://graphics/zombie/animations/walking/0004.png" id="210_lq8yw"]
+[ext_resource type="Texture2D" uid="uid://dqn2lku52vb4l" path="res://graphics/zombie/animations/walking/0005.png" id="211_nkmmy"]
+[ext_resource type="Texture2D" uid="uid://6dxkq8xne8hw" path="res://graphics/zombie/animations/walking/0006.png" id="212_i7x5w"]
+[ext_resource type="Texture2D" uid="uid://cwnb48tgw84ci" path="res://graphics/zombie/animations/walking/0007.png" id="213_ew2p1"]
+[ext_resource type="Texture2D" uid="uid://bsqawqmxmctv2" path="res://graphics/zombie/animations/walking/0008.png" id="214_4prc0"]
+[ext_resource type="Texture2D" uid="uid://cbedwaidrx62c" path="res://graphics/zombie/animations/walking/0009.png" id="215_i5hn5"]
+[ext_resource type="Texture2D" uid="uid://w7mu04lu7h6g" path="res://graphics/zombie/animations/walking/0010.png" id="216_vdb6o"]
+[ext_resource type="Texture2D" uid="uid://dp3fl0qh8uurp" path="res://graphics/zombie/animations/walking/0011.png" id="217_fl81l"]
+[ext_resource type="Texture2D" uid="uid://dorc7lr2vbm7d" path="res://graphics/zombie/animations/walking/0012.png" id="218_y75xd"]
+[ext_resource type="Texture2D" uid="uid://banl6qt8yi3pl" path="res://graphics/zombie/animations/walking/0013.png" id="219_yhaue"]
+[ext_resource type="Texture2D" uid="uid://brj0aaen73ahm" path="res://graphics/zombie/animations/walking/0014.png" id="220_35xcc"]
+[ext_resource type="Texture2D" uid="uid://bbhvmd2lbcc5w" path="res://graphics/zombie/animations/walking/0015.png" id="221_o2mur"]
+[ext_resource type="Texture2D" uid="uid://cm6gruv8h6m0u" path="res://graphics/zombie/animations/walking/0016.png" id="222_lqt38"]
+[ext_resource type="Texture2D" uid="uid://dmxa453odkdnc" path="res://graphics/zombie/animations/walking/0017.png" id="223_ewxc8"]
+[ext_resource type="Texture2D" uid="uid://di5d2hhc22bli" path="res://graphics/zombie/animations/walking/0018.png" id="224_tauqa"]
+[ext_resource type="Texture2D" uid="uid://bh6c42v1bbcbb" path="res://graphics/zombie/animations/walking/0019.png" id="225_b12i7"]
+[ext_resource type="Texture2D" uid="uid://chqgqnrachl2a" path="res://graphics/zombie/animations/walking/0020.png" id="226_47veo"]
+[ext_resource type="Texture2D" uid="uid://bpsegqqfcijnt" path="res://graphics/zombie/animations/walking/0021.png" id="227_xardg"]
+[ext_resource type="Texture2D" uid="uid://ku37pikbgfvq" path="res://graphics/zombie/animations/walking/0022.png" id="228_8gidk"]
+[ext_resource type="Texture2D" uid="uid://clwbqqkwlevjp" path="res://graphics/zombie/animations/walking/0023.png" id="229_xshws"]
+[ext_resource type="Texture2D" uid="uid://bhfmm8thnx2vm" path="res://graphics/zombie/animations/walking/0024.png" id="230_t7up5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_112jq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gqi05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p1orr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ajiaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bnjsc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i7hc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_dbsoc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fuv4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2avaa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_m3s23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8n1ry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_f4i1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_umy7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_sngsr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_wbhsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_pybmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_khuhn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_n47p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_00m5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_lchbx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_kvj4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_4uwmp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_h2v3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ld8rt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_dfmkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_emqpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_q4usi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_5i1bf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_j828m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_8gabw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_lkjtu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_kweyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_y0mv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_875f4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_qp5ih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_0044e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_87ao6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_j008a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_wn37o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_xaqv6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_588c5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_o8bks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_2sdpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_korbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_bmwpa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_naect")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_ud7gc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_q4cs8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_71omp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_8k3f8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_kr225")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_asouo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_r8n82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_pcuby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_3viwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_trbov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_yv1pu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_iwxfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_ytoiq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_bdbg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_g5ar1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_8qobs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_wdo1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_5qmmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_gh3jy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_8jhnq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_xic8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_pynm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_8tsq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_4br18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_so2wn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_um0ex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_fna86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_eip0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_elo7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_05r3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_nlgfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_l87yq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_2tc7s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_a2i8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_23nip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_l4ogs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_3wu20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_pa57e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_24hxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_cbhu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_aumcd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_7nu87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_vflng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_ncbuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_5ltv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_y83h4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_1vhxf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_vagll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_8uwu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_k5npw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_wfe08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_n33wq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_ux56m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_8s7ww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_icef4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_4clee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_1vmm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_urpva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_gqmc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_y5oks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_3uudr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_0hrbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_bidi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_oe1nu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_ljxh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_dhw2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_m87n1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_nfwwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_qwo7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_u7a0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_1sc0l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_tcwa0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_kyno1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_7esp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_n6k43")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("123_oe1nu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_ljxh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_dhw2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_m87n1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_nfwwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_qwo7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_u7a0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_1sc0l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_tcwa0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_kyno1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_7esp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_n6k43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_112jq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("136_l2mqd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_3hanv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_lasst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("139_g15bw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_db38x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_wjlt6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_ksv7y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_fhqwd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_3ohxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_rxifa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_kqtwx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_g7j1q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("148_0d6e6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_lpetu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_k63yn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("151_gc2su")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_a7spx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_majoc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_nakc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_ikknl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_7ph8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_gw00y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_k7hn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_a2ybj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("160_hk0ev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("161_suyqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("162_s1cen")
+}, {
+"duration": 1.0,
+"texture": ExtResource("163_5kges")
+}, {
+"duration": 1.0,
+"texture": ExtResource("164_jybl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("165_iqidi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("166_kcaoc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("167_k2t4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("168_jo3ss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("169_76xda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("170_g0vjw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("171_uxh6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("172_i7xfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_kcic3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_2vohg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_aigxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_n8f4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_ilat5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_rcbck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("179_fcuq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("180_5e1yg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("181_y7nuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("182_kfjex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("183_tjwrx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("184_styx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("185_635pm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("186_kfmsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("187_c27h5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("188_o468g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("189_eo04s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("190_bgcgs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("191_cukno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("192_dmf16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("193_5836u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("194_ehsli")
+}, {
+"duration": 1.0,
+"texture": ExtResource("195_d5lyj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("196_si5ff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("197_stwvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("198_dra5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("199_yaca7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("200_02i4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("201_el1kb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("202_xui12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("203_32swv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("204_304wr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("205_su88v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("206_g7klh")
+}],
+"loop": true,
+"name": &"scream",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("207_s0von")
+}, {
+"duration": 1.0,
+"texture": ExtResource("208_agmyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("209_eojdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("210_lq8yw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("211_nkmmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("212_i7x5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("213_ew2p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("214_4prc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("215_i5hn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("216_vdb6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("217_fl81l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("218_y75xd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("219_yhaue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("220_35xcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("221_o2mur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("222_lqt38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("223_ewxc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("224_tauqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("225_b12i7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("226_47veo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("227_xardg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("228_8gidk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("229_xshws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("230_t7up5")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 30.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rdvt3"]
 radius = 34.058773
@@ -20,6 +950,10 @@ patrol_time_min = 7.0
 patrol_time_max = 7.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=814942990]
+rotation = 1.5707964
+scale = Vector2(0.3753086, 0.37530866)
+sprite_frames = SubResource("SpriteFrames_112jq")
+animation = &"idle"
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_rdvt3")
