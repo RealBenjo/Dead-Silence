@@ -1,8 +1,9 @@
+Updater
+Node
 AnimatedSprite2D
 AnimationPlayer
 CollisionShape2D
 Timer
-Node
 Area2D
 Node2D
 PlayerProne
@@ -11,4 +12,3 @@ PlayerStand
 State
 EnemyAttacking
 EnemySearching
-EnemyInvestigating

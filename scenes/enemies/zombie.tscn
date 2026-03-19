@@ -230,6 +230,7 @@
 [ext_resource type="Texture2D" uid="uid://ku37pikbgfvq" path="res://graphics/zombie/animations/walking/0022.png" id="228_8gidk"]
 [ext_resource type="Texture2D" uid="uid://clwbqqkwlevjp" path="res://graphics/zombie/animations/walking/0023.png" id="229_xshws"]
 [ext_resource type="Texture2D" uid="uid://bhfmm8thnx2vm" path="res://graphics/zombie/animations/walking/0024.png" id="230_t7up5"]
+[ext_resource type="Script" uid="uid://brkya0n7xefpl" path="res://scripts/helpers/components/Updater.gd" id="231_ljxh5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_112jq"]
 animations = [{
@@ -945,15 +946,18 @@ size = Vector2(51, 78)
 [node name="Zombie" unique_id=1992327125 instance=ExtResource("1_3pt6v")]
 slide_on_ceiling = false
 script = ExtResource("2_gl10n")
+speed = 200.0
 default_vision_length = 1000
 patrol_time_min = 7.0
 patrol_time_max = 7.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=814942990]
 rotation = 1.5707964
-scale = Vector2(0.3753086, 0.37530866)
+scale = Vector2(0.33578634, 0.3357864)
 sprite_frames = SubResource("SpriteFrames_112jq")
-animation = &"idle"
+animation = &"walking"
+frame = 13
+frame_progress = 0.45607916
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_rdvt3")
@@ -976,4 +980,11 @@ shape = SubResource("RectangleShape2D_rdvt3")
 wait_time = 0.3
 autostart = true
 
+[node name="Helpers" type="Node" parent="." index="9" unique_id=1827671117]
+
+[node name="Updater" type="Node" parent="Helpers" index="0" unique_id=956365872]
+script = ExtResource("231_ljxh5")
+metadata/_custom_type_script = "uid://brkya0n7xefpl"
+
 [connection signal="timeout" from="Timers/PathFindTimer" to="." method="_on_path_find_timer_timeout"]
+[connection signal="fixed_update" from="Helpers/Updater" to="." method="_on_updater_fixed_update"]
