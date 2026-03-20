@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ccv8c315d7v1j"]
+
+[ext_resource type="Script" uid="uid://e8xy2r1phnx6" path="res://scripts/ui/selection wheel/SelectionWheel.gd" id="1_35ikc"]
+
+[node name="SelectionWheel" type="Control" unique_id=887151983]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_35ikc")
+bkg_color = Color(0.15127608, 0.15127608, 0.15127608, 1)

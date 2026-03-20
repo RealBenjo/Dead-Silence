@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://gqvrhjx732xv"]
+[gd_scene format=3 uid="uid://gqvrhjx732xv"]
 
 [ext_resource type="Script" uid="uid://dcgd7aixko1d6" path="res://scripts/enemies/Enemy.gd" id="1_6xk8f"]
 [ext_resource type="Script" uid="uid://bn1es8rnf5vtr" path="res://scripts/state/StateMachine.gd" id="2_8e3ao"]
@@ -10,24 +10,24 @@
 [ext_resource type="Script" uid="uid://bd5kgtlulah45" path="res://scripts/state/enemy/EnemySearching.gd" id="5_lu5c6"]
 [ext_resource type="Script" uid="uid://xopl505afwk5" path="res://scripts/state/enemy/EnemyAttacking.gd" id="6_nb6gf"]
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" unique_id=1128209967]
 collision_layer = 2
 collision_mask = 15
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_6xk8f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=225981174]
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_n7575")]
+[node name="HealthComponent" parent="." unique_id=269744889 instance=ExtResource("2_n7575")]
 MAX_HEALTH = 100.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_n7575")]
+[node name="HitboxComponent" parent="." unique_id=718500507 node_paths=PackedStringArray("health_component") instance=ExtResource("3_n7575")]
 health_component = NodePath("../HealthComponent")
 
-[node name="AttackComponent" parent="." instance=ExtResource("4_qch6t")]
+[node name="AttackComponent" parent="." unique_id=439898854 instance=ExtResource("4_qch6t")]
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=612173839]
 path_desired_distance = 4.0
 target_desired_distance = 4.0
 simplify_path = true
@@ -38,51 +38,51 @@ max_neighbors = 3
 time_horizon_agents = 0.8
 time_horizon_obstacles = 0.1
 
-[node name="Timers" type="Node" parent="."]
+[node name="Timers" type="Node" parent="." unique_id=1620055020]
 
-[node name="PatrolTimer" type="Timer" parent="Timers"]
+[node name="PatrolTimer" type="Timer" parent="Timers" unique_id=1941120810]
 one_shot = true
 
-[node name="InvestigationTimer" type="Timer" parent="Timers"]
+[node name="InvestigationTimer" type="Timer" parent="Timers" unique_id=174699750]
 wait_time = 10.0
 one_shot = true
 
-[node name="StopSearchTimer" type="Timer" parent="Timers"]
+[node name="StopSearchTimer" type="Timer" parent="Timers" unique_id=1437540595]
 wait_time = 180.0
 one_shot = true
 
-[node name="SearchTimer" type="Timer" parent="Timers"]
+[node name="SearchTimer" type="Timer" parent="Timers" unique_id=467249478]
 wait_time = 10.0
 one_shot = true
 
-[node name="LosePlayerTimer" type="Timer" parent="Timers"]
+[node name="LosePlayerTimer" type="Timer" parent="Timers" unique_id=1942636145]
 wait_time = 2.0
 one_shot = true
 
-[node name="Vision" type="RayCast2D" parent="."]
+[node name="Vision" type="RayCast2D" parent="." unique_id=1387813749]
 target_position = Vector2(500, 0)
 collision_mask = 5
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=1336569729 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_8e3ao")
 initial_state = NodePath("Patrolling")
 
-[node name="Patrolling" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+[node name="Patrolling" type="Node" parent="StateMachine" unique_id=774659266 node_paths=PackedStringArray("enemy")]
 script = ExtResource("3_38ino")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://bci2nb0pokbkr"
 
-[node name="Investigating" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+[node name="Investigating" type="Node" parent="StateMachine" unique_id=792469360 node_paths=PackedStringArray("enemy")]
 script = ExtResource("4_fcftc")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://f27t0j1fswru"
 
-[node name="Searching" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+[node name="Searching" type="Node" parent="StateMachine" unique_id=1689898823 node_paths=PackedStringArray("enemy")]
 script = ExtResource("5_lu5c6")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://bd5kgtlulah45"
 
-[node name="Attacking" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+[node name="Attacking" type="Node" parent="StateMachine" unique_id=1109162288 node_paths=PackedStringArray("enemy")]
 script = ExtResource("6_nb6gf")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://xopl505afwk5"

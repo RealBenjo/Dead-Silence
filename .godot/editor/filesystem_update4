@@ -1,1 +1,9 @@
 res://scenes/player/player.tscn
+res://scenes/enemies/enemy.tscn
+res://scripts/state/enemy/EnemyAttacking.gd
+res://scripts/player/Player.gd
+res://scripts/state/player/PlayerStand.gd
+res://scripts/state/player/PlayerCrouch.gd
+res://scripts/state/player/PlayerProne.gd
+res://scenes/ui/selection wheel/selection_wheel.tscn
+res://scripts/ui/selection wheel/SelectionWheel.gd

@@ -8,6 +8,7 @@ class_name EnemyAttacking
 
 func enter():
 	print("enemy is attacking")
+	
 	enemy.state_vision_mult = 10.0
 
 func physics_update(_delta: float):

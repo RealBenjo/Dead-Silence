@@ -21,6 +21,7 @@ var can_emit_move_sound := true
 var current_stance
 var velocity_length: float ##real time speed of the player so the enemy AI can use it
 var rotation_speed := 10.0 ##has no effect on gameplay
+var rotation_mult := 1.0
 
 #multiplier vars
 var speed_mult := 1.0
@@ -50,7 +51,7 @@ func _process(delta: float) -> void:
 	# TODO: add controller support for this
 	# rotate player
 	if velocity != Vector2.ZERO:
-		rotation = lerp_angle(rotation, velocity.angle(), rotation_speed * delta)
+		rotation = lerp_angle(rotation, velocity.angle(), rotation_speed * rotation_mult * delta)
 	
 	Globals.player_pos = global_position
 	

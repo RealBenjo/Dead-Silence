@@ -11,6 +11,7 @@ func enter():
 	
 	player.current_stance = current_state
 	
+	player.rotation_mult = 0.6
 	player.player_animation.play("c_crouching")
 	player.speed_mult = 0.66
 	player.vision_mult = 0.8

@@ -11,6 +11,7 @@ func enter():
 	
 	player.current_stance = current_state
 	
+	player.rotation_mult = 1.0
 	player.player_animation.play("s_walking")
 	player.speed_mult = 1.0
 	player.vision_mult = 1.0
