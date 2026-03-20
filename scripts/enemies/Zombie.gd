@@ -14,7 +14,7 @@ func _on_path_find_timer_timeout() -> void:
 # so you can have multiple update functions in one object pretty much
 
 func _on_updater_fixed_update(_delta: float) -> void:
-	var cur_state = state_machine.current_state.get_script().get_global_name()
+	var _cur_state = state_machine.current_state.get_script().get_global_name()
 	
 	if velocity == Vector2.ZERO:
 		animation.play("idle")

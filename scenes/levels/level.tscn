@@ -1,33 +1,75 @@
-[gd_scene load_steps=4 format=3 uid="uid://ba5sduufhjqin"]
+[gd_scene format=3 uid="uid://ba5sduufhjqin"]
 
 [ext_resource type="Script" uid="uid://dminjnr5k540h" path="res://scripts/levels/Level.gd" id="1_377w7"]
 [ext_resource type="PackedScene" uid="uid://ysls7iwu7faj" path="res://scenes/player/player.tscn" id="2_bovvr"]
+[ext_resource type="PackedScene" uid="uid://ccv8c315d7v1j" path="res://scenes/ui/selection wheel/selection_wheel.tscn" id="3_b2cq8"]
+[ext_resource type="Script" uid="uid://c1q3noi0jkfmy" path="res://scripts/ui/ui/UI.gd" id="3_xb4v1"]
+[ext_resource type="Script" uid="uid://kji4xvn8jm0r" path="res://scripts/ui/selection wheel/WheelOption.gd" id="5_d4w6o"]
+[ext_resource type="Texture2D" uid="uid://bark58exn8r5b" path="res://icon.svg" id="6_mbbpy"]
+[ext_resource type="Texture2D" uid="uid://c3gjbg6kpn6dl" path="res://graphics/zombie/animations/idle/0002.png" id="7_ouxo3"]
+[ext_resource type="Texture2D" uid="uid://dx4edk3wa0pap" path="res://graphics/zombie/animations/idle/0020.png" id="8_icy5c"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bovvr"]
 vertices = PackedVector2Array(3093.9922, 150.27344, 937.9297, 617, 945.0703, -367, 3119.8281, -1397.4219, 813.9219, -1495.9922, 760.9922, -367, -1713.9219, -1447.1875, 3200.2734, 1652.2031, -1690.0703, 1749.7891, 762.0078, 617)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5, 6), PackedInt32Array(1, 0, 7, 8), PackedInt32Array(9, 1, 8), PackedInt32Array(9, 8, 6, 5)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(3130, -1407, 814, -1506, 771, -357, 935, -357, 928, 607, 3104, 150), PackedVector2Array(814, -1506, 771, -357, 772, 607, 928, 607, 3104, 150, 3211, 1662, -1700, 1760, -1724, -1457)])
 
-[node name="Level" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lf5d"]
+atlas = ExtResource("6_mbbpy")
+region = Rect2(44.512817, 51.3338, 52.61548, 50.666626)
+script = ExtResource("5_d4w6o")
+name = "None"
+metadata/_custom_type_script = "uid://kji4xvn8jm0r"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouxo3"]
+atlas = ExtResource("7_ouxo3")
+region = Rect2(397.76923, 344.17996, 60.41028, 62.358948)
+script = ExtResource("5_d4w6o")
+name = "1"
+metadata/_custom_type_script = "uid://kji4xvn8jm0r"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icy5c"]
+atlas = ExtResource("8_icy5c")
+region = Rect2(350.99994, 326.6415, 62.35901, 60.410217)
+script = ExtResource("5_d4w6o")
+name = "2"
+metadata/_custom_type_script = "uid://kji4xvn8jm0r"
+
+[node name="Level" type="Node2D" unique_id=1252715679]
 script = ExtResource("1_377w7")
 
-[node name="Ground" type="Node2D" parent="."]
+[node name="Ground" type="Node2D" parent="." unique_id=275989286]
 
-[node name="Items" type="Node2D" parent="."]
+[node name="Items" type="Node2D" parent="." unique_id=308444667]
 
-[node name="Projectiles" type="Node2D" parent="."]
+[node name="Projectiles" type="Node2D" parent="." unique_id=1103636162]
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="Enemies" type="Node2D" parent="." unique_id=1497162964]
 
-[node name="Patrols" type="Node2D" parent="."]
+[node name="Patrols" type="Node2D" parent="." unique_id=1644519217]
 
-[node name="Sounds" type="Node2D" parent="."]
+[node name="Sounds" type="Node2D" parent="." unique_id=345583979]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=763197410]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_bovvr")
 
-[node name="Player" parent="." instance=ExtResource("2_bovvr")]
+[node name="Player" parent="." unique_id=964630265 instance=ExtResource("2_bovvr")]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=181114890]
+script = ExtResource("3_xb4v1")
+
+[node name="Label" type="Label" parent="UI" unique_id=47466609]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Player equipped tool: []"
+metadata/_edit_use_anchors_ = true
+
+[node name="SelectPrimary" parent="UI" unique_id=887151983 instance=ExtResource("3_b2cq8")]
+visible = false
+modulate = Color(1, 1, 1, 0.8627451)
+options = Array[ExtResource("5_d4w6o")]([SubResource("AtlasTexture_0lf5d"), SubResource("AtlasTexture_ouxo3"), SubResource("AtlasTexture_icy5c")])
+metadata/_edit_use_anchors_ = true
 
 [connection signal="bullet_signal" from="Player" to="." method="_on_player_bullet_signal"]
 [connection signal="sound_signal" from="Player" to="." method="_on_player_sound_signal"]
