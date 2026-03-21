@@ -45,23 +45,11 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	handle_move_sound()
 	
-	#if Input.is_action_pressed("secondary_action"):
-		#Engine.time_scale = 2.0
-	
-	# TODO: add controller support for this
 	# rotate player
 	if velocity != Vector2.ZERO:
 		rotation = lerp_angle(rotation, velocity.angle(), rotation_speed * rotation_mult * delta)
 	
-	Globals.player_pos = global_position
-	
-	# ADS zoom type shi (this is probably temporary, DONT try to make it nice just yet)
-	if Input.is_action_pressed("secondary_action"):
-		weapon_zoom = 2.5
-	else:
-		weapon_zoom = 10.0
-	camera.offset = (get_global_mouse_position() - position) / weapon_zoom
-	
+	Globals.player_pos = global_position	
 	
 	# get player direction for bullet placement and rotation
 	player_direction = position.direction_to( get_global_mouse_position() )
@@ -72,6 +60,8 @@ func _process(delta: float) -> void:
 
 func handle_player_input() -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
+	var dir_amount = direction.distance_to(Vector2.ZERO)
+	player_animation.speed_scale = dir_amount
 	velocity = direction * speed # direction is ALWAYS A VECTOR
 	
 	if velocity != Vector2.ZERO:

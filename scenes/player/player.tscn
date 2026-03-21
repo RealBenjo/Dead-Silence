@@ -136,6 +136,7 @@
 [ext_resource type="Texture2D" uid="uid://40nkxuxlu486" path="res://graphics/player/animations/prone/moving/0036.png" id="72_nssm8"]
 [ext_resource type="Texture2D" uid="uid://bavrkx40kryg" path="res://graphics/player/animations/prone/moving/0037.png" id="73_ei0bd"]
 [ext_resource type="Texture2D" uid="uid://bm7og3pv03nnr" path="res://graphics/player/animations/prone/moving/0038.png" id="74_wwa77"]
+[ext_resource type="Script" uid="uid://7ablrcin4syt" path="res://scripts/player/Camera.gd" id="133_teg5g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pwfqx"]
 animations = [{
@@ -577,6 +578,7 @@ position = Vector2(39, 21)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+script = ExtResource("133_teg5g")
 
 [node name="Timers" type="Node" parent="." unique_id=1085566402]
 
