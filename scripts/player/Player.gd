@@ -59,10 +59,15 @@ func _process(delta: float) -> void:
 
 
 func handle_player_input() -> void:
+	if Input.is_action_just_pressed("tool_select"):
+		camera.is_wheel_open = true
+	elif Input.is_action_just_released("tool_select"):
+		camera.is_wheel_open = false
+	
 	direction = Input.get_vector("left", "right", "up", "down")
 	var dir_amount = direction.distance_to(Vector2.ZERO)
 	player_animation.speed_scale = dir_amount
-	velocity = direction * speed # direction is ALWAYS A VECTOR
+	velocity = direction * speed
 	
 	if velocity != Vector2.ZERO:
 		match current_stance.get_script().get_global_name():

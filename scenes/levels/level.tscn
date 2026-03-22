@@ -6,31 +6,29 @@
 [ext_resource type="Script" uid="uid://c1q3noi0jkfmy" path="res://scripts/ui/ui/UI.gd" id="3_xb4v1"]
 [ext_resource type="Script" uid="uid://kji4xvn8jm0r" path="res://scripts/ui/selection wheel/WheelOption.gd" id="5_d4w6o"]
 [ext_resource type="Texture2D" uid="uid://bark58exn8r5b" path="res://icon.svg" id="6_mbbpy"]
-[ext_resource type="Texture2D" uid="uid://c3gjbg6kpn6dl" path="res://graphics/zombie/animations/idle/0002.png" id="7_ouxo3"]
-[ext_resource type="Texture2D" uid="uid://dx4edk3wa0pap" path="res://graphics/zombie/animations/idle/0020.png" id="8_icy5c"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bovvr"]
 vertices = PackedVector2Array(3093.9922, 150.27344, 937.9297, 617, 945.0703, -367, 3119.8281, -1397.4219, 813.9219, -1495.9922, 760.9922, -367, -1713.9219, -1447.1875, 3200.2734, 1652.2031, -1690.0703, 1749.7891, 762.0078, 617)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5, 6), PackedInt32Array(1, 0, 7, 8), PackedInt32Array(9, 1, 8), PackedInt32Array(9, 8, 6, 5)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(3130, -1407, 814, -1506, 771, -357, 935, -357, 928, 607, 3104, 150), PackedVector2Array(814, -1506, 771, -357, 772, 607, 928, 607, 3104, 150, 3211, 1662, -1700, 1760, -1724, -1457)])
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0lf5d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4w6o"]
 atlas = ExtResource("6_mbbpy")
-region = Rect2(44.512817, 51.3338, 52.61548, 50.666626)
+region = Rect2(13, 11.5, 55, 53)
 script = ExtResource("5_d4w6o")
 name = "None"
 metadata/_custom_type_script = "uid://kji4xvn8jm0r"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ouxo3"]
-atlas = ExtResource("7_ouxo3")
-region = Rect2(397.76923, 344.17996, 60.41028, 62.358948)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbbpy"]
+atlas = ExtResource("6_mbbpy")
+region = Rect2(91, 40.5, 22, 24)
 script = ExtResource("5_d4w6o")
 name = "1"
 metadata/_custom_type_script = "uid://kji4xvn8jm0r"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_icy5c"]
-atlas = ExtResource("8_icy5c")
-region = Rect2(350.99994, 326.6415, 62.35901, 60.410217)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouxo3"]
+atlas = ExtResource("6_mbbpy")
+region = Rect2(43, 55.5, 20, 16)
 script = ExtResource("5_d4w6o")
 name = "2"
 metadata/_custom_type_script = "uid://kji4xvn8jm0r"
@@ -68,7 +66,10 @@ metadata/_edit_use_anchors_ = true
 [node name="SelectPrimary" parent="UI" unique_id=887151983 instance=ExtResource("3_b2cq8")]
 visible = false
 modulate = Color(1, 1, 1, 0.8627451)
-options = Array[ExtResource("5_d4w6o")]([SubResource("AtlasTexture_0lf5d"), SubResource("AtlasTexture_ouxo3"), SubResource("AtlasTexture_icy5c")])
+outer_radius = 256
+inner_radius = 64
+line_width = 4
+options = Array[ExtResource("5_d4w6o")]([SubResource("AtlasTexture_d4w6o"), SubResource("AtlasTexture_mbbpy"), SubResource("AtlasTexture_ouxo3")])
 metadata/_edit_use_anchors_ = true
 
 [connection signal="bullet_signal" from="Player" to="." method="_on_player_bullet_signal"]

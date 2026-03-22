@@ -2,3 +2,10 @@ res://scenes/levels/outside.tscn
 res://scenes/player/player.tscn
 res://scripts/player/Camera.gd
 res://scripts/player/Player.gd
+res://scripts/ui/selection wheel/SelectionWheel.gd
+res://scenes/ui/selection wheel/selection_wheel.tscn
+res://scenes/levels/level.tscn
+res://scripts/ui/ui/UI.gd
+res://globals/Globals.gd
+res://scripts/util/items/item.gd
+res://scripts/util/items/Items.gd

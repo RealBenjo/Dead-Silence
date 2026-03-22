@@ -1,41 +1,45 @@
 extends Camera2D
 
 @export var max_distance := 200.0
-@export var controller_speed := 1000.0 # How fast the stick moves the camera
+@export var controller_speed := 1000.0
 @export var mouse_sensitivity := 0.3
 
-var is_using_mouse := true
+# We add a hidden counter to track skipped frames
+var _frames_to_skip := 0
+
+# Turn this into a setter so it reacts the exact moment it changes
+var is_wheel_open := false:
+	set(val):
+		# If it WAS open, and is NOW closing...
+		if is_wheel_open == true and val == false:
+			_frames_to_skip = 2 # Give the OS 2 frames to update the mouse warp
+		is_wheel_open = val
 
 func _input(event: InputEvent) -> void:
-	# 1. Detect device swap seamlessly
 	if event is InputEventMouseMotion or event is InputEventMouseButton:
-		is_using_mouse = true
+		Globals.is_using_mouse = true
 	elif event is InputEventJoypadMotion or event is InputEventJoypadButton:
-		# Ignore tiny stick drifts so it doesn't accidentally steal control from the mouse
 		if event is InputEventJoypadMotion and abs(event.axis_value) < 0.2:
 			return
-		is_using_mouse = false
+		Globals.is_using_mouse = false
 
 func _process(delta: float) -> void:
-	if is_using_mouse:
-		# --- MOUSE LOGIC ---
-		# Get parent's global_position (the exact center of the player)
+	# 1. Freeze if the wheel is open
+	if is_wheel_open:
+		return
+		
+	# 2. Freeze for an extra 2 frames immediately after closing to hide the mouse warp lag
+	if _frames_to_skip > 0:
+		_frames_to_skip -= 1
+		return
+	
+	if Globals.is_using_mouse:
 		var parent_pos = get_parent().global_position
 		var mouse_pos = get_global_mouse_position()
-		
-		# Calculate offset and scale it down
-		var target_offset = (mouse_pos - parent_pos) * mouse_sensitivity
-		
-		# limit_length() automatically clamps the vector without needing distance checks!
-		offset = target_offset.limit_length(max_distance)
-		
+		var target = (mouse_pos - parent_pos) * mouse_sensitivity
+		offset = target.limit_length(max_distance)
 	else:
-		# --- CONTROLLER LOGIC ---
 		var joy_dir = Input.get_vector("look_left", "look_right", "look_up", "look_down")
-		
-		# Only move if the stick is actually being pushed
 		if joy_dir != Vector2.ZERO:
 			offset += joy_dir * controller_speed * delta
-			
-			# Clamp it so the controller can't push it past the max distance
 			offset = offset.limit_length(max_distance)

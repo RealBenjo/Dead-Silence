@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://globals/Globals.gd"
+Items="*uid://d0mw8p2wpepb6"
 
 [input]
 
