@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c48nw5orhwp2o"]
+
+[ext_resource type="Script" uid="uid://d21r4cpqvfrvd" path="res://scripts/helpers/components/AttackComponent.gd" id="1_e4lpr"]
+
+[node name="AttackComponent" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_e4lpr")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

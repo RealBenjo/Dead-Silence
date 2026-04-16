@@ -1,4 +1,14 @@
-Timer
-Node
+SoundEmitter
+AudioStreamPlayer2D
+Sprite2D
+CanvasLayer
+Label
 Node2D
-Marker2D
+Node
+Control
+Updater
+AnimatedSprite2D
+AnimationPlayer
+CollisionShape2D
+Timer
+Area2D
