@@ -137,6 +137,9 @@
 [ext_resource type="Texture2D" uid="uid://bavrkx40kryg" path="res://graphics/player/animations/prone/moving/0037.png" id="73_ei0bd"]
 [ext_resource type="Texture2D" uid="uid://bm7og3pv03nnr" path="res://graphics/player/animations/prone/moving/0038.png" id="74_wwa77"]
 [ext_resource type="Script" uid="uid://7ablrcin4syt" path="res://scripts/player/Camera.gd" id="133_teg5g"]
+[ext_resource type="PackedScene" uid="uid://tatnt2qw2vbr" path="res://scenes/weapon/weapon.tscn" id="133_vcxk4"]
+[ext_resource type="Resource" uid="uid://c5unp3tfpp1nw" path="res://resources/items/weapons/rifles/samuel_26.tres" id="134_x6bw1"]
+[ext_resource type="Script" uid="uid://btss1wgo5kjyu" path="res://scripts/helpers/helpers/SoundEmitter.gd" id="136_e1bru"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pwfqx"]
 animations = [{
@@ -571,6 +574,9 @@ autoplay = "s_idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=459724363]
 shape = SubResource("CircleShape2D_gqjuk")
 
+[node name="Weapon" parent="." unique_id=605882360 instance=ExtResource("133_vcxk4")]
+stats = ExtResource("134_x6bw1")
+
 [node name="MuzzleEnd" type="Marker2D" parent="." unique_id=1119670339]
 position = Vector2(39, 21)
 
@@ -580,11 +586,11 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("133_teg5g")
 
-[node name="Timers" type="Node" parent="." unique_id=1085566402]
+[node name="SoundEmitter" type="Node" parent="." unique_id=1359315254]
+script = ExtResource("136_e1bru")
+metadata/_custom_type_script = "uid://btss1wgo5kjyu"
 
-[node name="ShootTimer" type="Timer" parent="Timers" unique_id=479848016]
-wait_time = 0.1
-one_shot = true
+[node name="Timers" type="Node" parent="." unique_id=1085566402]
 
 [node name="MoveSoundTimer" type="Timer" parent="Timers" unique_id=1912082245]
 wait_time = 0.5
@@ -609,5 +615,4 @@ script = ExtResource("6_0owmy")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://dg4qljreiu7ax"
 
-[connection signal="timeout" from="Timers/ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="Timers/MoveSoundTimer" to="." method="_on_move_sound_timer_timeout"]

@@ -1,7 +1,7 @@
 extends PlayerStance
 class_name PlayerStand
 
-@export var player: CharacterBody2D
+@export var player: Player
 
 func enter():
 	current_state = self

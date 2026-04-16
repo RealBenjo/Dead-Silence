@@ -63,36 +63,3 @@ func get_patrol(index: int) -> Array:
 		patrol_positions.append(patrol.get_child(j).position)
 	
 	return patrol_positions
-
-
-
-##this is activated from the player via signal
-##spawns a bullet at the player's gun position, which then travels away from the gun barrel
-func create_bullet(pos: Vector2, direction: Vector2) -> void:
-	bullet = bullet_scene.instantiate() as Node2D
-	
-	bullet.position = pos
-	bullet.rotation = direction.angle()
-	bullet.direction = direction
-	
-	$Projectiles.add_child(bullet)
-
-
-
-##this is activated from the player via signal
-func create_sound(pos: Vector2, loudness: float) -> void:
-	sound = sound_scene.instantiate() as Area2D
-	
-	sound.position = pos
-	sound.loudness = loudness
-	
-	$Sounds.add_child(sound)
-
-
-
-# custom signals
-func _on_player_bullet_signal(pos: Vector2, direction: Vector2) -> void:
-	create_bullet(pos, direction)
-
-func _on_player_sound_signal(pos: Vector2, loudness: float) -> void:
-	create_sound(pos, loudness)

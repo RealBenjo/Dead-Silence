@@ -24,6 +24,15 @@ config/icon="res://icon.svg"
 Globals="*res://globals/Globals.gd"
 Items="*uid://d0mw8p2wpepb6"
 
+[file_customization]
+
+folder_colors={
+"res://graphics/": "purple",
+"res://resources/": "teal",
+"res://scenes/": "green",
+"res://scripts/": "gray"
+}
+
 [input]
 
 up={

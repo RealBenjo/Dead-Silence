@@ -66,11 +66,5 @@ metadata/_edit_use_anchors_ = true
 [node name="SelectPrimary" parent="UI" unique_id=887151983 instance=ExtResource("3_b2cq8")]
 visible = false
 modulate = Color(1, 1, 1, 0.8627451)
-outer_radius = 256
-inner_radius = 64
-line_width = 4
 options = Array[ExtResource("5_d4w6o")]([SubResource("AtlasTexture_d4w6o"), SubResource("AtlasTexture_mbbpy"), SubResource("AtlasTexture_ouxo3")])
 metadata/_edit_use_anchors_ = true
-
-[connection signal="bullet_signal" from="Player" to="." method="_on_player_bullet_signal"]
-[connection signal="sound_signal" from="Player" to="." method="_on_player_sound_signal"]

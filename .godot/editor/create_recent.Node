@@ -1,3 +1,6 @@
+SoundEmitter
+AudioStreamPlayer2D
+Sprite2D
 CanvasLayer
 Label
 Node2D
@@ -9,6 +12,3 @@ AnimationPlayer
 CollisionShape2D
 Timer
 Area2D
-PlayerProne
-PlayerCrouch
-PlayerStand
