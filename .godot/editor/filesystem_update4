@@ -1,1 +1,46 @@
+<<<<<<< HEAD
 res://scenes/player/player.tscn
+=======
+res://globals/Globals.gd
+res://scenes/enemies/enemy.tscn
+res://scenes/enemies/zombie.tscn
+res://scenes/helpers/components/attack_component.tscn
+res://scenes/helpers/components/health_component.tscn
+res://scenes/helpers/components/hitbox_component.tscn
+res://scenes/player/bullet.tscn
+res://scenes/player/player.tscn
+res://scenes/sound/sound.tscn
+res://scenes/ui/selection wheel/selection_wheel.tscn
+res://scripts/enemies/Enemy.gd
+res://scripts/enemies/Zombie.gd
+res://scripts/helpers/components/AttackComponent.gd
+res://scripts/helpers/components/HealthComponent.gd
+res://scripts/helpers/components/HitboxComponent.gd
+res://scripts/helpers/components/Updater.gd
+res://scripts/helpers/helpers/Attack.gd
+res://scripts/levels/Level.gd
+res://scripts/levels/Outside.gd
+res://scripts/player/Bullet.gd
+res://scripts/player/Camera.gd
+res://scripts/player/Player.gd
+res://scripts/sound/Sound.gd
+res://scripts/state/State.gd
+res://scripts/state/StateMachine.gd
+res://scripts/state/enemy/EnemyAttacking.gd
+res://scripts/state/enemy/EnemyInvestigating.gd
+res://scripts/state/enemy/EnemyPatrolling.gd
+res://scripts/state/enemy/EnemySearching.gd
+res://scripts/state/enemy/EnemyWalker.gd
+res://scripts/state/player/PlayerCrouch.gd
+res://scripts/state/player/PlayerProne.gd
+res://scripts/state/player/PlayerStance.gd
+res://scripts/state/player/PlayerStand.gd
+res://scripts/ui/selection wheel/SelectionWheel.gd
+res://scripts/ui/selection wheel/WheelOption.gd
+res://scripts/ui/ui/UI.gd
+res://scripts/util/items/Item.gd
+res://scripts/util/items/Items.gd
+res://resources/items/weapons/pistols/oTon.tres
+res://scripts/helpers/helpers/WeaponStats.gd
+res://scenes/levels/outside.tscn
+>>>>>>> 86504cecd4a936eca8d460540e97edb249aa1d85

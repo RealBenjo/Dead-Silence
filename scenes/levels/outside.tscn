@@ -1,111 +1,68 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqul7nmmem476"]
+[gd_scene format=3 uid="uid://bqul7nmmem476"]
 
 [ext_resource type="PackedScene" uid="uid://ba5sduufhjqin" path="res://scenes/levels/level.tscn" id="1_2s4ok"]
-[ext_resource type="Script" uid="uid://ddkugsqjkium3" path="res://scenes/levels/outside.gd" id="2_qwwmc"]
-[ext_resource type="Texture2D" uid="uid://3mqkiu262lmu" path="res://graphics/player/player.png" id="3_qwwmc"]
+[ext_resource type="Script" uid="uid://ddkugsqjkium3" path="res://scripts/levels/Outside.gd" id="2_qwwmc"]
+[ext_resource type="Texture2D" uid="uid://c5qha4o56yvha" path="res://graphics/player/bullet.png" id="3_qwwmc"]
+[ext_resource type="Script" uid="uid://kji4xvn8jm0r" path="res://scripts/ui/selection wheel/WheelOption.gd" id="4_016hp"]
+[ext_resource type="Resource" uid="uid://b8jlwr5hqphr6" path="res://resources/items/weapons/pistols/oTon.tres" id="5_h8yfm"]
+[ext_resource type="Resource" uid="uid://c5unp3tfpp1nw" path="res://resources/items/weapons/rifles/samuel_26.tres" id="6_vo2ov"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0o3i"]
 size = Vector2(66, 846)
 
-[node name="Level" instance=ExtResource("1_2s4ok")]
+[sub_resource type="Resource" id="Resource_ti38e"]
+script = ExtResource("4_016hp")
+option_name = "none"
+metadata/_custom_type_script = "uid://kji4xvn8jm0r"
+
+[sub_resource type="Resource" id="Resource_tn0yi"]
+script = ExtResource("4_016hp")
+option_name = "oTon"
+resource = ExtResource("5_h8yfm")
+metadata/_custom_type_script = "uid://kji4xvn8jm0r"
+
+[sub_resource type="Resource" id="Resource_xorrk"]
+script = ExtResource("4_016hp")
+option_name = "samuel 26"
+resource = ExtResource("6_vo2ov")
+metadata/_custom_type_script = "uid://kji4xvn8jm0r"
+
+[node name="Level" unique_id=1004224708 instance=ExtResource("1_2s4ok")]
 script = ExtResource("2_qwwmc")
 
-[node name="BrickWallTEST" type="StaticBody2D" parent="." index="3"]
+[node name="BrickWallTEST" type="StaticBody2D" parent="." index="3" unique_id=318884003]
 position = Vector2(848, 96)
 collision_layer = 4
 collision_mask = 11
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BrickWallTEST" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BrickWallTEST" index="0" unique_id=889049888]
 position = Vector2(-2, 35)
 shape = SubResource("RectangleShape2D_f0o3i")
 
-[node name="Player2" type="Sprite2D" parent="BrickWallTEST" index="1"]
-position = Vector2(0, 30)
-scale = Vector2(1, 6.0666666)
+[node name="Player2" type="Sprite2D" parent="BrickWallTEST" index="1" unique_id=1014520504]
+position = Vector2(-0.5000117, 30)
+scale = Vector2(6.899997, 42.699997)
 texture = ExtResource("3_qwwmc")
 
-[node name="Patrol1" type="Node2D" parent="Enemies" index="0"]
+[node name="Patrol1" type="Node2D" parent="Enemies" parent_id_path=PackedInt32Array(1497162964) index="0" unique_id=2023755802]
 
-[node name="Patrol2" type="Node2D" parent="Enemies" index="1"]
+[node name="Patrol2" type="Node2D" parent="Enemies" parent_id_path=PackedInt32Array(1497162964) index="1" unique_id=1319013720]
 
-[node name="Patrol1" type="Node2D" parent="Patrols" index="0"]
+[node name="Patrol1" type="Node2D" parent="Patrols" parent_id_path=PackedInt32Array(1644519217) index="0" unique_id=398182526]
 
-[node name="Marker2D" type="Marker2D" parent="Patrols/Patrol1" index="0"]
-position = Vector2(-1005, 1200)
+[node name="Marker2D32" type="Marker2D" parent="Patrols/Patrol1" index="0" unique_id=2032846559]
+position = Vector2(-799, -170)
 
-[node name="Marker2D2" type="Marker2D" parent="Patrols/Patrol1" index="1"]
-position = Vector2(-662, 106)
+[node name="Marker2D33" type="Marker2D" parent="Patrols/Patrol1" index="1" unique_id=1373793341]
+position = Vector2(204, -197)
 
-[node name="Marker2D3" type="Marker2D" parent="Patrols/Patrol1" index="2"]
-position = Vector2(-1122, -918)
+[node name="Patrol2" type="Node2D" parent="Patrols" parent_id_path=PackedInt32Array(1644519217) index="1" unique_id=252717684]
 
-[node name="Marker2D4" type="Marker2D" parent="Patrols/Patrol1" index="3"]
-position = Vector2(253, -918)
+[node name="NavigationRegion2D" parent="." index="7" unique_id=763197410]
+visible = true
 
-[node name="Marker2D5" type="Marker2D" parent="Patrols/Patrol1" index="4"]
-position = Vector2(261, 289)
-
-[node name="Marker2D6" type="Marker2D" parent="Patrols/Patrol1" index="5"]
-position = Vector2(406, 1058)
-
-[node name="Marker2D7" type="Marker2D" parent="Patrols/Patrol1" index="6"]
-position = Vector2(91, 1077)
-
-[node name="Marker2D8" type="Marker2D" parent="Patrols/Patrol1" index="7"]
-position = Vector2(-547, 147)
-
-[node name="Marker2D9" type="Marker2D" parent="Patrols/Patrol1" index="8"]
-position = Vector2(-1029, -985)
-
-[node name="Marker2D10" type="Marker2D" parent="Patrols/Patrol1" index="9"]
-position = Vector2(-1071, 1104)
-
-[node name="Marker2D11" type="Marker2D" parent="Patrols/Patrol1" index="10"]
-position = Vector2(-1124, -164)
-
-[node name="Marker2D12" type="Marker2D" parent="Patrols/Patrol1" index="11"]
-position = Vector2(-1151, 18)
-
-[node name="Marker2D13" type="Marker2D" parent="Patrols/Patrol1" index="12"]
-position = Vector2(-938, -54)
-
-[node name="Marker2D14" type="Marker2D" parent="Patrols/Patrol1" index="13"]
-position = Vector2(-957, -278)
-
-[node name="Marker2D15" type="Marker2D" parent="Patrols/Patrol1" index="14"]
-position = Vector2(114, -962)
-
-[node name="Marker2D16" type="Marker2D" parent="Patrols/Patrol1" index="15"]
-position = Vector2(182, -730)
-
-[node name="Marker2D17" type="Marker2D" parent="Patrols/Patrol1" index="16"]
-position = Vector2(243, 451)
-
-[node name="Marker2D18" type="Marker2D" parent="Patrols/Patrol1" index="17"]
-position = Vector2(65, 284)
-
-[node name="Marker2D19" type="Marker2D" parent="Patrols/Patrol1" index="18"]
-position = Vector2(42, 462)
-
-[node name="Patrol2" type="Node2D" parent="Patrols" index="1"]
-
-[node name="Marker2D" type="Marker2D" parent="Patrols/Patrol2" index="0"]
-position = Vector2(1061, 1236)
-
-[node name="Marker2D2" type="Marker2D" parent="Patrols/Patrol2" index="1"]
-position = Vector2(1165, -126)
-
-[node name="Marker2D3" type="Marker2D" parent="Patrols/Patrol2" index="2"]
-position = Vector2(588, -581)
-
-[node name="Marker2D4" type="Marker2D" parent="Patrols/Patrol2" index="3"]
-position = Vector2(2218, -799)
-
-[node name="Marker2D5" type="Marker2D" parent="Patrols/Patrol2" index="4"]
-position = Vector2(2009, 191)
-
-[node name="Marker2D6" type="Marker2D" parent="Patrols/Patrol2" index="5"]
-position = Vector2(2272, 1030)
-
-[node name="Player" parent="." index="8"]
+[node name="Player" parent="." index="8" unique_id=964630265]
 position = Vector2(622, 372)
+
+[node name="SelectPrimary" parent="UI" parent_id_path=PackedInt32Array(181114890) index="1" unique_id=887151983]
+options = Array[ExtResource("4_016hp")]([SubResource("Resource_ti38e"), SubResource("Resource_tn0yi"), SubResource("Resource_xorrk")])

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://c5unp3tfpp1nw"]
+
+[ext_resource type="Script" uid="uid://cjiib1whmabrt" path="res://scripts/helpers/helpers/WeaponStats.gd" id="1_hjrom"]
+
+[resource]
+script = ExtResource("1_hjrom")
+inaccuracy = 3.0
+firing_cooldown = 0.1
+speed = 5000.0
+damage = 10.0
+metadata/_custom_type_script = "uid://cjiib1whmabrt"
