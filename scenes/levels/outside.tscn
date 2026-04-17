@@ -3,9 +3,29 @@
 [ext_resource type="PackedScene" uid="uid://ba5sduufhjqin" path="res://scenes/levels/level.tscn" id="1_2s4ok"]
 [ext_resource type="Script" uid="uid://ddkugsqjkium3" path="res://scripts/levels/Outside.gd" id="2_qwwmc"]
 [ext_resource type="Texture2D" uid="uid://c5qha4o56yvha" path="res://graphics/player/bullet.png" id="3_qwwmc"]
+[ext_resource type="Script" uid="uid://kji4xvn8jm0r" path="res://scripts/ui/selection wheel/WheelOption.gd" id="4_016hp"]
+[ext_resource type="Resource" uid="uid://b8jlwr5hqphr6" path="res://resources/items/weapons/pistols/oTon.tres" id="5_h8yfm"]
+[ext_resource type="Resource" uid="uid://c5unp3tfpp1nw" path="res://resources/items/weapons/rifles/samuel_26.tres" id="6_vo2ov"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0o3i"]
 size = Vector2(66, 846)
+
+[sub_resource type="Resource" id="Resource_ti38e"]
+script = ExtResource("4_016hp")
+option_name = "none"
+metadata/_custom_type_script = "uid://kji4xvn8jm0r"
+
+[sub_resource type="Resource" id="Resource_tn0yi"]
+script = ExtResource("4_016hp")
+option_name = "oTon"
+resource = ExtResource("5_h8yfm")
+metadata/_custom_type_script = "uid://kji4xvn8jm0r"
+
+[sub_resource type="Resource" id="Resource_xorrk"]
+script = ExtResource("4_016hp")
+option_name = "samuel 26"
+resource = ExtResource("6_vo2ov")
+metadata/_custom_type_script = "uid://kji4xvn8jm0r"
 
 [node name="Level" unique_id=1004224708 instance=ExtResource("1_2s4ok")]
 script = ExtResource("2_qwwmc")
@@ -43,3 +63,6 @@ visible = true
 
 [node name="Player" parent="." index="8" unique_id=964630265]
 position = Vector2(622, 372)
+
+[node name="SelectPrimary" parent="UI" parent_id_path=PackedInt32Array(181114890) index="1" unique_id=887151983]
+options = Array[ExtResource("4_016hp")]([SubResource("Resource_ti38e"), SubResource("Resource_tn0yi"), SubResource("Resource_xorrk")])

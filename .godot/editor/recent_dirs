@@ -1,7 +1,5 @@
-res://resources/items/weapons/rifles/
-res://scenes/weapon/
-res://graphics/tools/ammo/
-res://resources/items/ammunition/
+res://graphics/zombie/animations/idle/
+res://resources/items/weapons/pistols/
 res://scripts/util/items/
 res://
 res://scripts/player/

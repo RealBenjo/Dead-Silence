@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://b8jlwr5hqphr6"]
+
+[ext_resource type="Script" uid="uid://cjiib1whmabrt" path="res://scripts/helpers/helpers/WeaponStats.gd" id="1_y5138"]
+
+[resource]
+script = ExtResource("1_y5138")
+inaccuracy = 15.0
+knockback_force = 0.5

@@ -37,7 +37,15 @@ func close() -> String:
 	if not Engine.is_editor_hint() and used_mouse_to_open:
 		get_viewport().warp_mouse(stored_mouse_pos)
 	hide()
-	return options[selection].name if selection < options.size() else ""
+	
+	# Updated to print option_name
+	if options.size() > 0 and selection < options.size():
+		print(options[selection].resource)
+		if options[selection].resource is WeaponStats:
+			Globals.player_weapon = options[selection].resource
+		return options[selection].option_name 
+	
+	return ""
 
 func _process(_delta: float) -> void:
 	# Brute-force redraw every frame. 
@@ -87,11 +95,11 @@ func _draw() -> void:
 	else:
 		_draw_sector_highlight()
 	
-	# 3. Center Icon
-	if options[0].atlas:
-		draw_texture_rect_region(options[0].atlas, Rect2(OFFSET, SPRITE_SIZE), options[0].region)
+	# 3. Center Icon (UPDATED)
+	if options[0] and options[0].icon and options[0].icon.atlas:
+		draw_texture_rect_region(options[0].icon.atlas, Rect2(OFFSET, SPRITE_SIZE), options[0].icon.region)
 	
-	# 4. Slices & Icons
+	# 4. Slices & Icons (UPDATED)
 	var sector_count = options.size() - 1
 	if sector_count > 0:
 		var angle_step = TAU / sector_count
@@ -105,8 +113,10 @@ func _draw() -> void:
 			var mid_rads = rads + (angle_step / 2.0)
 			var mid_r = (_get_poly_radius(mid_rads, inner_radius) + _get_poly_radius(mid_rads, outer_radius)) / 2.0
 			var draw_pos = (mid_r * Vector2.from_angle(mid_rads)) + OFFSET
-			if options[i+1].atlas:
-				draw_texture_rect_region(options[i+1].atlas, Rect2(draw_pos, SPRITE_SIZE), options[i+1].region)
+			
+			# Use icon.atlas and icon.region
+			if options[i+1] and options[i+1].icon and options[i+1].icon.atlas:
+				draw_texture_rect_region(options[i+1].icon.atlas, Rect2(draw_pos, SPRITE_SIZE), options[i+1].icon.region)
 
 	# 5. Inner Ring 
 	var inner_pts = PackedVector2Array()

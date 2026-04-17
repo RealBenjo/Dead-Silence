@@ -1,30 +1,6 @@
 [gd_scene format=3 uid="uid://ccv8c315d7v1j"]
 
 [ext_resource type="Script" uid="uid://e8xy2r1phnx6" path="res://scripts/ui/selection wheel/SelectionWheel.gd" id="1_35ikc"]
-[ext_resource type="Script" uid="uid://kji4xvn8jm0r" path="res://scripts/ui/selection wheel/WheelOption.gd" id="2_0lf5d"]
-[ext_resource type="Texture2D" uid="uid://c5qha4o56yvha" path="res://graphics/player/bullet.png" id="3_bvisk"]
-[ext_resource type="Texture2D" uid="uid://1n7lyik2n0va" path="res://graphics/zombie/animations/idle/0001.png" id="4_1umxb"]
-[ext_resource type="Texture2D" uid="uid://b68obj3flkuwl" path="res://graphics/zombie/animations/idle/0074.png" id="5_dqyw6"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b7yx1"]
-atlas = ExtResource("3_bvisk")
-script = ExtResource("2_0lf5d")
-name = "None"
-metadata/_custom_type_script = "uid://kji4xvn8jm0r"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fp56p"]
-atlas = ExtResource("4_1umxb")
-region = Rect2(322.74335, 344.5127, 58.461426, 58.461548)
-script = ExtResource("2_0lf5d")
-name = "1"
-metadata/_custom_type_script = "uid://kji4xvn8jm0r"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bqknl"]
-atlas = ExtResource("5_dqyw6")
-region = Rect2(236.0257, 250.64151, 50.666626, 48.717957)
-script = ExtResource("2_0lf5d")
-name = "2"
-metadata/_custom_type_script = "uid://kji4xvn8jm0r"
 
 [node name="SelectionWheel" type="Control" unique_id=887151983]
 layout_mode = 3
@@ -41,4 +17,3 @@ script = ExtResource("1_35ikc")
 bkg_color = Color(0.26293245, 0.26293245, 0.26293245, 1)
 line_color = Color(0, 0.5130001, 0.57, 1)
 highlight_color = Color(0.42000002, 0.6, 0.591, 1)
-options = Array[ExtResource("2_0lf5d")]([SubResource("AtlasTexture_b7yx1"), SubResource("AtlasTexture_fp56p"), SubResource("AtlasTexture_bqknl")])

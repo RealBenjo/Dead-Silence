@@ -3,7 +3,11 @@ extends Node
 
 var player_max_speed: float
 
+var player: Player
 var player_pos: Vector2
+var player_weapon: WeaponStats:
+	set(value):
+		print(value)
 var is_using_mouse := true
  
 var health = 100
