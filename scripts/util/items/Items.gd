@@ -1,10 +1,10 @@
 extends Node
 
 var EMPTY: Item = Item.new()
-const L_AMMO: Item = preload("res://resources/items/ammunition/L_ammo.tres")
-const M_AMMO: Item = preload("res://resources/items/ammunition/M_ammo.tres")
-const H_AMMO: Item = preload("res://resources/items/ammunition/H_ammo.tres")
-const S_AMMO: Item = preload("res://resources/items/ammunition/S_ammo.tres")
+const L_AMMO: Item = preload("res://resources/items/ammunition/l_ammo.tres")
+const M_AMMO: Item = preload("res://resources/items/ammunition/m_ammo.tres")
+const H_AMMO: Item = preload("res://resources/items/ammunition/h_ammo.tres")
+const S_AMMO: Item = preload("res://resources/items/ammunition/s_ammo.tres"		)
 
 var all_items := [
 	EMPTY,

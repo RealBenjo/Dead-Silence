@@ -13,7 +13,6 @@ signal state_change_signal(vis_length: int, awareness_mult: float)
 @onready var weapon: Node2D = $Weapon
 
 # sound vars
-const BULLET_LOUDNESS := 2000.0
 var can_emit_move_sound := true
 
 # stance vars

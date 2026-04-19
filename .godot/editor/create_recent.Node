@@ -1,6 +1,7 @@
+Marker2D
+Sprite2D
 SoundEmitter
 AudioStreamPlayer2D
-Sprite2D
 CanvasLayer
 Label
 Node2D

@@ -18,9 +18,13 @@ const OFFSET = Vector2(-32, -32)
 @export_group("Options")
 @export var options: Array[WheelOption]
 
-var selection := 0
+var selection := 1
 var stored_mouse_pos := Vector2.ZERO
 var used_mouse_to_open := true
+
+# will probably make something nicer for this i think maybe
+func _ready() -> void:
+	close()
 
 func open(is_mouse: bool) -> void:
 	used_mouse_to_open = is_mouse
@@ -40,7 +44,6 @@ func close() -> String:
 	
 	# Updated to print option_name
 	if options.size() > 0 and selection < options.size():
-		print(options[selection].resource)
 		if options[selection].resource is WeaponStats:
 			Globals.player_weapon = options[selection].resource
 		return options[selection].option_name 
@@ -95,11 +98,11 @@ func _draw() -> void:
 	else:
 		_draw_sector_highlight()
 	
-	# 3. Center Icon (UPDATED)
-	if options[0] and options[0].icon and options[0].icon.atlas:
-		draw_texture_rect_region(options[0].icon.atlas, Rect2(OFFSET, SPRITE_SIZE), options[0].icon.region)
+	# 3. Center Icon (UPDATED to handle both Texture types)
+	if options[0] and options[0].icon:
+		draw_texture_rect(options[0].icon, Rect2(OFFSET, SPRITE_SIZE), false)
 	
-	# 4. Slices & Icons (UPDATED)
+	# 4. Slices & Icons (UPDATED to handle both Texture types)
 	var sector_count = options.size() - 1
 	if sector_count > 0:
 		var angle_step = TAU / sector_count
@@ -114,12 +117,22 @@ func _draw() -> void:
 			var mid_r = (_get_poly_radius(mid_rads, inner_radius) + _get_poly_radius(mid_rads, outer_radius)) / 2.0
 			var draw_pos = (mid_r * Vector2.from_angle(mid_rads)) + OFFSET
 			
-			# Use icon.atlas and icon.region
-			if options[i+1] and options[i+1].icon and options[i+1].icon.atlas:
-				draw_texture_rect_region(options[i+1].icon.atlas, Rect2(draw_pos, SPRITE_SIZE), options[i+1].icon.region)
-
+			# Check the texture type for the slices
+			if options[i+1] and options[i+1].icon:
+				if options[i+1].icon is AtlasTexture:
+					draw_texture_rect_region(options[i+1].icon.atlas, Rect2(draw_pos, SPRITE_SIZE), options[i+1].icon.region)
+				elif options[i+1].icon is Texture2D:
+					# Fallback for standard images (.png)
+					draw_texture_rect(options[i+1].icon, Rect2(draw_pos, SPRITE_SIZE), false)
+	
 	# 5. Inner Ring 
 	var inner_pts = PackedVector2Array()
+	for i in range(segments + 1):
+		var a = (TAU / segments) * i
+		inner_pts.append(Vector2.from_angle(a) * inner_radius)
+	draw_polyline(inner_pts, line_color, line_width, true)
+	
+	# 5. Inner Ring
 	for i in range(segments + 1):
 		var a = (TAU / segments) * i
 		inner_pts.append(Vector2.from_angle(a) * inner_radius)

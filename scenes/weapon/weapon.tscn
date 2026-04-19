@@ -2,5 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cmyym83cjffvl" path="res://scenes/weapon/Weapon.gd" id="1_l3xq3"]
 
-[node name="Weapon" type="Node2D" unique_id=605882360]
+[node name="Weapon" type="Sprite2D" unique_id=896353491]
 script = ExtResource("1_l3xq3")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1329206490]
+position = Vector2(98, 0)

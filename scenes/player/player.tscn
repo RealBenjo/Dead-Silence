@@ -138,8 +138,13 @@
 [ext_resource type="Texture2D" uid="uid://bm7og3pv03nnr" path="res://graphics/player/animations/prone/moving/0038.png" id="74_wwa77"]
 [ext_resource type="Script" uid="uid://7ablrcin4syt" path="res://scripts/player/Camera.gd" id="133_teg5g"]
 [ext_resource type="PackedScene" uid="uid://tatnt2qw2vbr" path="res://scenes/weapon/weapon.tscn" id="133_vcxk4"]
-[ext_resource type="Resource" uid="uid://c5unp3tfpp1nw" path="res://resources/items/weapons/rifles/samuel_26.tres" id="134_x6bw1"]
+[ext_resource type="Resource" uid="uid://c5unp3tfpp1nw" path="res://resources/items/weapons/automatic rifles/samuel_26.tres" id="134_x6bw1"]
 [ext_resource type="Script" uid="uid://btss1wgo5kjyu" path="res://scripts/helpers/helpers/SoundEmitter.gd" id="136_e1bru"]
+[ext_resource type="Script" uid="uid://c1q3noi0jkfmy" path="res://scripts/ui/ui/UI.gd" id="141_nssm8"]
+[ext_resource type="PackedScene" uid="uid://ccv8c315d7v1j" path="res://scenes/ui/selection wheel/selection_wheel.tscn" id="142_ei0bd"]
+[ext_resource type="Script" uid="uid://kji4xvn8jm0r" path="res://scripts/ui/selection wheel/WheelOption.gd" id="143_wwa77"]
+[ext_resource type="Resource" uid="uid://b8jlwr5hqphr6" path="res://resources/items/weapons/pistols/oTon.tres" id="145_ei0bd"]
+[ext_resource type="Texture2D" uid="uid://b5wpwkeperrun" path="res://graphics/tools/weapons/icons/samuel_26.png" id="146_wwa77"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pwfqx"]
 animations = [{
@@ -560,6 +565,27 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_gqjuk"]
 radius = 35.014282
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4w6o"]
+region = Rect2(13, 11.5, 55, 53)
+script = ExtResource("143_wwa77")
+option_name = "none"
+metadata/_custom_type_script = "uid://kji4xvn8jm0r"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbbpy"]
+region = Rect2(91, 40.5, 22, 24)
+script = ExtResource("143_wwa77")
+option_name = "oTon"
+resource = ExtResource("145_ei0bd")
+metadata/_custom_type_script = "uid://kji4xvn8jm0r"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouxo3"]
+region = Rect2(43, 55.5, 20, 16)
+script = ExtResource("143_wwa77")
+option_name = "samuel 26"
+icon = ExtResource("146_wwa77")
+resource = ExtResource("134_x6bw1")
+metadata/_custom_type_script = "uid://kji4xvn8jm0r"
+
 [node name="Player" type="CharacterBody2D" unique_id=1065015688 groups=["Player"]]
 collision_mask = 30
 script = ExtResource("1_1kbk7")
@@ -576,9 +602,6 @@ shape = SubResource("CircleShape2D_gqjuk")
 
 [node name="Weapon" parent="." unique_id=605882360 instance=ExtResource("133_vcxk4")]
 stats = ExtResource("134_x6bw1")
-
-[node name="MuzzleEnd" type="Marker2D" parent="." unique_id=1119670339]
-position = Vector2(39, 21)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1726784057]
 zoom = Vector2(0.5, 0.5)
@@ -614,5 +637,19 @@ metadata/_custom_type_script = "uid://bia1cjakqmuvf"
 script = ExtResource("6_0owmy")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://dg4qljreiu7ax"
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2038335811]
+script = ExtResource("141_nssm8")
+
+[node name="Label" type="Label" parent="UI" unique_id=140365156]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Player equipped tool: []"
+metadata/_edit_use_anchors_ = true
+
+[node name="SelectPrimary" parent="UI" unique_id=887151983 instance=ExtResource("142_ei0bd")]
+modulate = Color(1, 1, 1, 0.8627451)
+options = Array[ExtResource("143_wwa77")]([SubResource("AtlasTexture_d4w6o"), SubResource("AtlasTexture_mbbpy"), SubResource("AtlasTexture_ouxo3")])
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="Timers/MoveSoundTimer" to="." method="_on_move_sound_timer_timeout"]
