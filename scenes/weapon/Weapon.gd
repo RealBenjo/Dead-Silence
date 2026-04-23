@@ -3,8 +3,9 @@ extends Sprite2D
 
 var bullet_scene: PackedScene = preload("res://scenes/player/bullet.tscn")
 #var shoot_sound: AudioStream = preload("res://Sound/hitHurt.wav")
-@onready var reload_timer: Timer = $ReloadTimer
 @onready var player: Player = get_owner()
+@onready var reload_timer: Timer = $ReloadTimer
+@onready var cooldown_timer: Timer = $CooldownTimer
 @onready var muzzle: Marker2D = $Muzzle
 
 @export var stats: WeaponStats
@@ -13,12 +14,12 @@ var bullet_scene: PackedScene = preload("res://scenes/player/bullet.tscn")
 @export var debug_disable := false
 
 
-var ammo_type: Item
+var ammo_type: Item ## the type of ammo a weapon uses
 var magazine_size: int
-var cur_ammo: int
+var cur_ammo: int ## current amount of ammo in weapon's magazine
+var current_ammo_key: String ## hold the String name of the current ammo
 var inaccuracy: float
 var is_cooldown := false
-var cooldown_timer: Timer
 
 func _ready():
 	# get the default weapon from Globals
@@ -28,11 +29,7 @@ func _ready():
 	# connect the Globals' signal to this script to listen for stat changes
 	Globals.weapon_changed.connect(on_weapon_changed)
 	
-	cooldown_timer = Timer.new()
-	cooldown_timer.name = "Cooldown Timer"
 	cooldown_timer.wait_time = stats.firing_cooldown
-	cooldown_timer.timeout.connect(on_cooldown_timer_finished)
-	add_child(cooldown_timer)
 
 
 func _physics_process(_delta: float) -> void:
@@ -40,6 +37,7 @@ func _physics_process(_delta: float) -> void:
 		return
 	#if !player.alive or player.crafting:
 		#return
+	
 	# return if the ammo_type doesn't exist to prevent crashes
 	if not ammo_type:
 		print("ammo_type does NOT exist")
@@ -47,56 +45,78 @@ func _physics_process(_delta: float) -> void:
 		return
 	
 	# grab the string name of the ammo
-	var current_ammo_key: String = ammo_type.item_name.to_lower()
+	current_ammo_key = ammo_type.item_name.to_lower()
 	
-	if cur_ammo > 0 and reload_timer.is_stopped() and Input.is_action_pressed("primary_action") and !is_cooldown:
-		Globals.total_ammo[current_ammo_key] -= 1
-		cur_ammo -= 1
-		print(cur_ammo)
-		if cur_ammo <= 0:
-			reload_timer.start()
-		
-		# spawn a bullet and give it a rotation based on the angle between the firing position and
-		# the cursor's position.
-		# The bullet will use this rotation to decide its direction.
-		var bullet: Bullet = bullet_scene.instantiate()
-		var mouse_angle := (get_global_mouse_position() - muzzle.global_position).angle() + deg_to_rad(randf_range(-inaccuracy, inaccuracy))
-		
-		# assign attack information to bullet
-		bullet.speed = stats.speed
-		bullet.damage = stats.damage
-		bullet.max_pierce = stats.max_pierce
-		bullet.knockback_force = stats.knockback_force
-		
-		bullet.global_position = muzzle.global_position + Vector2().rotated(mouse_angle)
-		bullet.rotation = mouse_angle
-		
-		get_tree().root.add_child(bullet)
-		
-		is_cooldown = true
-		cooldown_timer.wait_time = stats.firing_cooldown
-		cooldown_timer.start()
-		
-		#SoundManager.play_sound_pitched(shoot_sound, 0.1, 0.1)
-		#CameraShake.add_trauma(camera_shake_amount)
+	if Input.is_action_just_pressed("reload_weapon") and cur_ammo < magazine_size and reload_timer.is_stopped():
+		on_reload()
+	
+	if not (Input.is_action_pressed("primary_fire") and reload_timer.is_stopped() and cur_ammo > 0 and !is_cooldown):
+		return
+	
+	Globals.total_ammo[current_ammo_key] -= 1
+	cur_ammo -= 1
+	stats.current_ammo = cur_ammo
+	if cur_ammo <= 0:
+		on_reload()
+	
+	# spawn a bullet and give it a rotation based on the angle between the firing position and
+	# the cursor's position.
+	# The bullet will use this rotation to decide its direction.
+	var bullet: Bullet = bullet_scene.instantiate()
+	var mouse_angle := (get_global_mouse_position() - muzzle.global_position).angle() + deg_to_rad(randf_range(-inaccuracy, inaccuracy))
+	
+	# assign attack information to bullet
+	bullet.speed = stats.speed
+	bullet.damage = stats.damage
+	bullet.max_pierce = stats.max_pierce
+	bullet.knockback_force = stats.knockback_force
+	
+	bullet.global_position = muzzle.global_position + Vector2().rotated(mouse_angle)
+	bullet.rotation = mouse_angle
+	
+	get_tree().root.add_child(bullet)
+	
+	is_cooldown = true
+	cooldown_timer.wait_time = stats.firing_cooldown
+	cooldown_timer.start()
+	
+	#SoundManager.play_sound_pitched(shoot_sound, 0.1, 0.1)
+	#CameraShake.add_trauma(camera_shake_amount)
 
 func on_weapon_changed(new_weapon_stats: WeaponStats) -> void:
+	
+	# stats.reload_time_left is used to continue reloading
+	# after switching to a different weapon 
+	stats.reload_time_left = reload_timer.time_left
+	
 	stats = new_weapon_stats
+	stats.init_stats()
 	
 	magazine_size = stats.magazine_size
-	# this is kind of ass since you can
-	# reload by switching weapons :(
-	cur_ammo = magazine_size
+	cur_ammo = stats.current_ammo
+	
 	ammo_type = stats.ammo_type
 	texture = stats.texture
 	inaccuracy = stats.inaccuracy / 2
+	
+	
+	# if the weapon was being reloaded when it got switched
+	# it continues reloading from that time
+	if stats.is_reloading:
+		reload_timer.start(stats.reload_time_left)
+	else:
+		reload_timer.stop()
+	
 	reload_timer.wait_time = stats.reload_time
-	reload_timer.stop()
 
-func on_cooldown_timer_finished():
+func on_reload() -> void:
+	stats.is_reloading = true
+	reload_timer.start()
+
+
+func _on_cooldown_timer_timeout() -> void:
 	is_cooldown = false
 
-
 func _on_reload_timer_timeout() -> void:
+	stats.is_reloading = false
 	cur_ammo = magazine_size
-	print(cur_ammo)

@@ -7,11 +7,12 @@ var player_pos: Vector2
 
 var player_weapon: WeaponStats:
 	set(value):
-		player_weapon = value # Actually save the new weapon
-		weapon_changed.emit(value) # Announce the change
+		player_weapon = value # save the new weapon
+		weapon_changed.emit(value) # emit the change
 
 var is_using_mouse := true
 var health = 100
+
 ## stores amount of ammo for each ammo type.
 ## WARNING: ammo's children must have THE EXACT SAME NAME
 ## AS THE AMMO ITEM, otherwise weapons wont fire at all

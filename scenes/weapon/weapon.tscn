@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cmyym83cjffvl" path="res://scenes/weapon/Weapon.gd" id="1_l3xq3"]
 
 [node name="Weapon" type="Sprite2D" unique_id=896353491]
+editor_description = "has it's own stats which determine the fire rate, inaccuracy, bullet speed"
 script = ExtResource("1_l3xq3")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1329206490]
@@ -11,4 +12,8 @@ position = Vector2(98, 0)
 [node name="ReloadTimer" type="Timer" parent="." unique_id=586848277]
 one_shot = true
 
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1312879307]
+one_shot = true
+
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

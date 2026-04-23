@@ -1,8 +1,6 @@
-res://scenes/levels/outside.tscn
-res://scenes/player/player.tscn
 res://scenes/weapon/weapon.tscn
-res://scripts/helpers/helpers/WeaponStats.gd
-res://resources/items/weapons/automatic rifles/samuel_26.tres
-res://resources/items/weapons/pistols/oTon.tres
-res://scenes/weapon/Weapon.gd
 res://globals/Globals.gd
+res://scripts/ui/selection wheel/SelectionWheel.gd
+res://scripts/helpers/helpers/WeaponStats.gd
+res://scenes/weapon/Weapon.gd
+res://resources/items/weapons/automatic rifles/samuel_26.tres

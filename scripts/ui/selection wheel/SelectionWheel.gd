@@ -24,6 +24,7 @@ var used_mouse_to_open := true
 
 # will probably make something nicer for this i think maybe
 func _ready() -> void:
+	stored_mouse_pos = get_viewport().get_mouse_position()
 	close()
 
 func open(is_mouse: bool) -> void:
@@ -51,7 +52,7 @@ func close() -> String:
 	return ""
 
 func _process(_delta: float) -> void:
-	# Brute-force redraw every frame. 
+	# brute-force redraw every frame.
 	queue_redraw()
 	
 	if Engine.is_editor_hint() or not is_visible_in_tree(): return
