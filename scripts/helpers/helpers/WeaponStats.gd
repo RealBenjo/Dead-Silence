@@ -8,6 +8,8 @@ class_name WeaponStats
 @export_range(0.0, 90.0, 1.0, "degrees") var inaccuracy := 10.0
 @export_range(0, 5) var firing_cooldown := 0.5
 @export var ammo_type: Item
+@export var magazine_size := 30
+@export var reload_time := 1.0 ## in seconds
 
 @export_group("Attack")
 @export var speed := 3000.0

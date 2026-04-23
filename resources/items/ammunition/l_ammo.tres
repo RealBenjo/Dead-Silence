@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" format=3 uid="uid://0he7xujew87u"]
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://b6cr0k57l81t0"]
 
 [ext_resource type="Script" uid="uid://bo2li34krfhxl" path="res://scripts/util/items/Item.gd" id="1_x8o8m"]
 [ext_resource type="Texture2D" uid="uid://br71hn1087yug" path="res://graphics/tools/ammo/L_ammo.png" id="2_yos05"]

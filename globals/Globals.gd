@@ -15,9 +15,9 @@ var health = 100
 ## stores amount of ammo for each ammo type.
 ## WARNING: ammo's children must have THE EXACT SAME NAME
 ## AS THE AMMO ITEM, otherwise weapons wont fire at all
-var ammo := {
+var total_ammo := {
 	l_ammo = 30,
-	m_ammo = 30,
+	m_ammo = 500,
 	h_ammo = 30,
 	s_ammo = 30
 }

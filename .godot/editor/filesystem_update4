@@ -1,15 +1,8 @@
 res://scenes/levels/outside.tscn
-res://scripts/ui/selection wheel/SelectionWheel.gd
-res://globals/Globals.gd
 res://scenes/player/player.tscn
-res://scenes/weapon/Weapon.gd
-res://scripts/player/Player.gd
-res://resources/items/weapons/pistols/oTon.tres
-res://scenes/enemies/enemy.tscn
-res://scenes/enemies/zombie.tscn
 res://scenes/weapon/weapon.tscn
 res://scripts/helpers/helpers/WeaponStats.gd
-res://resources/items/weapons/rifles/samuel_26.tres
-res://scripts/util/items/Items.gd
-res://scenes/levels/level.tscn
-res://scripts/ui/selection wheel/WheelOption.gd
+res://resources/items/weapons/automatic rifles/samuel_26.tres
+res://resources/items/weapons/pistols/oTon.tres
+res://scenes/weapon/Weapon.gd
+res://globals/Globals.gd

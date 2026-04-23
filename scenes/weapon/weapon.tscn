@@ -7,3 +7,8 @@ script = ExtResource("1_l3xq3")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1329206490]
 position = Vector2(98, 0)
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=586848277]
+one_shot = true
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

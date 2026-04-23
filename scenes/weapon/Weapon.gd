@@ -3,6 +3,7 @@ extends Sprite2D
 
 var bullet_scene: PackedScene = preload("res://scenes/player/bullet.tscn")
 #var shoot_sound: AudioStream = preload("res://Sound/hitHurt.wav")
+@onready var reload_timer: Timer = $ReloadTimer
 @onready var player: Player = get_owner()
 @onready var muzzle: Marker2D = $Muzzle
 
@@ -13,6 +14,8 @@ var bullet_scene: PackedScene = preload("res://scenes/player/bullet.tscn")
 
 
 var ammo_type: Item
+var magazine_size: int
+var cur_ammo: int
 var inaccuracy: float
 var is_cooldown := false
 var cooldown_timer: Timer
@@ -46,11 +49,12 @@ func _physics_process(_delta: float) -> void:
 	# grab the string name of the ammo
 	var current_ammo_key: String = ammo_type.item_name.to_lower()
 	
-	# Check if this ammo type exists in the dictionary and if it's greater than 0
-	var has_ammo: bool = Globals.ammo.has(current_ammo_key) and Globals.ammo[current_ammo_key] > 0
-	
-	if has_ammo and Input.is_action_pressed("primary_action") and !is_cooldown:
-		Globals.ammo[current_ammo_key] -= 1
+	if cur_ammo > 0 and reload_timer.is_stopped() and Input.is_action_pressed("primary_action") and !is_cooldown:
+		Globals.total_ammo[current_ammo_key] -= 1
+		cur_ammo -= 1
+		print(cur_ammo)
+		if cur_ammo <= 0:
+			reload_timer.start()
 		
 		# spawn a bullet and give it a rotation based on the angle between the firing position and
 		# the cursor's position.
@@ -77,10 +81,22 @@ func _physics_process(_delta: float) -> void:
 		#CameraShake.add_trauma(camera_shake_amount)
 
 func on_weapon_changed(new_weapon_stats: WeaponStats) -> void:
-	ammo_type = new_weapon_stats.ammo_type
-	texture = new_weapon_stats.texture
 	stats = new_weapon_stats
+	
+	magazine_size = stats.magazine_size
+	# this is kind of ass since you can
+	# reload by switching weapons :(
+	cur_ammo = magazine_size
+	ammo_type = stats.ammo_type
+	texture = stats.texture
 	inaccuracy = stats.inaccuracy / 2
+	reload_timer.wait_time = stats.reload_time
+	reload_timer.stop()
 
 func on_cooldown_timer_finished():
 	is_cooldown = false
+
+
+func _on_reload_timer_timeout() -> void:
+	cur_ammo = magazine_size
+	print(cur_ammo)
