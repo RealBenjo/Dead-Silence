@@ -53,7 +53,6 @@ func _physics_process(_delta: float) -> void:
 	if not (Input.is_action_pressed("primary_fire") and reload_timer.is_stopped() and cur_ammo > 0 and !is_cooldown):
 		return
 	
-	Globals.total_ammo[current_ammo_key] -= 1
 	cur_ammo -= 1
 	stats.current_ammo = cur_ammo
 	if cur_ammo <= 0:
@@ -118,5 +117,6 @@ func _on_cooldown_timer_timeout() -> void:
 	is_cooldown = false
 
 func _on_reload_timer_timeout() -> void:
+	Globals.total_ammo[current_ammo_key] -= magazine_size - cur_ammo
 	stats.is_reloading = false
 	cur_ammo = magazine_size

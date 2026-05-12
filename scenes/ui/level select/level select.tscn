@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cljks3iruvikx"]
+
+[node name="Control" type="Control" unique_id=616105261]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=214548280]
+self_modulate = Color(0, 0.9584518, 0.94186324, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel" unique_id=522852003]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -196.5
+offset_right = 196.5
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Mission Select"
+uppercase = true
+language = "en"
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel" unique_id=1986817301]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/PanelContainer" unique_id=1283444646]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="LevelButtons" type="VBoxContainer" parent="Panel/PanelContainer/HBoxContainer" unique_id=411664291]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button1" type="Button" parent="Panel/PanelContainer/HBoxContainer/LevelButtons" unique_id=2016820167]
+layout_mode = 2
+text = "The Beginning..."
+alignment = 0
+expand_icon = true
+
+[node name="LevelDescriptions" type="VBoxContainer" parent="Panel/PanelContainer/HBoxContainer" unique_id=2053521066]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/PanelContainer/HBoxContainer/LevelDescriptions" unique_id=1592624181]
+layout_mode = 2
+size_flags_vertical = 3
+text = "asdasdasd"

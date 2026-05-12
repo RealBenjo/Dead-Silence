@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://tatnt2qw2vbr"]
 
+[ext_resource type="Texture2D" uid="uid://dwcbymm16yndn" path="res://graphics/tools/weapons/all weapons/all weapons.png" id="1_jej8l"]
 [ext_resource type="Script" uid="uid://cmyym83cjffvl" path="res://scenes/weapon/Weapon.gd" id="1_l3xq3"]
 
 [node name="Weapon" type="Sprite2D" unique_id=896353491]
 editor_description = "has it's own stats which determine the fire rate, inaccuracy, bullet speed"
+scale = Vector2(0.254795, 0.254795)
+texture = ExtResource("1_jej8l")
+region_enabled = true
+region_rect = Rect2(371.40076, 306.96576, 58.564087, 693.03424)
 script = ExtResource("1_l3xq3")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1329206490]
-position = Vector2(98, 0)
+position = Vector2(0, -342.505)
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=586848277]
 one_shot = true

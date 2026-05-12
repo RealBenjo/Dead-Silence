@@ -17,6 +17,9 @@ class_name WeaponStats
 @export var max_pierce := 1
 @export var knockback_force := 1.0
 
+@export_group("Visuals")
+@export var aim_frame := 0
+
 ## just stores the current ammo of a weapon. this means, if the weapon is switched
 ## the amount of ammo in a magazine should stay the same
 var current_ammo := -1

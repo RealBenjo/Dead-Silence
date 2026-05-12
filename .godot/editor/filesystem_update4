@@ -1,6 +1,7 @@
-res://scenes/weapon/weapon.tscn
-res://globals/Globals.gd
-res://scripts/ui/selection wheel/SelectionWheel.gd
-res://scripts/helpers/helpers/WeaponStats.gd
-res://scenes/weapon/Weapon.gd
-res://resources/items/weapons/automatic rifles/samuel_26.tres
+res://scenes/ui/level select/level select.tscn
+res://scenes/levels/outside.tscn
+res://scenes/ui/main menu/main_menu.tscn
+res://scripts/ui/main menu/MainMenu.gd
+res://scenes/game controller/game_controller.tscn
+res://scripts/game controller/GameController.gd
+res://scripts/globals/GameManager.gd
