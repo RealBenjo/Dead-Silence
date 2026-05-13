@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjm31m1ly4mw7"]
 
 [ext_resource type="Script" uid="uid://bh2c5gyipi7js" path="res://scripts/game controller/GameController.gd" id="1_ohadn"]
-[ext_resource type="PackedScene" uid="uid://eji1c0k5e10i" path="res://scenes/ui/main menu/main_menu.tscn" id="2_mekh3"]
+[ext_resource type="PackedScene" uid="uid://eji1c0k5e10i" path="res://scenes/menus/main menu/main_menu.tscn" id="2_mekh3"]
 
 [node name="GameController" type="Node" unique_id=1200442521]
 script = ExtResource("1_ohadn")
@@ -10,13 +10,6 @@ script = ExtResource("1_ohadn")
 
 [node name="World2D" type="Node2D" parent="." unique_id=1694652391]
 
-[node name="GUI" type="Control" parent="." unique_id=1617463739]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUI" type="CanvasLayer" parent="." unique_id=351437177]
 
 [node name="MainMenu" parent="GUI" unique_id=850707745 instance=ExtResource("2_mekh3")]
-layout_mode = 1

@@ -1,9 +1,8 @@
-res://scripts/game controller/
 res://scenes/game controller/
+res://scripts/game controller/
 res://scripts/globals/
+res://scripts/menus/loading screen/
 res://scripts/ui/main menu/
-res://scenes/ui/main menu/
-res://scenes/ui/level select/
 res://resources/items/weapons/shotguns/
 res://resources/items/weapons/automatic rifles/
 res://scenes/levels/
@@ -13,5 +12,4 @@ res://scripts/util/items/
 res://
 res://scripts/player/
 res://scripts/ui/ui/
-res://scenes/ui/selection wheel/
 res://graphics/player/

@@ -11,8 +11,8 @@ class_name LevelParent
 @onready var item_scene: PackedScene # TODO: actually implement this
 
 # patrol vars
-@onready var patrols = get_node("/root/Level/Patrols").get_children() ##array of ALL patrol nodes
-@onready var enemies = get_node("/root/Level/Enemies").get_children() ##array of ALL enemy nodes
+@onready var patrols = $Patrols.get_children() ##array of ALL patrol nodes
+@onready var enemies = $Enemies.get_children() ##array of ALL enemy nodes
 
 var zombie
 var bullet

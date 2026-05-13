@@ -143,7 +143,7 @@
 [ext_resource type="Resource" uid="uid://c5unp3tfpp1nw" path="res://resources/items/weapons/automatic rifles/samuel_26.tres" id="134_x6bw1"]
 [ext_resource type="Script" uid="uid://btss1wgo5kjyu" path="res://scripts/helpers/helpers/SoundEmitter.gd" id="136_e1bru"]
 [ext_resource type="Script" uid="uid://c1q3noi0jkfmy" path="res://scripts/ui/ui/UI.gd" id="141_nssm8"]
-[ext_resource type="PackedScene" uid="uid://ccv8c315d7v1j" path="res://scenes/ui/selection wheel/selection_wheel.tscn" id="142_ei0bd"]
+[ext_resource type="PackedScene" uid="uid://ccv8c315d7v1j" path="res://scenes/menus/selection wheel/selection_wheel.tscn" id="142_ei0bd"]
 [ext_resource type="Script" uid="uid://kji4xvn8jm0r" path="res://scripts/ui/selection wheel/WheelOption.gd" id="143_wwa77"]
 [ext_resource type="Resource" uid="uid://b8jlwr5hqphr6" path="res://resources/items/weapons/pistols/oTon.tres" id="145_ei0bd"]
 [ext_resource type="Texture2D" uid="uid://b5wpwkeperrun" path="res://graphics/tools/weapons/icons/samuel_26.png" id="146_wwa77"]

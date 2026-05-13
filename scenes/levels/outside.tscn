@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://ba5sduufhjqin" path="res://scenes/levels/level.tscn" id="1_2s4ok"]
 [ext_resource type="Script" uid="uid://ddkugsqjkium3" path="res://scripts/levels/Outside.gd" id="2_qwwmc"]
 [ext_resource type="Texture2D" uid="uid://c5qha4o56yvha" path="res://graphics/player/bullet.png" id="3_qwwmc"]
-[ext_resource type="PackedScene" uid="uid://cljks3iruvikx" path="res://scenes/ui/level select/level select.tscn" id="4_f0o3i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0o3i"]
 size = Vector2(66, 846)
@@ -44,5 +43,3 @@ visible = true
 
 [node name="Player" parent="." index="8" unique_id=964630265]
 position = Vector2(622, 372)
-
-[node name="Control" parent="." index="9" unique_id=616105261 instance=ExtResource("4_f0o3i")]
