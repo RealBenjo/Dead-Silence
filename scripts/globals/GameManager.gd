@@ -3,24 +3,43 @@ extends Node
 
 var game_controller: GameController
 
-@export var world_2d: Node2D
-@export var gui: Control
+var world_2d: Node2D
+var world_3d: Node3D
+var gui: Control
 
 var current_2d_scene
+var current_3d_scene
 var current_gui_scene
 
-func _ready() -> void:
-	current_gui_scene = $GUI/MainMenu
-
-func change_gui_scene(new_scene: String, delete: bool = true, keep_running: bool = false) -> void:
-	if current_gui_scene != null:
+# A single helper function to handle the logic for all types
+func _switch_scene(new_scene_path: String, container: Node, current_ref: Node, delete: bool, keep_running: bool) -> Node:
+	# 1. Handle old scene
+	if current_ref != null:
 		if delete:
-			current_gui_scene.queue_free() # removes node fully (not in RAM anymore)
+			current_ref.queue_free()
 		elif keep_running:
-			current_gui_scene.visible = false # keeps in RAM and running
+			current_ref.visible = false
 		else:
-			gui.remove_child(current_gui_scene) # keeps in RAM, does NOT run
+			container.remove_child(current_ref)
 	
-	var new = load(new_scene).instantiate()
-	gui.add_child(new)
-	current_gui_scene = new
+	# 2. Load and Instantiate
+	var res = load(new_scene_path)
+	print(res)
+	if not res:
+		push_error("Scene path invalid: " + new_scene_path)
+		return null
+		
+	var instance = res.instantiate()
+	print(instance)
+	container.add_child(instance)
+	return instance
+
+# The public API for your other scripts
+func change_gui_scene(path: String, delete := true, keep := false):
+	current_gui_scene = _switch_scene(path, gui, current_gui_scene, delete, keep)
+
+func change_2d_scene(path: String, delete := true, keep := false):
+	current_2d_scene = _switch_scene(path, world_2d, current_2d_scene, delete, keep)
+
+func change_3d_scene(path: String, delete := true, keep := false):
+	current_3d_scene = _switch_scene(path, world_3d, current_3d_scene, delete, keep)

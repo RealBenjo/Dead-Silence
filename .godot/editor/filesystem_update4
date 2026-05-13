@@ -1,7 +1,5 @@
-res://scenes/ui/level select/level select.tscn
-res://scenes/levels/outside.tscn
+res://scenes/game controller/game_controller.tscn
+res://scripts/globals/GameManager.gd
+res://scripts/game controller/GameController.gd
 res://scenes/ui/main menu/main_menu.tscn
 res://scripts/ui/main menu/MainMenu.gd
-res://scenes/game controller/game_controller.tscn
-res://scripts/game controller/GameController.gd
-res://scripts/globals/GameManager.gd
