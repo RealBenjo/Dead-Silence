@@ -5,6 +5,7 @@
 
 [node name="Weapon" type="Sprite2D" unique_id=896353491]
 editor_description = "has it's own stats which determine the fire rate, inaccuracy, bullet speed"
+position = Vector2(0, -35.999996)
 scale = Vector2(0.254795, 0.254795)
 texture = ExtResource("1_jej8l")
 region_enabled = true

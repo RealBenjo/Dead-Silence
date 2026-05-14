@@ -19,6 +19,8 @@ class_name WeaponStats
 
 @export_group("Visuals")
 @export var aim_frame := 0
+@export var weapon_texture_y_offset := 0
+@export var muzzle_y_offset := 0.0
 
 ## just stores the current ammo of a weapon. this means, if the weapon is switched
 ## the amount of ammo in a magazine should stay the same

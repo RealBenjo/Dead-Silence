@@ -13,4 +13,6 @@ ammo_type = ExtResource("1_8ie3w")
 reload_time = 6.0
 speed = 5000.0
 damage = 10.0
+weapon_texture_y_offset = -36
+muzzle_y_offset = -342.505
 metadata/_custom_type_script = "uid://cjiib1whmabrt"
