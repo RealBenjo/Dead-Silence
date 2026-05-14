@@ -12,7 +12,6 @@ func enter():
 	player.current_stance = current_state
 	
 	player.rotation_mult = 0.4
-	player.player_animation.play("p_prone")
 	player.speed_mult = 0.33
 	player.vision_mult = 0.6
 	player.awareness_mult = 0.8

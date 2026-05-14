@@ -9,6 +9,7 @@ script = ExtResource("1_oa0cv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=973777804]
 rotation = 1.5707964
+scale = Vector2(0.35226673, 0.8994888)
 texture = ExtResource("1_av6sl")
 
 [node name="DestroyTimer" type="Timer" parent="." unique_id=145464163]

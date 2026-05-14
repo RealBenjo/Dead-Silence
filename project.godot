@@ -170,3 +170,5 @@ aim_weapon={
 [rendering]
 
 renderer/rendering_method="mobile"
+anti_aliasing/screen_space_roughness_limiter/enabled=false
+anti_aliasing/quality/screen_space_aa=2

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://ckxdvafrtthcx"]
+
+[ext_resource type="Script" uid="uid://cjiib1whmabrt" path="res://scripts/helpers/helpers/WeaponStats.gd" id="1_bq70p"]
+[ext_resource type="Resource" uid="uid://m1ec6tfwyy11" path="res://resources/items/ammunition/h_ammo.tres" id="1_cuhm2"]
+
+[resource]
+script = ExtResource("1_bq70p")
+inaccuracy = 1.0
+firing_cooldown = 3.0
+ammo_type = ExtResource("1_cuhm2")
+magazine_size = 5
+reload_time = 10.0
+speed = 15000.0
+damage = 50.0
+max_pierce = 3
+knockback_force = 5.0
+weapon_sprite_region = Rect2(111.87722, 11.337887, 36.852013, 986.2846)
+weapon_sprite_pos = Vector2(36.000004, 1.1368684e-13)
+muzzle_pos = Vector2(136, 0)
+aim_frame = 1
+metadata/_custom_type_script = "uid://cjiib1whmabrt"

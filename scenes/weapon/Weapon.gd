@@ -1,4 +1,5 @@
 extends Node2D
+class_name Weapon
 
 
 var bullet_scene: PackedScene = preload("res://scenes/player/bullet.tscn")
@@ -10,18 +11,28 @@ var bullet_scene: PackedScene = preload("res://scenes/player/bullet.tscn")
 @onready var weapon_sprite2d: Sprite2D = $Sprite2D
 
 
+@export_group("Attributes")
 @export var stats: WeaponStats
-@export var camera_shake_amount: float = 15.0
+@export var camera_shake_amount: float = 15.0 # TODO: make it do something maybe if i have time for it
 
+@export_group("Behaviour")
+@export var only_show_when_aimed := false
+@export var only_fires_when_aimed := false
+
+@export_group("Debug")
 @export var debug_disable := false
 
 
+# weapon stats pretty much
 var ammo_type: Item ## the type of ammo a weapon uses
 var magazine_size: int
 var cur_ammo: int ## current amount of ammo in weapon's magazine
 var current_ammo_key: String ## hold the String name of the current ammo
 var inaccuracy: float
+
+# important booleans
 var is_cooldown := false
+var is_aimed := false ## if the weapon is being aimed
 
 func _ready():
 	# get the default weapon from Globals
@@ -42,8 +53,21 @@ func _physics_process(_delta: float) -> void:
 	
 	# return if the ammo_type doesn't exist to prevent crashes
 	if not ammo_type:
-		print("ammo_type does NOT exist")
-		print(ammo_type)
+		printerr("ammo_type does NOT exist")
+		return
+	
+	# find out if player is aiming the weapon
+	is_aimed = Input.is_action_pressed("aim_weapon")
+	
+	# this will make the weapon visible when it's aimed if that's what you want
+	if only_show_when_aimed:
+		if is_aimed:
+			visible = true
+		else:
+			visible = false
+	
+	# if it isn't allowed to fire when it isn't being aimed, return out of the function
+	if only_fires_when_aimed and not is_aimed:
 		return
 	
 	# grab the string name of the ammo
