@@ -582,6 +582,7 @@ radius = 35.014282
 region = Rect2(13, 11.5, 55, 53)
 script = ExtResource("143_wwa77")
 option_name = "none"
+resource = ExtResource("145_ei0bd")
 metadata/_custom_type_script = "uid://kji4xvn8jm0r"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mbbpy"]
@@ -616,8 +617,8 @@ visible = false
 shape = SubResource("CircleShape2D_gqjuk")
 
 [node name="Weapon" parent="." unique_id=605882360 instance=ExtResource("133_vcxk4")]
-position = Vector2(70.00001, 26.000002)
-rotation = 1.4292179
+position = Vector2(39.999996, 29.999998)
+rotation = -0.13972223
 stats = ExtResource("134_x6bw1")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1726784057]

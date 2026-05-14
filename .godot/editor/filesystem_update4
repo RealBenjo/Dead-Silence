@@ -1,14 +1,15 @@
 res://scenes/game controller/game_controller.tscn
-res://scripts/ui/main menu/MainMenu.gd
-res://scripts/globals/Globals.gd
-res://scripts/globals/SceneManager.gd
-res://scenes/levels/outside.tscn
-res://scenes/player/player.tscn
-res://scenes/menus/loading screen/LoadingScreen.tscn
-res://scenes/menus/loading screen/loading_screen.tscn
-res://scripts/menus/loading screen/loading_screen.gd
-res://scenes/menus/main menu/main_menu.tscn
+res://scripts/globals/GameManager.gd
 res://scripts/game controller/GameController.gd
+res://scenes/ui/main menu/main_menu.tscn
+res://scripts/ui/main menu/MainMenu.gd
+res://scenes/player/player.tscn
+res://scripts/globals/Globals.gd
 res://scripts/levels/Level.gd
-res://scenes/levels/level.tscn
+res://scenes/menus/main menu/main_menu.tscn
 res://scenes/weapon/weapon.tscn
+res://scenes/weapon/Weapon.gd
+res://resources/items/weapons/automatic rifles/samuel_26.tres
+res://scripts/helpers/helpers/WeaponStats.gd
+res://scripts/ui/selection wheel/SelectionWheel.gd
+res://resources/items/weapons/pistols/oTon.tres

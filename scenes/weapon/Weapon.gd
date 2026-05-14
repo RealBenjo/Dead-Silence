@@ -1,12 +1,14 @@
-extends Sprite2D
+extends Node2D
 
 
 var bullet_scene: PackedScene = preload("res://scenes/player/bullet.tscn")
 #var shoot_sound: AudioStream = preload("res://Sound/hitHurt.wav")
 @onready var player: Player = get_owner()
-@onready var reload_timer: Timer = $ReloadTimer
 @onready var cooldown_timer: Timer = $CooldownTimer
+@onready var reload_timer: Timer = $ReloadTimer
 @onready var muzzle: Marker2D = $Muzzle
+@onready var weapon_sprite2d: Sprite2D = $Sprite2D
+
 
 @export var stats: WeaponStats
 @export var camera_shake_amount: float = 15.0
@@ -91,13 +93,20 @@ func on_weapon_changed(new_weapon_stats: WeaponStats) -> void:
 	stats = new_weapon_stats
 	stats.init_stats()
 	
+	# ammo and mag stats
 	magazine_size = stats.magazine_size
 	cur_ammo = stats.current_ammo
-	
 	ammo_type = stats.ammo_type
-	texture = stats.texture
+	
+	# just the inaccuracy of the weapon
 	inaccuracy = stats.inaccuracy / 2
 	
+	# visuals of the weapon
+	weapon_sprite2d.region_rect = stats.weapon_sprite_region
+	weapon_sprite2d.position = stats.weapon_sprite_pos
+	
+	# muzzle of the weapon
+	muzzle.position = stats.muzzle_pos
 	
 	# if the weapon was being reloaded when it got switched
 	# it continues reloading from that time

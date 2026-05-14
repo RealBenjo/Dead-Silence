@@ -18,9 +18,10 @@ class_name WeaponStats
 @export var knockback_force := 1.0
 
 @export_group("Visuals")
-@export var aim_frame := 0
-@export var weapon_texture_y_offset := 0
-@export var muzzle_y_offset := 0.0
+@export var weapon_sprite_region: Rect2
+@export var weapon_sprite_pos := Vector2.ZERO
+@export var muzzle_pos := Vector2.ZERO
+@export var aim_frame := 0 ## 0 is one handed, 1 is two handed
 
 ## just stores the current ammo of a weapon. this means, if the weapon is switched
 ## the amount of ammo in a magazine should stay the same
