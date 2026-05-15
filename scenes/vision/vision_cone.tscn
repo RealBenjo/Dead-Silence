@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://o7f2eixvstnj"]
+
+[ext_resource type="Script" uid="uid://bbokeap7nrvq" path="res://scripts/util/vision/VisionCone.gd" id="1_f4vkn"]
+
+[node name="VisionCone" type="RayCast2D" unique_id=1579632236]
+target_position = Vector2(100, 0)
+collision_mask = 5
+script = ExtResource("1_f4vkn")

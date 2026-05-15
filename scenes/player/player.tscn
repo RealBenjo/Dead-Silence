@@ -143,6 +143,7 @@
 [ext_resource type="Resource" uid="uid://c5unp3tfpp1nw" path="res://resources/items/weapons/automatic rifles/samuel_26.tres" id="134_x6bw1"]
 [ext_resource type="PackedScene" uid="uid://dvf6wo7hq4v21" path="res://scenes/interaction area/interaction_area.tscn" id="135_mtkxs"]
 [ext_resource type="Script" uid="uid://btss1wgo5kjyu" path="res://scripts/helpers/helpers/SoundEmitter.gd" id="136_e1bru"]
+[ext_resource type="PackedScene" uid="uid://o7f2eixvstnj" path="res://scenes/vision/vision_cone.tscn" id="136_pxyg8"]
 [ext_resource type="Script" uid="uid://c1q3noi0jkfmy" path="res://scripts/ui/ui/UI.gd" id="141_nssm8"]
 [ext_resource type="PackedScene" uid="uid://ccv8c315d7v1j" path="res://scenes/menus/selection wheel/selection_wheel.tscn" id="142_ei0bd"]
 [ext_resource type="Script" uid="uid://kji4xvn8jm0r" path="res://scripts/ui/selection wheel/WheelOption.gd" id="143_wwa77"]
@@ -692,9 +693,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_gqjuk"]
 radius = 35.014282
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pxyg8"]
-radius = 86.05231
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4w6o"]
 region = Rect2(13, 11.5, 55, 53)
 script = ExtResource("143_wwa77")
@@ -739,10 +737,13 @@ autoplay = "s_idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=459724363]
 shape = SubResource("CircleShape2D_gqjuk")
 
-[node name="InteractionArea" parent="." unique_id=1729780376 instance=ExtResource("135_mtkxs")]
+[node name="InteractionArea" parent="." unique_id=1729780376 node_paths=PackedStringArray("vision_cone") instance=ExtResource("135_mtkxs")]
+vision_cone = NodePath("VisionCone")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1272325981]
-shape = SubResource("CircleShape2D_pxyg8")
+[node name="VisionCone" parent="InteractionArea" unique_id=1579632236 instance=ExtResource("136_pxyg8")]
+VISION_LENGTH = 150.0
+target_group = ""
+fov = 360.0
 
 [node name="Weapon" parent="." unique_id=605882360 instance=ExtResource("133_vcxk4")]
 position = Vector2(39.999996, 29.999998)
@@ -800,4 +801,5 @@ segments = 54
 options = Array[ExtResource("143_wwa77")]([SubResource("AtlasTexture_d4w6o"), SubResource("AtlasTexture_mbbpy"), SubResource("AtlasTexture_ouxo3"), SubResource("Resource_xm1em")])
 metadata/_edit_use_anchors_ = true
 
+[connection signal="target_seen" from="InteractionArea/VisionCone" to="InteractionArea" method="_on_vision_cone_target_seen"]
 [connection signal="timeout" from="Timers/MoveSoundTimer" to="." method="_on_move_sound_timer_timeout"]

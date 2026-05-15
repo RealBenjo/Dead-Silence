@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://f27t0j1fswru" path="res://scripts/state/enemy/EnemyInvestigating.gd" id="4_fcftc"]
 [ext_resource type="PackedScene" uid="uid://c48nw5orhwp2o" path="res://scenes/helpers/components/attack_component.tscn" id="4_qch6t"]
 [ext_resource type="Script" uid="uid://bd5kgtlulah45" path="res://scripts/state/enemy/EnemySearching.gd" id="5_lu5c6"]
+[ext_resource type="PackedScene" uid="uid://o7f2eixvstnj" path="res://scenes/vision/vision_cone.tscn" id="5_y5th1"]
 [ext_resource type="Script" uid="uid://xopl505afwk5" path="res://scripts/state/enemy/EnemyAttacking.gd" id="6_nb6gf"]
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1128209967]
@@ -26,6 +27,9 @@ MAX_HEALTH = 100.0
 health_component = NodePath("../HealthComponent")
 
 [node name="AttackComponent" parent="." unique_id=439898854 instance=ExtResource("4_qch6t")]
+
+[node name="VisionCone" parent="." unique_id=1579632236 instance=ExtResource("5_y5th1")]
+VISION_LENGTH = 500
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=612173839]
 path_desired_distance = 4.0
@@ -58,10 +62,6 @@ one_shot = true
 [node name="LosePlayerTimer" type="Timer" parent="Timers" unique_id=1942636145]
 wait_time = 2.0
 one_shot = true
-
-[node name="Vision" type="RayCast2D" parent="." unique_id=1387813749]
-target_position = Vector2(500, 0)
-collision_mask = 5
 
 [node name="StateMachine" type="Node" parent="." unique_id=1336569729 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_8e3ao")

@@ -4,7 +4,7 @@ class_name EnemyWalking
 
 # node vars
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
-@onready var vision: RayCast2D = $Vision
+@onready var vision: VisionCone = $VisionCone
 @onready var patrol_timer: Timer = $Timers/PatrolTimer
 
 # basic functionality vars
@@ -13,7 +13,6 @@ class_name EnemyWalking
 var can_attack: bool = false
 
 # vision vars
-@export_range(0, 360, 0.1, "degrees") var fov: float = 90.0
 @export var default_vision_length: int = 500
 var vision_length: Vector2 = Vector2.RIGHT * default_vision_length
 var vision_mult: float = 1.0
@@ -32,15 +31,15 @@ var interest_pos: Vector2
 var sound_position: Vector2
 
 # patrol vars
-@export var patrol_time_min: float = 10.0 ##in seconds
-@export var patrol_time_max: float = 30.0 ##in seconds
+@export var patrol_time_min: float = 10.0 ## in seconds
+@export var patrol_time_max: float = 30.0 ## in seconds
 var patrol: Array
 var patrol_index: int = 0
 
 # player vars
-var player_speed_mult: float = 1.0 ##it is clamped between 1.0 - 2.0
+var player_speed_mult: float = 1.0 ## it is clamped between 1.0 - 2.0
 var player_velocity: float = 0.0
-var awareness_mult: float = 1.0 ##comes from the player via signal (if player is prone -> multip is lower)
+var awareness_mult: float = 1.0 ## comes from the player via signal (if player is prone -> multip is lower)
 
 
 func _ready() -> void:
@@ -50,8 +49,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta):
-	update_vision_length(vision_mult, state_vision_mult)
-	update_vision_cone()
+	vision.vision_multipliers = [vision_mult, state_vision_mult]
 	handle_vision()
 	update_awareness()
 	
@@ -118,24 +116,8 @@ func player_speed_handler(new_velocity_length: float) -> void:
 	player_velocity = new_velocity_length
 	player_speed_mult = player_velocity / Globals.player_max_speed + 1.0
 
-func update_vision_length(new_vision_mult: float, new_state_mult: float) -> void:
-	vision_length = Vector2.RIGHT * default_vision_length * new_vision_mult * new_state_mult
-	vision.target_position = vision_length
-
-
 
 # --- AUX ---
-func update_vision_cone() -> void:
-	# get the global player direction from the enemy in radiants
-	var player_direction = (vision.get_parent().to_local(Globals.player_pos) - vision.position).angle()
-	
-	# clamp the vision cone depending on the FOV (in degrees)
-	if rad_to_deg(player_direction) > fov/2:
-		player_direction = deg_to_rad(fov/2)
-	elif rad_to_deg(player_direction) < -fov/2:
-		player_direction = deg_to_rad(-fov/2)
-	
-	vision.rotation = player_direction
 
 func get_next_patrol_pos() -> void:
 	if patrol_index > patrol.size() - 1:

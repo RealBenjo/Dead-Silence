@@ -40,7 +40,7 @@ position = Vector2(204, -197)
 [node name="Patrol2" type="Node2D" parent="Patrols" parent_id_path=PackedInt32Array(1644519217) index="1" unique_id=252717684]
 
 [node name="Survivor" parent="Objectives" parent_id_path=PackedInt32Array(943139230) index="0" unique_id=1532994513 instance=ExtResource("4_f0o3i")]
-position = Vector2(937, 24)
+position = Vector2(924, 31.99997)
 rotation = -0.2776548
 
 [node name="Survivor2" parent="Objectives" parent_id_path=PackedInt32Array(943139230) index="1" unique_id=2022394918 instance=ExtResource("4_f0o3i")]

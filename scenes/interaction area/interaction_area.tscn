@@ -2,10 +2,5 @@
 
 [ext_resource type="Script" uid="uid://bv3hy4y7nvw2b" path="res://scripts/util/interaction area/InteractionArea.gd" id="1_q4js6"]
 
-[node name="InteractionArea" type="Area2D" unique_id=1729780376]
-collision_layer = 16
-collision_mask = 6
+[node name="InteractionArea" type="Node2D" unique_id=1433995740]
 script = ExtResource("1_q4js6")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
