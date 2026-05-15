@@ -62,6 +62,10 @@ func handle_player_input() -> void:
 	else:
 		velocity = direction * speed
 	
+	if Input.is_action_just_pressed("interact") and Globals.can_player_interact:
+		if Globals.current_target.has_method("interact"):
+			Globals.current_target.interact()
+	
 	velocity_length = velocity.length() 
 	movement_signal.emit(velocity_length)
 

@@ -141,6 +141,7 @@
 [ext_resource type="Script" uid="uid://7ablrcin4syt" path="res://scripts/player/Camera.gd" id="133_teg5g"]
 [ext_resource type="PackedScene" uid="uid://tatnt2qw2vbr" path="res://scenes/weapon/weapon.tscn" id="133_vcxk4"]
 [ext_resource type="Resource" uid="uid://c5unp3tfpp1nw" path="res://resources/items/weapons/automatic rifles/samuel_26.tres" id="134_x6bw1"]
+[ext_resource type="PackedScene" uid="uid://dvf6wo7hq4v21" path="res://scenes/interaction area/interaction_area.tscn" id="135_mtkxs"]
 [ext_resource type="Script" uid="uid://btss1wgo5kjyu" path="res://scripts/helpers/helpers/SoundEmitter.gd" id="136_e1bru"]
 [ext_resource type="Script" uid="uid://c1q3noi0jkfmy" path="res://scripts/ui/ui/UI.gd" id="141_nssm8"]
 [ext_resource type="PackedScene" uid="uid://ccv8c315d7v1j" path="res://scenes/menus/selection wheel/selection_wheel.tscn" id="142_ei0bd"]
@@ -272,6 +273,116 @@ animations = [{
 }],
 "loop": true,
 "name": &"c_crouching",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ej2d6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fvjb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bysbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2wy34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ymths")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3p0jd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7nf13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0y4ya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_s050l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4sw5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_s4k4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vkc6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_21yht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_trum3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_4b1ex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_v8cnd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_wuxn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_46q5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_5miun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_7u1tp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_pq1ih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_31ki0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_hf5gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_avmva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_0ioy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_vlhku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_ws0t6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_i6ap2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_88c1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_hdu4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_0wr6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_p0anf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_lhgc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_vy876")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_0vtlm")
+}],
+"loop": true,
+"name": &"holding",
 "speed": 30.0
 }, {
 "frames": [{
@@ -581,6 +692,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_gqjuk"]
 radius = 35.014282
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pxyg8"]
+radius = 86.05231
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4w6o"]
 region = Rect2(13, 11.5, 55, 53)
 script = ExtResource("143_wwa77")
@@ -597,6 +711,7 @@ resource = ExtResource("145_ei0bd")
 metadata/_custom_type_script = "uid://kji4xvn8jm0r"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ouxo3"]
+region = Rect2(43, 55.5, 20, 16)
 script = ExtResource("143_wwa77")
 option_name = "samuel 26"
 icon = ExtResource("146_wwa77")
@@ -618,12 +733,16 @@ script = ExtResource("1_1kbk7")
 rotation = 1.5707964
 scale = Vector2(0.342969, 0.34296897)
 sprite_frames = SubResource("SpriteFrames_pwfqx")
-animation = &"aiming"
+animation = &"holding"
 autoplay = "s_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=459724363]
-visible = false
 shape = SubResource("CircleShape2D_gqjuk")
+
+[node name="InteractionArea" parent="." unique_id=1729780376 instance=ExtResource("135_mtkxs")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1272325981]
+shape = SubResource("CircleShape2D_pxyg8")
 
 [node name="Weapon" parent="." unique_id=605882360 instance=ExtResource("133_vcxk4")]
 position = Vector2(39.999996, 29.999998)

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ba5sduufhjqin" path="res://scenes/levels/level.tscn" id="1_2s4ok"]
 [ext_resource type="Script" uid="uid://ddkugsqjkium3" path="res://scripts/levels/Outside.gd" id="2_qwwmc"]
 [ext_resource type="Texture2D" uid="uid://c5qha4o56yvha" path="res://graphics/player/bullet.png" id="3_qwwmc"]
+[ext_resource type="PackedScene" uid="uid://ijgi62tcxwpi" path="res://scenes/survivor/survivor.tscn" id="4_f0o3i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0o3i"]
 size = Vector2(66, 846)
@@ -38,8 +39,13 @@ position = Vector2(204, -197)
 
 [node name="Patrol2" type="Node2D" parent="Patrols" parent_id_path=PackedInt32Array(1644519217) index="1" unique_id=252717684]
 
-[node name="NavigationRegion2D" parent="." index="7" unique_id=763197410]
-visible = true
+[node name="Survivor" parent="Objectives" parent_id_path=PackedInt32Array(943139230) index="0" unique_id=1532994513 instance=ExtResource("4_f0o3i")]
+position = Vector2(937, 24)
+rotation = -0.2776548
 
-[node name="Player" parent="." index="8" unique_id=964630265]
+[node name="Survivor2" parent="Objectives" parent_id_path=PackedInt32Array(943139230) index="1" unique_id=2022394918 instance=ExtResource("4_f0o3i")]
+position = Vector2(1060, -33)
+rotation = 1.707547
+
+[node name="Player" parent="." index="9" unique_id=964630265]
 position = Vector2(622, 372)

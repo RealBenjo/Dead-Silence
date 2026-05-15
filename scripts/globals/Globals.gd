@@ -4,6 +4,8 @@ signal weapon_changed(new_weapon: WeaponStats)
 
 var player_max_speed: float
 var player_pos: Vector2
+var can_player_interact := false
+var current_target: Node2D
 
 var player_weapon: WeaponStats:
 	set(value):

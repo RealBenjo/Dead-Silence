@@ -1,8 +1,11 @@
-res://resources/items/weapons/snipers/
-res://scenes/game controller/
+res://scripts/util/interactibles/
+res://scripts/util/interaction area/
+res://scenes/interaction area/
+res://scenes/survivor/
+res://scenes/weapon/
 res://scripts/game controller/
+res://scenes/game controller/
 res://scripts/globals/
-res://scripts/menus/loading screen/
 res://scripts/ui/main menu/
 res://resources/items/weapons/shotguns/
 res://resources/items/weapons/automatic rifles/
