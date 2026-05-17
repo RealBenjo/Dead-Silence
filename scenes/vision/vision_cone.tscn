@@ -4,5 +4,6 @@
 
 [node name="VisionCone" type="RayCast2D" unique_id=1579632236]
 target_position = Vector2(100, 0)
-collision_mask = 5
+collision_mask = 23
+collide_with_areas = true
 script = ExtResource("1_f4vkn")

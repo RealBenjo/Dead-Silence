@@ -10,6 +10,7 @@ signal state_change_signal(vis_length: int, awareness_mult: float)
 @onready var move_sound_timer: Timer = $Timers/MoveSoundTimer
 @onready var sound_emitter: SoundEmitter = $SoundEmitter
 @onready var weapon: Weapon = $Weapon
+@onready var carry_pos: Node2D = $CarryPosition
 
 # sound vars
 var can_emit_move_sound := true
@@ -64,7 +65,7 @@ func handle_player_input() -> void:
 	
 	if Input.is_action_just_pressed("interact") and Globals.can_player_interact:
 		if Globals.current_target.has_method("interact"):
-			Globals.current_target.interact()
+			Globals.current_target.interact(carry_pos)
 	
 	velocity_length = velocity.length() 
 	movement_signal.emit(velocity_length)

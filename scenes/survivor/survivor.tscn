@@ -205,6 +205,7 @@
 [ext_resource type="Texture2D" uid="uid://c666jja2jyrgw" path="res://graphics/zombie/animations/idle/0118.png" id="118_ttnn6"]
 [ext_resource type="Texture2D" uid="uid://br33v33ljd7pg" path="res://graphics/zombie/animations/idle/0119.png" id="119_jwywh"]
 [ext_resource type="Texture2D" uid="uid://qn847my6ghrp" path="res://graphics/zombie/animations/idle/0120.png" id="120_x60qb"]
+[ext_resource type="PackedScene" uid="uid://duvy5yg7cd0ip" path="res://scenes/interaction/area/interaction_area.tscn" id="206_hppev"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nnjrx"]
 animations = [{
@@ -845,7 +846,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_xt6p7"]
 radius = 40.04997
 
-[node name="Survivor" type="StaticBody2D" unique_id=2022394918 groups=["Interactible", "Objective"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8sr4"]
+radius = 47.0
+
+[node name="Survivor" type="StaticBody2D" unique_id=2022394918 groups=["Objective"]]
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_2cg5e")
@@ -858,3 +862,10 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1021022044]
 shape = SubResource("CircleShape2D_xt6p7")
+
+[node name="InteractionArea" parent="." unique_id=620954991 instance=ExtResource("206_hppev")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1739749567]
+shape = SubResource("CircleShape2D_u8sr4")
+
+[connection signal="interacted" from="InteractionArea" to="." method="_on_interacted"]

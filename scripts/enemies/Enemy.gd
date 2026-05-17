@@ -4,7 +4,6 @@ class_name EnemyWalking
 
 # node vars
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
-@onready var vision: VisionCone = $VisionCone
 @onready var patrol_timer: Timer = $Timers/PatrolTimer
 
 # basic functionality vars
@@ -13,6 +12,7 @@ class_name EnemyWalking
 var can_attack: bool = false
 
 # vision vars
+@onready var vision: VisionCone = $VisionCone
 @export var default_vision_length: int = 500
 var vision_length: Vector2 = Vector2.RIGHT * default_vision_length
 var vision_mult: float = 1.0
@@ -50,7 +50,6 @@ func _ready() -> void:
 
 func _physics_process(_delta):
 	vision.vision_multipliers = [vision_mult, state_vision_mult]
-	handle_vision()
 	update_awareness()
 	
 	# if an enemy is not pathfinding anymore, don't go further than this if statement
@@ -71,19 +70,6 @@ func _physics_process(_delta):
 	# smooth rotation for ALL states
 	if dir.length() > 0.1:
 		rotation = lerp_angle(rotation, dir.angle(), 0.1)
-
-
-
-# --- VISION HANDLING ---
-func handle_vision() -> void:
-	if vision.is_colliding():
-		var collider = vision.get_collider()
-		if collider.is_in_group("Player"):
-			player_seen = true
-		else:
-			player_seen = false
-	else:
-		player_seen = false
 
 
 # --- AWARENESS LOGIC ---
@@ -153,3 +139,7 @@ func _on_nav_velocity_computed(safe_velocity: Vector2) -> void:
 
 func _on_death() -> void:
 	queue_free()
+
+
+func _on_target_seen(is_seen: bool) -> void:
+	player_seen = is_seen

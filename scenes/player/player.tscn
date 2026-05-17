@@ -141,7 +141,7 @@
 [ext_resource type="Script" uid="uid://7ablrcin4syt" path="res://scripts/player/Camera.gd" id="133_teg5g"]
 [ext_resource type="PackedScene" uid="uid://tatnt2qw2vbr" path="res://scenes/weapon/weapon.tscn" id="133_vcxk4"]
 [ext_resource type="Resource" uid="uid://c5unp3tfpp1nw" path="res://resources/items/weapons/automatic rifles/samuel_26.tres" id="134_x6bw1"]
-[ext_resource type="PackedScene" uid="uid://dvf6wo7hq4v21" path="res://scenes/interaction area/interaction_area.tscn" id="135_mtkxs"]
+[ext_resource type="PackedScene" uid="uid://dvf6wo7hq4v21" path="res://scenes/interaction/range/interaction_range.tscn" id="135_mtkxs"]
 [ext_resource type="Script" uid="uid://btss1wgo5kjyu" path="res://scripts/helpers/helpers/SoundEmitter.gd" id="136_e1bru"]
 [ext_resource type="PackedScene" uid="uid://o7f2eixvstnj" path="res://scenes/vision/vision_cone.tscn" id="136_pxyg8"]
 [ext_resource type="Script" uid="uid://c1q3noi0jkfmy" path="res://scripts/ui/ui/UI.gd" id="141_nssm8"]
@@ -727,6 +727,9 @@ metadata/_custom_type_script = "uid://kji4xvn8jm0r"
 collision_mask = 30
 script = ExtResource("1_1kbk7")
 
+[node name="CarryPosition" type="Node2D" parent="." unique_id=2129577390]
+position = Vector2(-46, 0)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=40980965]
 rotation = 1.5707964
 scale = Vector2(0.342969, 0.34296897)
@@ -737,12 +740,10 @@ autoplay = "s_idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=459724363]
 shape = SubResource("CircleShape2D_gqjuk")
 
-[node name="InteractionArea" parent="." unique_id=1729780376 node_paths=PackedStringArray("vision_cone") instance=ExtResource("135_mtkxs")]
+[node name="InteractionRange" parent="." unique_id=1433995740 node_paths=PackedStringArray("vision_cone") instance=ExtResource("135_mtkxs")]
 vision_cone = NodePath("VisionCone")
 
-[node name="VisionCone" parent="InteractionArea" unique_id=1579632236 instance=ExtResource("136_pxyg8")]
-VISION_LENGTH = 150.0
-target_group = ""
+[node name="VisionCone" parent="InteractionRange" unique_id=1579632236 instance=ExtResource("136_pxyg8")]
 fov = 360.0
 
 [node name="Weapon" parent="." unique_id=605882360 instance=ExtResource("133_vcxk4")]
@@ -801,5 +802,4 @@ segments = 54
 options = Array[ExtResource("143_wwa77")]([SubResource("AtlasTexture_d4w6o"), SubResource("AtlasTexture_mbbpy"), SubResource("AtlasTexture_ouxo3"), SubResource("Resource_xm1em")])
 metadata/_edit_use_anchors_ = true
 
-[connection signal="target_seen" from="InteractionArea/VisionCone" to="InteractionArea" method="_on_vision_cone_target_seen"]
 [connection signal="timeout" from="Timers/MoveSoundTimer" to="." method="_on_move_sound_timer_timeout"]

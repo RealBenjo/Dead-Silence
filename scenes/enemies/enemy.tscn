@@ -88,6 +88,7 @@ enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://xopl505afwk5"
 
 [connection signal="dead" from="HealthComponent" to="." method="_on_death"]
+[connection signal="target_seen" from="VisionCone" to="." method="_on_vision_cone_target_seen"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_nav_velocity_computed"]
 [connection signal="timeout" from="Timers/PatrolTimer" to="StateMachine/Patrolling" method="_on_patrol_timer_timeout"]
 [connection signal="timeout" from="Timers/InvestigationTimer" to="StateMachine/Investigating" method="_on_investigation_timer_timeout"]
