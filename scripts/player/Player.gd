@@ -63,6 +63,7 @@ func handle_player_input() -> void:
 	else:
 		velocity = direction * speed
 	
+	# interaction input
 	if Input.is_action_just_pressed("interact") and Globals.can_player_interact:
 		if Globals.current_target.has_method("interact"):
 			Globals.current_target.interact(carry_pos)

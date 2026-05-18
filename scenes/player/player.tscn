@@ -730,6 +730,12 @@ script = ExtResource("1_1kbk7")
 [node name="CarryPosition" type="Node2D" parent="." unique_id=2129577390]
 position = Vector2(-46, 0)
 
+[node name="InteractionRange" parent="." unique_id=1433995740 node_paths=PackedStringArray("vision_cone") instance=ExtResource("135_mtkxs")]
+vision_cone = NodePath("VisionCone")
+
+[node name="VisionCone" parent="InteractionRange" unique_id=1579632236 instance=ExtResource("136_pxyg8")]
+fov = 360.0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=40980965]
 rotation = 1.5707964
 scale = Vector2(0.342969, 0.34296897)
@@ -739,12 +745,6 @@ autoplay = "s_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=459724363]
 shape = SubResource("CircleShape2D_gqjuk")
-
-[node name="InteractionRange" parent="." unique_id=1433995740 node_paths=PackedStringArray("vision_cone") instance=ExtResource("135_mtkxs")]
-vision_cone = NodePath("VisionCone")
-
-[node name="VisionCone" parent="InteractionRange" unique_id=1579632236 instance=ExtResource("136_pxyg8")]
-fov = 360.0
 
 [node name="Weapon" parent="." unique_id=605882360 instance=ExtResource("133_vcxk4")]
 position = Vector2(39.999996, 29.999998)
@@ -802,4 +802,5 @@ segments = 54
 options = Array[ExtResource("143_wwa77")]([SubResource("AtlasTexture_d4w6o"), SubResource("AtlasTexture_mbbpy"), SubResource("AtlasTexture_ouxo3"), SubResource("Resource_xm1em")])
 metadata/_edit_use_anchors_ = true
 
+[connection signal="target_seen" from="InteractionRange/VisionCone" to="InteractionRange" method="_on_target_seen"]
 [connection signal="timeout" from="Timers/MoveSoundTimer" to="." method="_on_move_sound_timer_timeout"]

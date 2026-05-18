@@ -5,10 +5,9 @@ extends Node2D
 func _ready() -> void:
 	if not vision_cone:
 		push_error("InteractionNode: No VisionCone assigned in the inspector!")
-	
 	vision_cone.target_group = "Interactible"
 
-func _on_vision_cone_target_seen(is_seen: bool) -> void:
+func _on_target_seen(is_seen: bool) -> void:
 	if is_seen:
 		# The VisionCone already verified the collider is the closest target 
 		# and in the correct group, so we can trust it.

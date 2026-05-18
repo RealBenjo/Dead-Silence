@@ -11,6 +11,7 @@ func _ready() -> void:
 
 func _on_interacted(body: Node2D) -> void:
 	is_interacted = not is_interacted
+	print("interacted: ", is_interacted)
 	
 	if is_interacted:
 		# 1. Turn off physical collision safely 
@@ -29,10 +30,7 @@ func _on_interacted(body: Node2D) -> void:
 		collision.set_deferred("disabled", false)
 		animation.play("idle")
 		
-		# --- THE FIX ---
 		# "Blink" the interaction area so the RayCast loses it for exactly a frame.
-		# This forces the VisionCone to reset its state and send a brand new "I see him!" signal!
 		area_collision.set_deferred("disabled", true)
-		await get_tree().physics_frame
 		await get_tree().physics_frame
 		area_collision.set_deferred("disabled", false)

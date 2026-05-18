@@ -12,6 +12,9 @@ var vision_multipliers: Array[float]
 var is_target_seen := false
 var last_state := false 
 
+# --- NEW: Track the actual target node, not just true/false
+var last_collider: Node2D = null 
+
 @onready var internal_fov = deg_to_rad(fov / 2.0)
 
 func _ready() -> void:
@@ -20,21 +23,16 @@ func _ready() -> void:
 	target_position.x = VISION_LENGTH
 
 func _physics_process(_delta: float) -> void:
-	# reset variables
 	vis_length = VISION_LENGTH
 	var closest_target: Node2D = null
-	
-	# CRITICAL: start with INF so we can find targets outside the current ray length
 	var min_dist: float = INF 
 	
-	# find all potential targets
 	var targets = get_tree().get_nodes_in_group(target_group)
 	
 	if targets.is_empty():
-		_update_state(false)
+		_update_state(false, null)
 		return
 	
-	# find the closest target
 	for target in targets:
 		if not target is Node2D: continue
 		var distance = global_position.distance_to(target.global_position)
@@ -42,37 +40,39 @@ func _physics_process(_delta: float) -> void:
 			min_dist = distance
 			closest_target = target
 	
-	# rotate the cone to face the target if it exists
 	if closest_target:
 		_rotate_cone_to_target(closest_target)
 	
-	# handle multipliers if there even are any
 	for multiplier in vision_multipliers:
 		vis_length *= multiplier
 	target_position.x = vis_length
 	
-	# We see it if: we are colliding AND the collider is the target AND it's within range
+	force_raycast_update()
+	
 	var seeing_now = false
-	if is_colliding() and get_collider() == closest_target and min_dist <= vis_length:
+	var current_collider: Node2D = null
+	
+	if is_colliding() and get_collider() == closest_target:
 		seeing_now = true
+		# --- NEW: Grab the specific node we are looking at right now
+		current_collider = get_collider() 
 		
-	_update_state(seeing_now)
+	# --- NEW: Pass both the true/false state AND the node we hit
+	_update_state(seeing_now, current_collider)
 
 func _rotate_cone_to_target(target: Node2D) -> void:
 	var angle_to_target = (target.global_position - global_position).angle()
-	
-	# Get the relative angle based on the parent's rotation
 	var parent_rot = get_parent().global_rotation
 	var relative_angle = wrapf(angle_to_target - parent_rot, -PI, PI)
-	
-	# Clamp to FOV
 	relative_angle = clamp(relative_angle, -internal_fov, internal_fov)
-	
-	# Apply to local rotation
 	rotation = relative_angle
 
-func _update_state(new_state: bool) -> void:
-	is_target_seen = new_state
-	if is_target_seen != last_state:
+# --- UPDATED: Fire the signal if the boolean changes OR if the target node switches
+func _update_state(new_state: bool, new_collider: Node2D) -> void:
+	if new_state != last_state or new_collider != last_collider:
+		is_target_seen = new_state
+		last_state = new_state
+		last_collider = new_collider
+		
+		# This forces the InteractionNode to run its code and grab the new get_collider()
 		target_seen.emit(is_target_seen)
-		last_state = is_target_seen

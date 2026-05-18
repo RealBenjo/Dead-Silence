@@ -23,7 +23,6 @@ config/icon="res://icon.svg"
 
 Globals="*res://scripts/globals/Globals.gd"
 Items="*uid://d0mw8p2wpepb6"
-GameManager="*uid://dlne6ppwgby3f"
 SceneManager="*uid://xg0fvxjo05cf"
 
 [file_customization]
