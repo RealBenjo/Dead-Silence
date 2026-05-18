@@ -23,6 +23,8 @@ script = ExtResource("1_377w7")
 
 [node name="Objectives" type="Node2D" parent="." unique_id=943139230]
 
+[node name="MissionEnds" type="Node2D" parent="." unique_id=1622628601]
+
 [node name="Sounds" type="Node2D" parent="." unique_id=345583979]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=763197410]

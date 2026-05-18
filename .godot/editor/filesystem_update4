@@ -9,3 +9,7 @@ res://scripts/util/vision/VisionCone.gd
 res://scenes/vision/vision_cone.tscn
 res://scripts/player/Player.gd
 res://scripts/globals/Globals.gd
+res://scripts/mission end/MissionEnd.gd
+res://scenes/mission end/mission_end.tscn
+res://scenes/levels/level.tscn
+res://scenes/levels/outside.tscn

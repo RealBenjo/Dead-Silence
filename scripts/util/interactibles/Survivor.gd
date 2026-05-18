@@ -9,9 +9,8 @@ var is_interacted := false ## Tracks if currently being carried
 func _ready() -> void:
 	animation.play("idle")
 
-func _on_interacted(body: Node2D) -> void:
+func _on_interacted(body: Node2D) -> void:	
 	is_interacted = not is_interacted
-	print("interacted: ", is_interacted)
 	
 	if is_interacted:
 		# 1. Turn off physical collision safely 
@@ -24,8 +23,7 @@ func _on_interacted(body: Node2D) -> void:
 		
 	else:
 		# 3. Drop back into the level map
-		var level_map = get_tree().current_scene
-		reparent(level_map, true)
+		reparent_to_map()
 		
 		collision.set_deferred("disabled", false)
 		animation.play("idle")
@@ -34,3 +32,7 @@ func _on_interacted(body: Node2D) -> void:
 		area_collision.set_deferred("disabled", true)
 		await get_tree().physics_frame
 		area_collision.set_deferred("disabled", false)
+
+func reparent_to_map() -> void:
+	var level_map = get_tree().current_scene
+	reparent(level_map, true)

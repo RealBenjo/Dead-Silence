@@ -4,9 +4,13 @@
 [ext_resource type="Script" uid="uid://ddkugsqjkium3" path="res://scripts/levels/Outside.gd" id="2_qwwmc"]
 [ext_resource type="Texture2D" uid="uid://c5qha4o56yvha" path="res://graphics/player/bullet.png" id="3_qwwmc"]
 [ext_resource type="PackedScene" uid="uid://ijgi62tcxwpi" path="res://scenes/survivor/survivor.tscn" id="4_f0o3i"]
+[ext_resource type="PackedScene" uid="uid://d0h5ejfppwrjc" path="res://scenes/mission end/mission_end.tscn" id="5_c0id2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0o3i"]
 size = Vector2(66, 846)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_016hp"]
+size = Vector2(378, 700)
 
 [node name="Level" unique_id=1004224708 instance=ExtResource("1_2s4ok")]
 script = ExtResource("2_qwwmc")
@@ -39,13 +43,18 @@ position = Vector2(204, -197)
 
 [node name="Patrol2" type="Node2D" parent="Patrols" parent_id_path=PackedInt32Array(1644519217) index="1" unique_id=252717684]
 
-[node name="Survivor" parent="Objectives" parent_id_path=PackedInt32Array(943139230) index="0" unique_id=1532994513 instance=ExtResource("4_f0o3i")]
-position = Vector2(974, 36.000046)
-rotation = -0.2776548
-
-[node name="Survivor2" parent="Objectives" parent_id_path=PackedInt32Array(943139230) index="1" unique_id=2022394918 instance=ExtResource("4_f0o3i")]
-position = Vector2(728.9999, 263)
+[node name="Survivor2" parent="Objectives" parent_id_path=PackedInt32Array(943139230) index="0" unique_id=2022394918 instance=ExtResource("4_f0o3i")]
+position = Vector2(1196.0001, 225)
 rotation = 1.707547
 
-[node name="Player" parent="." index="9" unique_id=964630265]
+[node name="Survivor" parent="Objectives" parent_id_path=PackedInt32Array(943139230) index="1" unique_id=1440120259 instance=ExtResource("4_f0o3i")]
+position = Vector2(999, 387)
+
+[node name="MissionEnd" parent="MissionEnds" parent_id_path=PackedInt32Array(1622628601) index="0" unique_id=1348854573 instance=ExtResource("5_c0id2")]
+position = Vector2(1483, 365)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MissionEnds/MissionEnd" index="0" unique_id=2092085359]
+shape = SubResource("RectangleShape2D_016hp")
+
+[node name="Player" parent="." index="10" unique_id=964630265]
 position = Vector2(622, 372)
