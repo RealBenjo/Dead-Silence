@@ -14,7 +14,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and Globals.current_target and Globals.current_target.parent_node.is_in_group("Objective"):
 		deliver_objective(Globals.current_target.parent_node)
 
-func deliver_objective(survivor: Node2D) -> void:
+func deliver_objective(_survivor: Node2D) -> void:
 	# 3. Add to our score
 	objectives_delivered += 1
 	

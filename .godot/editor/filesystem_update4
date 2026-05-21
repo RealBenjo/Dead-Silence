@@ -1,15 +1,2 @@
-res://scenes/interaction/area/interaction_area.tscn
-res://scripts/util/interaction/range/InteractionRange.gd
-res://scenes/player/player.tscn
-res://scenes/interaction/range/interaction_range.tscn
-res://scripts/util/interaction/area/InteractionArea.gd
-res://scripts/util/interactibles/Survivor.gd
-res://scenes/survivor/survivor.tscn
-res://scripts/util/vision/VisionCone.gd
-res://scenes/vision/vision_cone.tscn
-res://scripts/player/Player.gd
-res://scripts/globals/Globals.gd
-res://scripts/mission end/MissionEnd.gd
-res://scenes/mission end/mission_end.tscn
-res://scenes/levels/level.tscn
 res://scenes/levels/outside.tscn
+res://scripts/mission end/MissionEnd.gd
