@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://ijgi62tcxwpi"]
 
-[ext_resource type="Script" uid="uid://ch8as2edm64po" path="res://scripts/util/interactibles/Survivor.gd" id="1_2cg5e"]
 [ext_resource type="Texture2D" uid="uid://1n7lyik2n0va" path="res://graphics/zombie/animations/idle/0001.png" id="1_hb76h"]
 [ext_resource type="Texture2D" uid="uid://c3gjbg6kpn6dl" path="res://graphics/zombie/animations/idle/0002.png" id="2_cc3jl"]
 [ext_resource type="Texture2D" uid="uid://c5lg2y84muawx" path="res://graphics/zombie/animations/idle/0010.png" id="2_mla4r"]
@@ -205,7 +204,7 @@
 [ext_resource type="Texture2D" uid="uid://c666jja2jyrgw" path="res://graphics/zombie/animations/idle/0118.png" id="118_ttnn6"]
 [ext_resource type="Texture2D" uid="uid://br33v33ljd7pg" path="res://graphics/zombie/animations/idle/0119.png" id="119_jwywh"]
 [ext_resource type="Texture2D" uid="uid://qn847my6ghrp" path="res://graphics/zombie/animations/idle/0120.png" id="120_x60qb"]
-[ext_resource type="PackedScene" uid="uid://duvy5yg7cd0ip" path="res://scenes/interaction/area/interaction_area.tscn" id="206_hppev"]
+[ext_resource type="PackedScene" uid="uid://cwqch6h3hlr2f" path="res://scenes/objectives/objective.tscn" id="205_2cg5e"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nnjrx"]
 animations = [{
@@ -843,16 +842,10 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xt6p7"]
-radius = 40.04997
+[sub_resource type="CircleShape2D" id="CircleShape2D_2cg5e"]
+radius = 42.0119
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_u8sr4"]
-radius = 47.0
-
-[node name="Survivor" type="StaticBody2D" unique_id=1440120259 groups=["Objective"]]
-collision_layer = 4
-collision_mask = 11
-script = ExtResource("1_2cg5e")
+[node name="Survivor" type="Node2D" unique_id=1173040250 groups=["Objective"]]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1971146389]
 rotation = 1.5707964
@@ -860,13 +853,9 @@ scale = Vector2(0.39248955, 0.39248955)
 sprite_frames = SubResource("SpriteFrames_nnjrx")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1021022044]
-shape = SubResource("CircleShape2D_xt6p7")
+[node name="Objective" parent="." unique_id=3433317 node_paths=PackedStringArray("objective_collision", "parent") instance=ExtResource("205_2cg5e")]
+objective_collision = NodePath("CollisionShape2D")
+parent = NodePath("..")
 
-[node name="InteractionArea" parent="." unique_id=620954991 node_paths=PackedStringArray("parent_node") instance=ExtResource("206_hppev")]
-parent_node = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1739749567]
-shape = SubResource("CircleShape2D_u8sr4")
-
-[connection signal="interacted" from="InteractionArea" to="." method="_on_interacted"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objective" unique_id=1474767799]
+shape = SubResource("CircleShape2D_2cg5e")

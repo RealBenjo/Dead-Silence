@@ -11,6 +11,7 @@ signal state_change_signal(vis_length: int, awareness_mult: float)
 @onready var sound_emitter: SoundEmitter = $SoundEmitter
 @onready var weapon: Weapon = $Weapon
 @onready var carry_pos: Node2D = $CarryPosition
+@onready var vision: VisionCone = $VisionCone
 
 # sound vars
 var can_emit_move_sound := true
@@ -114,6 +115,17 @@ func handle_move_sound() -> void:
 		move_sound_timer.start()
 	elif velocity == Vector2.ZERO:
 		can_emit_move_sound = true
+
+func _on_target_seen(is_seen: bool) -> void:
+	if is_seen:
+		# The VisionCone already verified the collider is the closest target 
+		# and in the correct group, so we can trust it.
+		Globals.current_target = vision.get_collider()
+		Globals.can_player_interact = true
+	else:
+		# Sight lost, clear the interaction state
+		Globals.current_target = null
+		Globals.can_player_interact = false
 
 func stance_update() -> void:
 	speed = MAX_SPEED * speed_mult

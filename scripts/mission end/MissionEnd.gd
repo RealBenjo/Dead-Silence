@@ -10,18 +10,17 @@ func _ready() -> void:
 	print("Total objectives to rescue: ", total_objectives)
 
 func _on_body_entered(body: Node2D) -> void:
+	print(Globals.current_target)
 	# 2. Check if player enters AND has a target with the objective group
 	if body.is_in_group("Player") and Globals.current_target and Globals.current_target.parent_node.is_in_group("Objective"):
-		deliver_objective(Globals.current_target.parent_node)
+		deliver_objective()
 
-func deliver_objective(survivor: Node2D) -> void:
+func deliver_objective() -> void:
 	# 3. Add to our score
 	objectives_delivered += 1
 	
-	# 5. Remove the survivor from the game (they are saved!)
-	if Globals.current_target.parent_node.has_method("reparent_to_map"):
-		Globals.current_target.parent_node.reparent_to_map()
-		Globals.current_target.remove_from_group("Interactible")
+	# complete the objective or sum
+	complete_obj()
 	
 	# 4. Clean the player's hands so they can grab the next guy
 	Globals.current_target = null
@@ -31,3 +30,9 @@ func deliver_objective(survivor: Node2D) -> void:
 	if objectives_delivered >= total_objectives:
 		print("you win :)")
 		# Trigger your level transition, win screen, or next sequence here!
+
+
+func complete_obj() -> void:
+	if Globals.current_target.parent_node.has_method("drop_off"):
+		Globals.current_target.parent_node.drop_off()
+		Globals.current_target.remove_from_group("Interactible")

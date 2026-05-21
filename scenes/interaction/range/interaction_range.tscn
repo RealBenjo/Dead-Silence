@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://dvf6wo7hq4v21"]
-
-[ext_resource type="Script" uid="uid://c81dd5dqscbxo" path="res://scripts/util/interaction/range/InteractionRange.gd" id="1_nxtjs"]
-
-
-[node name="InteractionRange" type="Node2D" unique_id=1433995740]
-script = ExtResource("1_nxtjs")

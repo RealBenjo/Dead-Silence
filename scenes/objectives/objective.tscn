@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cwqch6h3hlr2f"]
+
+[ext_resource type="PackedScene" uid="uid://duvy5yg7cd0ip" path="res://scenes/interaction/area/interaction_area.tscn" id="1_7k2ag"]
+[ext_resource type="Script" uid="uid://be87v7vd6yrjy" path="res://scripts/objectives/Objective.gd" id="1_wh3gt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wh3gt"]
+radius = 0.01
+
+[node name="Objective" type="StaticBody2D" unique_id=3433317 groups=["Objective"]]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_wh3gt")
+
+[node name="InteractionArea" parent="." unique_id=620954991 node_paths=PackedStringArray("parent_node") instance=ExtResource("1_7k2ag")]
+parent_node = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1588004201]
+shape = SubResource("CircleShape2D_wh3gt")
+
+[connection signal="interacted" from="InteractionArea" to="." method="_on_interacted"]
