@@ -31,6 +31,7 @@ var interest_pos: Vector2
 var sound_position: Vector2
 
 # patrol vars
+@export_group("Timers")
 @export var patrol_time_min: float = 10.0 ## in seconds
 @export var patrol_time_max: float = 30.0 ## in seconds
 var patrol: Array
@@ -46,6 +47,9 @@ func _ready() -> void:
 	# the nav agent REALLY needs to know the max_speed for avoidance!
 	nav.max_speed = speed
 	get_next_patrol_pos()
+	
+	# set the vision length :)
+	vision.VISION_LENGTH = default_vision_length
 
 
 func _physics_process(_delta):
@@ -86,7 +90,6 @@ func update_awareness() -> void:
 		# gradual linear decay
 		awareness -= 4
 		awareness = clamp(awareness, 0.0, max_awareness) # awareness can only be between 0 and max_awareness
-	
 	
 	#print(awareness)
 

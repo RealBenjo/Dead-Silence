@@ -6,4 +6,5 @@ The avoidance for enemy pathfinding is made by @queblegamedevelopment4143 on You
 The state machine for enemy AI is made by @Bitlytic on Youtube <br>
 The item system and inventory is made by @Bitlytic on Youtube <br>
 The selection wheel (UI element) is made by @squadron_studio on Youtube <br>
-The firearms are made by PostApContent on Turbosquid
+The firearms are made by PostApContent on Turbosquid <br>
+The scene manager script is made by @baconandgames on Youtube

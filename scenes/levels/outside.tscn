@@ -48,7 +48,7 @@ position = Vector2(1196.0001, 225)
 rotation = 1.707547
 
 [node name="Survivor" parent="Objectives" parent_id_path=PackedInt32Array(943139230) index="1" unique_id=1440120259 instance=ExtResource("4_f0o3i")]
-position = Vector2(999, 387)
+position = Vector2(713, 241)
 
 [node name="MissionEnd" parent="MissionEnds" parent_id_path=PackedInt32Array(1622628601) index="0" unique_id=1348854573 instance=ExtResource("5_c0id2")]
 position = Vector2(1483, 365)

@@ -976,9 +976,6 @@ shape = SubResource("CircleShape2D_a0lpg")
 position = Vector2(53.5, 0)
 shape = SubResource("RectangleShape2D_rdvt3")
 
-[node name="VisionCone" parent="." index="5" unique_id=1579632236]
-VISION_LENGTH = 1000
-
 [node name="PathFindTimer" type="Timer" parent="Timers" parent_id_path=PackedInt32Array(1620055020) index="0" unique_id=1803485712]
 wait_time = 0.3
 autostart = true

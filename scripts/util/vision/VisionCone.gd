@@ -1,7 +1,7 @@
 extends RayCast2D
 class_name VisionCone
 
-signal target_seen(is_seen: bool)
+signal target_seen(is_seen: bool) ## emits true if any target is seen
 
 @export var VISION_LENGTH := 100.0
 @export var target_group: String = "Player"
@@ -61,11 +61,11 @@ func _physics_process(_delta: float) -> void:
 	_update_state(seeing_now, current_collider)
 
 func _rotate_cone_to_target(target: Node2D) -> void:
-	var angle_to_target = (target.global_position - global_position).angle()
-	var parent_rot = get_parent().global_rotation
-	var relative_angle = wrapf(angle_to_target - parent_rot, -PI, PI)
-	relative_angle = clamp(relative_angle, -internal_fov, internal_fov)
-	rotation = relative_angle
+	# rotate to desired position
+	look_at(target.global_position)
+	
+	# clamps the rotation the the desired range
+	rotation = clamp(rotation, -internal_fov, internal_fov)
 
 # --- UPDATED: Fire the signal if the boolean changes OR if the target node switches
 func _update_state(new_state: bool, new_collider: Node2D) -> void:

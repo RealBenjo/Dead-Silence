@@ -1,2 +1,12 @@
-res://scenes/levels/outside.tscn
+res://scenes/objective/objective.tscn
+res://scripts/objective/Objective.gd
+res://scenes/survivor/survivor.tscn
+res://scripts/util/vision/VisionCone.gd
+res://scripts/enemies/Enemy.gd
+res://scenes/enemies/enemy.tscn
+res://scenes/mission end/mission_end.tscn
 res://scripts/mission end/MissionEnd.gd
+res://scenes/levels/outside.tscn
+res://scripts/globals/Globals.gd
+res://scenes/enemies/zombie.tscn
+res://scenes/gui/notifications/notification.tscn

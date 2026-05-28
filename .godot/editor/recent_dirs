@@ -1,6 +1,8 @@
+res://scenes/gui/notifications/
+res://scripts/objective/
+res://scenes/objective/
 res://scenes/mission end/
 res://scripts/mission end/
-res://scripts/util/interaction/range/
 res://scripts/globals/
 res://scripts/util/interactibles/
 res://scenes/survivor/
