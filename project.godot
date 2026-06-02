@@ -25,6 +25,10 @@ Globals="*res://scripts/globals/Globals.gd"
 Items="*uid://d0mw8p2wpepb6"
 SceneManager="*uid://xg0fvxjo05cf"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [file_customization]
 
 folder_colors={
@@ -172,9 +176,15 @@ interact={
 2d_physics/layer_4="Projectiles"
 2d_physics/layer_5="Items & Zones"
 
+[physics]
+
+common/physics_ticks_per_second=45
+2d/physics_engine="Rapier2D"
+
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/default_filters/anisotropic_filtering_level=4
 anti_aliasing/quality/msaa_2d=2
 anti_aliasing/screen_space_roughness_limiter/enabled=false
 anti_aliasing/quality/screen_space_aa=2

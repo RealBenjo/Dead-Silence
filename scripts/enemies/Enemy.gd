@@ -81,9 +81,9 @@ func update_awareness() -> void:
 	if player_seen:
 		# 50 is so the distance is never negative (player's hitbox size matters)
 		# 250 is just so it is not as extreme and we can manage it easier with the multipliers
-		var distance := ( vision_length.x + 50 - global_position.distance_to(Globals.player_pos) ) / 250
+		var distance := ( vision.vis_length + 50 - global_position.distance_to(Globals.player_pos) ) / 250
 		
-		awareness += distance * awareness_mult * player_speed_mult
+		awareness += distance * Globals.enemy.awareness_mult * player_speed_mult
 		awareness = clamp(awareness, 0.0, max_awareness)
 		
 	else:
@@ -96,8 +96,7 @@ func update_awareness() -> void:
 
 # --- PLAYER STATE CHANGES HANDLING ---
 ##the player tells the enemy the new player dependent multiplier
-func player_state_handler(vis_mult: float, aware_mult: float) -> void:
-	vision_mult = vis_mult
+func player_state_handler(_vis_mult: float, aware_mult: float) -> void:
 	awareness_mult = aware_mult
 
 ##the player tells the enemy it's new speed

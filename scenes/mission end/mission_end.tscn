@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c0kjg22a5lmuk" path="res://scripts/mission end/MissionEnd.gd" id="1_y8ude"]
 
 [node name="MissionEnd" type="Area2D" unique_id=1348854573]
+collision_layer = 16
 script = ExtResource("1_y8ude")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

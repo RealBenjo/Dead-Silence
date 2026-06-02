@@ -1,8 +1,6 @@
 extends CharacterBody2D
 class_name Player
 
-signal movement_signal(current_speed: float)
-signal state_change_signal(vis_length: int, awareness_mult: float)
 
 @onready var bullet: PackedScene = preload("res://scenes/player/bullet.tscn")
 @onready var player_animation: AnimatedSprite2D = $AnimatedSprite2D
@@ -17,7 +15,6 @@ var can_emit_move_sound := true
 
 # stance vars
 var current_stance: Node # Assuming this holds your stance node
-var velocity_length: float 
 var rotation_speed := 10.0 
 var rotation_mult := 1.0
 
@@ -33,9 +30,16 @@ const MAX_SPEED := 300.0
 var speed := MAX_SPEED
 var weapon_zoom := 2.5
 
+var cur_speed := 0.0
+
 
 func _ready() -> void:
 	Globals.player_max_speed = MAX_SPEED
+	
+	# when player is loaded into a scene it checks if there is a 
+	# weapon already selected. if it is it equips that weapon
+	if Globals.player_weapon:
+		weapon.stats = Globals.player_weapon
 
 func _process(delta: float) -> void:
 	handle_player_input()
@@ -45,9 +49,16 @@ func _process(delta: float) -> void:
 	
 	# rotate player
 	if velocity != Vector2.ZERO and not weapon.is_aimed:
+		# interpolates between 2 angles in radians with a weigth ("speed" if you will)
 		rotation = lerp_angle(rotation, velocity.angle(), rotation_speed * rotation_mult * delta)
 	
+	# keep player position up to date
 	Globals.player_pos = global_position
+	# keep player speed up to date
+	cur_speed = velocity.length()
+	Globals.player_cur_speed = cur_speed
+
+
 
 func handle_player_input() -> void:
 	# UI Input
@@ -56,20 +67,19 @@ func handle_player_input() -> void:
 	elif Input.is_action_just_released("tool_select"):
 		camera.is_wheel_open = false
 	
-	# Movement Input
+	# movement input
 	direction = Input.get_vector("left", "right", "up", "down")
 	if weapon.is_aimed:
 		velocity = direction * MAX_AIM_SPEED
 	else:
 		velocity = direction * speed
 	
-	# interaction input
-	if Input.is_action_just_pressed("interact") and Globals.can_player_interact:
-		if Globals.current_target.has_method("interact"):
-			Globals.current_target.interact(carry_pos)
-	
-	velocity_length = velocity.length() 
-	movement_signal.emit(velocity_length)
+	# if player click the interact button and it has an actual
+	# interaction target, then interact with the target
+	if Input.is_action_just_pressed("interact") and Globals.current_target:
+		Globals.current_target.interact(carry_pos)
+
+
 
 # --- NEW: Dedicated Animation Manager ---
 func update_animations() -> void:
@@ -84,10 +94,9 @@ func update_animations() -> void:
 			
 		# Optional: You might want the player to face the mouse while aiming
 		rotation = lerp_angle(rotation, (get_global_mouse_position() - global_position).angle(), 0.5)
-		return # Stop here so walking animations don't override aiming
 		
 	# Priority 2: Moving
-	if velocity != Vector2.ZERO:
+	elif  cur_speed != 0.0:
 		# Normalize the animation speed based on input amount
 		player_animation.speed_scale = direction.length() 
 		
@@ -99,7 +108,6 @@ func update_animations() -> void:
 		handle_stance_anims()
 		
 		player_animation.pause()
-		# You could also play an idle animation here later instead of pausing
 
 func handle_stance_anims() -> void:
 	match current_stance.name:
@@ -108,16 +116,26 @@ func handle_stance_anims() -> void:
 		"Prone": player_animation.play("p_prone")
 
 func handle_move_sound() -> void:
-	if velocity != Vector2.ZERO and can_emit_move_sound:
-		can_emit_move_sound = false
-		sound_emitter.create_sound(global_position, velocity_length)
-		move_sound_timer.start()
-	elif velocity == Vector2.ZERO:
+	# if player isn't moving
+	if cur_speed <= 0.0:
+		move_sound_timer.stop()
 		can_emit_move_sound = true
+	
+	# if player is moving and can emit move sound
+	elif can_emit_move_sound:
+		sound_emitter.create_sound(global_position, Globals.player_cur_speed)
+		move_sound_timer.start()
+		can_emit_move_sound = false
 
+## stance_update() runs only through the state machine, not
+## through the player script itself
 func stance_update() -> void:
 	speed = MAX_SPEED * speed_mult
-	state_change_signal.emit(vision_mult, awareness_mult)
+	
+	# the enemy multipliers are placed in a dictionary for the
+	# enemies to access
+	Globals.enemy.vision_mult = vision_mult
+	Globals.enemy.awareness_mult = awareness_mult
 
 func _on_move_sound_timer_timeout() -> void:
 	can_emit_move_sound = true

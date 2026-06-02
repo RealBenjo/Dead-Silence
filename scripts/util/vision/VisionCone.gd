@@ -64,6 +64,9 @@ func _rotate_cone_to_target(target: Node2D) -> void:
 	# rotate to desired position
 	look_at(target.global_position)
 	
+	if fov >= 360:
+		return
+	
 	# clamps the rotation the the desired range
 	rotation = clamp(rotation, -internal_fov, internal_fov)
 

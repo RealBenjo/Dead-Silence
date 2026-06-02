@@ -9,6 +9,7 @@ var bullet_scene: PackedScene = preload("res://scenes/player/bullet.tscn")
 @onready var reload_timer: Timer = $ReloadTimer
 @onready var muzzle: Marker2D = $Muzzle
 @onready var weapon_sprite2d: Sprite2D = $Sprite2D
+@onready var sound_emitter: SoundEmitter = $SoundEmitter
 
 
 @export_group("Attributes")
@@ -25,17 +26,17 @@ var bullet_scene: PackedScene = preload("res://scenes/player/bullet.tscn")
 
 # weapon stats pretty much
 var ammo_type: Item ## the type of ammo a weapon uses
-var magazine_size: int
+var magazine_size: int ## the amount of ammo in a weapon before it needs to be reloaded
 var cur_ammo: int ## current amount of ammo in weapon's magazine
 var current_ammo_key: String ## hold the String name of the current ammo
-var inaccuracy: float
+var inaccuracy: float ## deviation of bullet paths in degrees
 
 # important booleans
-var is_cooldown := false
+var is_cooldown := false ## if it's on cooldown
 var is_aimed := false ## if the weapon is being aimed
 
 func _ready():
-	# get the default weapon from Globals
+	# get the default weapon from Globals if it exists
 	if Globals.player_weapon:
 		stats = Globals.player_weapon
 	
@@ -79,6 +80,11 @@ func _physics_process(_delta: float) -> void:
 	if not (Input.is_action_pressed("primary_fire") and reload_timer.is_stopped() and cur_ammo > 0 and !is_cooldown):
 		return
 	
+	# if all conditions for firing a weapon are passed fire the weapon
+	fire_weapon()
+
+## handles the firing of the weapon
+func fire_weapon() -> void:
 	cur_ammo -= 1
 	stats.current_ammo = cur_ammo
 	if cur_ammo <= 0:
@@ -88,6 +94,8 @@ func _physics_process(_delta: float) -> void:
 	# the cursor's position.
 	# The bullet will use this rotation to decide its direction.
 	var bullet: Bullet = bullet_scene.instantiate()
+	
+	# TODO: this needs to be updated to work with controller too
 	var mouse_angle := (get_global_mouse_position() - muzzle.global_position).angle() + deg_to_rad(randf_range(-inaccuracy, inaccuracy))
 	
 	# assign attack information to bullet
@@ -96,10 +104,14 @@ func _physics_process(_delta: float) -> void:
 	bullet.max_pierce = stats.max_pierce
 	bullet.knockback_force = stats.knockback_force
 	
-	bullet.global_position = muzzle.global_position + Vector2().rotated(mouse_angle)
+	bullet.global_position = muzzle.global_position #+ Vector2().rotated(mouse_angle)
 	bullet.rotation = mouse_angle
 	
-	get_tree().root.add_child(bullet)
+	Globals.world_2d.add_child(bullet)
+	
+	# when the bullet is put in the world we can safely assume the weapon created
+	# some noise, therefore this line runs
+	sound_emitter.create_sound(muzzle.global_position, stats.loudness)
 	
 	is_cooldown = true
 	cooldown_timer.wait_time = stats.firing_cooldown
@@ -150,6 +162,7 @@ func _on_cooldown_timer_timeout() -> void:
 	is_cooldown = false
 
 func _on_reload_timer_timeout() -> void:
+	# update the global amount of ammo that the weapon uses
 	Globals.total_ammo[current_ammo_key] -= magazine_size - cur_ammo
 	stats.is_reloading = false
 	cur_ammo = magazine_size

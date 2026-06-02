@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dwcbymm16yndn" path="res://graphics/tools/weapons/all weapons/all weapons.png" id="1_jej8l"]
 [ext_resource type="Script" uid="uid://cmyym83cjffvl" path="res://scenes/weapon/Weapon.gd" id="1_l3xq3"]
+[ext_resource type="Script" uid="uid://btss1wgo5kjyu" path="res://scripts/helpers/helpers/SoundEmitter.gd" id="4_lopa8"]
 [ext_resource type="Texture2D" uid="uid://bark58exn8r5b" path="res://icon.svg" id="136_a4qwh"]
 
 [node name="Weapon" type="Node2D" unique_id=1239437853]
@@ -31,6 +32,10 @@ one_shot = true
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=1312879307]
 one_shot = true
+
+[node name="SoundEmitter" type="Node" parent="." unique_id=1374548674]
+script = ExtResource("4_lopa8")
+metadata/_custom_type_script = "uid://btss1wgo5kjyu"
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

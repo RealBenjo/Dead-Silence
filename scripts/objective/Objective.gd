@@ -9,12 +9,15 @@ class_name Objective
 var is_interacted := false ## Tracks if it's currently being carried
 
 func _ready() -> void:
+	# the interaction area shape MUST be a bigger than the objective shape
+	# so the vision can see it and hence being actually interactible
 	var size_offset = 15
 	interaction_collision.shape.radius = objective_collision.shape.radius + size_offset
 
 func _on_interacted(body: Node2D) -> void:
 	is_interacted = not is_interacted
 	
+	# pick up or drop off if it is interacted or not
 	if is_interacted:
 		pick_up(body)
 	else:
@@ -30,7 +33,15 @@ func pick_up(body: Node2D) -> void:
 	parent.position = body.position
 
 func drop_off() -> void:
-	# 3. Drop back into the level map
+	# needs to be called deferred so Godot is happy and doesn't panic
+	# with collision calculations
+	_deferred_drop_off.call_deferred()
+
+
+
+func _deferred_drop_off() -> void:
+	# drop back into the level map 
+	# (it does not need to be a child of anything)
 	parent.reparent(Globals.world_2d)
 	
 	objective_collision.set_deferred("disabled", false)

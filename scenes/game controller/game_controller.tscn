@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bh2c5gyipi7js" path="res://scripts/game controller/GameController.gd" id="1_ohadn"]
 [ext_resource type="PackedScene" uid="uid://eji1c0k5e10i" path="res://scenes/menus/main menu/main_menu.tscn" id="2_mekh3"]
+[ext_resource type="PackedScene" uid="uid://cffpnb6t56h8b" path="res://scenes/menus/mission select/mission_select.tscn" id="3_621io"]
 
 [node name="GameController" type="Node" unique_id=1200442521]
 script = ExtResource("1_ohadn")
@@ -13,3 +14,6 @@ script = ExtResource("1_ohadn")
 [node name="GUI" type="CanvasLayer" parent="." unique_id=351437177]
 
 [node name="MainMenu" parent="GUI" unique_id=850707745 instance=ExtResource("2_mekh3")]
+
+[node name="MissionSelect" parent="GUI" unique_id=413545417 instance=ExtResource("3_621io")]
+visible = false

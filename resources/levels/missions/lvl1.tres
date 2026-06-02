@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://ckn5jw6qxp74a"]
+
+[ext_resource type="Script" uid="uid://b1gl6hfydldid" path="res://scripts/helpers/resources/LevelData.gd" id="1_h63og"]
+
+[resource]
+script = ExtResource("1_h63og")
+name = "Where it all began"
+description = "uh oh bad boys"
+path = "res://scenes/levels/missions/main_mission_1.tscn"
+metadata/_custom_type_script = "uid://b1gl6hfydldid"

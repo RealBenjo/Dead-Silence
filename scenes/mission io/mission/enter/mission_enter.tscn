@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://hv35j1uu2tpx"]
+
+[ext_resource type="Script" uid="uid://6k6n0rt5mkfx" path="res://scripts/mission/enter/MissionEnter.gd" id="1_xs3aj"]
+
+[node name="MissionEnter" type="Area2D" unique_id=933494602]
+collision_layer = 16
+script = ExtResource("1_xs3aj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -951,7 +951,10 @@ default_vision_length = 1000
 patrol_time_min = 7.0
 patrol_time_max = 7.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=814942990]
+[node name="EntityShadow" parent="." index="0" unique_id=5405675]
+scale = Vector2(0.43025544, 0.43025544)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1" unique_id=814942990]
 rotation = 1.5707964
 scale = Vector2(0.33578634, 0.3357864)
 sprite_frames = SubResource("SpriteFrames_112jq")
@@ -959,13 +962,13 @@ animation = &"walking"
 frame = 13
 frame_progress = 0.45607916
 
-[node name="CollisionShape2D" parent="." index="1" unique_id=225981174]
+[node name="CollisionShape2D" parent="." index="2" unique_id=225981174]
 shape = SubResource("CircleShape2D_rdvt3")
 
-[node name="HealthComponent" parent="." index="2" unique_id=269744889]
+[node name="HealthComponent" parent="." index="3" unique_id=269744889]
 MAX_HEALTH = 30.0
 
-[node name="HitboxComponent" parent="." index="3" unique_id=718500507]
+[node name="HitboxComponent" parent="." index="4" unique_id=718500507]
 collision_layer = 16
 collision_mask = 0
 

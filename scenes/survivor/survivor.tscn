@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ijgi62tcxwpi"]
 
 [ext_resource type="Texture2D" uid="uid://1n7lyik2n0va" path="res://graphics/zombie/animations/idle/0001.png" id="1_hb76h"]
+[ext_resource type="Texture2D" uid="uid://cu57yh3ncupd3" path="res://graphics/shadows/entity_shadow.png" id="1_hppev"]
 [ext_resource type="Texture2D" uid="uid://c3gjbg6kpn6dl" path="res://graphics/zombie/animations/idle/0002.png" id="2_cc3jl"]
 [ext_resource type="Texture2D" uid="uid://c5lg2y84muawx" path="res://graphics/zombie/animations/idle/0010.png" id="2_mla4r"]
 [ext_resource type="Texture2D" uid="uid://ct58txvaexxci" path="res://graphics/zombie/animations/idle/0003.png" id="3_lk4eu"]
@@ -846,6 +847,12 @@ animations = [{
 radius = 34.65
 
 [node name="Survivor" type="Node2D" unique_id=1473950680]
+
+[node name="EntityShadow" type="Sprite2D" parent="." unique_id=405639847]
+modulate = Color(1, 1, 1, 0.63529414)
+rotation = 1.5707964
+scale = Vector2(0.4499546, 0.4499546)
+texture = ExtResource("1_hppev")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1971146389]
 rotation = 1.5707964

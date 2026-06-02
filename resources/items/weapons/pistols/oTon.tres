@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://b8jlwr5hqphr6"]
 
 [ext_resource type="Resource" uid="uid://b6cr0k57l81t0" path="res://resources/items/ammunition/l_ammo.tres" id="1_onmvw"]
-[ext_resource type="Script" uid="uid://cjiib1whmabrt" path="res://scripts/helpers/helpers/WeaponStats.gd" id="1_y5138"]
+[ext_resource type="Script" uid="uid://cjiib1whmabrt" path="res://scripts/helpers/resources/WeaponStats.gd" id="1_y5138"]
 [ext_resource type="Texture2D" uid="uid://br71hn1087yug" path="res://graphics/tools/ammo/L_ammo.png" id="2_7agyr"]
 
 [resource]
@@ -11,4 +11,5 @@ inaccuracy = 9.0
 ammo_type = ExtResource("1_onmvw")
 magazine_size = 10
 reload_time = 4.0
+loudness = 2000
 knockback_force = 0.5

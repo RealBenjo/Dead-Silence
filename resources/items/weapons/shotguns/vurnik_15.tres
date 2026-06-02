@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://bw5310545ccsr"]
 
-[ext_resource type="Script" uid="uid://cjiib1whmabrt" path="res://scripts/helpers/helpers/WeaponStats.gd" id="1_3365o"]
+[ext_resource type="Script" uid="uid://cjiib1whmabrt" path="res://scripts/helpers/resources/WeaponStats.gd" id="1_3365o"]
 [ext_resource type="Resource" uid="uid://ct5n86uudd2dn" path="res://resources/items/ammunition/s_ammo.tres" id="1_tdgkl"]
 
 [resource]
 script = ExtResource("1_3365o")
 ammo_type = ExtResource("1_tdgkl")
 magazine_size = 6
+loudness = 7000
 speed = 2000.0
 metadata/_custom_type_script = "uid://cjiib1whmabrt"

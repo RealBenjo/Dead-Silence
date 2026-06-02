@@ -3,15 +3,16 @@
 [ext_resource type="Script" uid="uid://dminjnr5k540h" path="res://scripts/levels/Level.gd" id="1_377w7"]
 [ext_resource type="PackedScene" uid="uid://ysls7iwu7faj" path="res://scenes/player/player.tscn" id="2_bovvr"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_bovvr"]
-vertices = PackedVector2Array(3093.9922, 150.27344, 937.9297, 617, 945.0703, -367, 3119.8281, -1397.4219, 813.9219, -1495.9922, 760.9922, -367, -1713.9219, -1447.1875, 3200.2734, 1652.2031, -1690.0703, 1749.7891, 762.0078, 617)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5, 6), PackedInt32Array(1, 0, 7, 8), PackedInt32Array(9, 1, 8), PackedInt32Array(9, 8, 6, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(3130, -1407, 814, -1506, 771, -357, 935, -357, 928, 607, 3104, 150), PackedVector2Array(814, -1506, 771, -357, 772, 607, 928, 607, 3104, 150, 3211, 1662, -1700, 1760, -1724, -1457)])
-
 [node name="Level" type="Node2D" unique_id=1252715679]
 script = ExtResource("1_377w7")
 
 [node name="Ground" type="Node2D" parent="." unique_id=275989286]
+
+[node name="Props" type="Node2D" parent="." unique_id=1214181350]
+
+[node name="Lighting" type="Node2D" parent="." unique_id=1069630748]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting" unique_id=1619461653]
 
 [node name="Items" type="Node2D" parent="." unique_id=308444667]
 
@@ -26,9 +27,5 @@ script = ExtResource("1_377w7")
 [node name="MissionEnds" type="Node2D" parent="." unique_id=1622628601]
 
 [node name="Sounds" type="Node2D" parent="." unique_id=345583979]
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=763197410]
-visible = false
-navigation_polygon = SubResource("NavigationPolygon_bovvr")
 
 [node name="Player" parent="." unique_id=964630265 instance=ExtResource("2_bovvr")]

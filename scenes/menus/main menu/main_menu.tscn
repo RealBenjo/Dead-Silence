@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://6qwf6as0cqjx" path="res://scripts/ui/main menu/MainMenu.gd" id="1_shqiv"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tfu3"]
+
 [node name="MainMenu" type="Control" unique_id=850707745]
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0tfu3")
 
 [node name="Label" type="Label" parent="Panel" unique_id=640752246]
 modulate = Color(1, 0.19999999, 0.19999999, 1)

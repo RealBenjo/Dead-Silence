@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://bwj5rfiwuq7ik"]
+
+[ext_resource type="Texture2D" uid="uid://cu57yh3ncupd3" path="res://graphics/shadows/entity_shadow.png" id="1_l2qqy"]
+[ext_resource type="Texture2D" uid="uid://cbuxehbe8bh6i" path="res://graphics/props/rocks/rock1.png" id="1_o6ivo"]
+[ext_resource type="Texture2D" uid="uid://b7q52qbmu7qgv" path="res://graphics/props/rocks/rock2.png" id="2_l2qqy"]
+[ext_resource type="Texture2D" uid="uid://cc0xey2g0dab0" path="res://graphics/props/rocks/rock3.png" id="3_lgff1"]
+[ext_resource type="Texture2D" uid="uid://bb2ufvj3vminq" path="res://graphics/props/rocks/rock4.png" id="4_2g5lh"]
+[ext_resource type="Texture2D" uid="uid://gyr36dl7u87m" path="res://graphics/props/rocks/rock5.png" id="5_r1o1m"]
+[ext_resource type="Texture2D" uid="uid://bobw5cxof7ee3" path="res://graphics/props/rocks/rock7.png" id="6_65ier"]
+[ext_resource type="Texture2D" uid="uid://bkgw23s5rhfg0" path="res://graphics/props/rocks/rock8.png" id="7_ywup5"]
+[ext_resource type="Texture2D" uid="uid://lwfi8luvh2rh" path="res://graphics/props/rocks/rock9.png" id="8_3aiwh"]
+[ext_resource type="Texture2D" uid="uid://c0gluyfac8f8c" path="res://graphics/props/rocks/rock6.png" id="9_mr0rn"]
+[ext_resource type="Texture2D" uid="uid://ekywyte7ae5n" path="res://graphics/props/rocks/rock10.png" id="10_unjcx"]
+[ext_resource type="Texture2D" uid="uid://cjeo6h78m03lu" path="res://graphics/props/rocks/rock11.png" id="11_dmpcq"]
+[ext_resource type="Texture2D" uid="uid://ckw4l03cxpd45" path="res://graphics/props/rocks/rock12.png" id="12_20wu4"]
+[ext_resource type="Texture2D" uid="uid://b4wja46ajlk3b" path="res://graphics/props/rocks/rock13.png" id="13_rxiy3"]
+[ext_resource type="PackedScene" uid="uid://hv35j1uu2tpx" path="res://scenes/mission io/mission/enter/mission_enter.tscn" id="15_lgff1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2g5lh"]
+size = Vector2(185.33333, 75.66667)
+
+[node name="HqEntrance" type="StaticBody2D" unique_id=1934217598]
+z_index = 4
+scale = Vector2(3, 3)
+collision_layer = 4
+collision_mask = 11
+
+[node name="EntityShadow" type="Sprite2D" parent="." unique_id=305923468]
+self_modulate = Color(1, 1, 1, 0.8117647)
+position = Vector2(-1, 33.666668)
+rotation = -0.04058935
+scale = Vector2(1.2692308, 0.50390434)
+texture = ExtResource("1_l2qqy")
+
+[node name="Rock1" type="Sprite2D" parent="." unique_id=65221656]
+position = Vector2(-106, 28.26007)
+texture = ExtResource("1_o6ivo")
+
+[node name="Rock14" type="Sprite2D" parent="." unique_id=1960808264]
+position = Vector2(105, 7.260071)
+rotation = 2.095758
+texture = ExtResource("1_o6ivo")
+
+[node name="Rock19" type="Sprite2D" parent="." unique_id=22300866]
+position = Vector2(39, 24.26007)
+rotation = 4.3276815
+texture = ExtResource("1_o6ivo")
+
+[node name="Rock2" type="Sprite2D" parent="." unique_id=203582218]
+position = Vector2(29, -69.73993)
+rotation = -0.69393575
+texture = ExtResource("2_l2qqy")
+
+[node name="Rock18" type="Sprite2D" parent="." unique_id=670451484]
+position = Vector2(-48.00001, 5.2600718)
+rotation = -0.13035333
+texture = ExtResource("2_l2qqy")
+
+[node name="Rock3" type="Sprite2D" parent="." unique_id=2020709268]
+position = Vector2(-26.999992, -70.73992)
+rotation = 0.95175856
+texture = ExtResource("3_lgff1")
+
+[node name="Rock4" type="Sprite2D" parent="." unique_id=1090772100]
+position = Vector2(-83, -10.739929)
+texture = ExtResource("4_2g5lh")
+
+[node name="Rock16" type="Sprite2D" parent="." unique_id=542075399]
+position = Vector2(53, -12.739929)
+texture = ExtResource("4_2g5lh")
+
+[node name="Rock17" type="Sprite2D" parent="." unique_id=217377767]
+position = Vector2(-3, -13.739929)
+rotation = 1.9357018
+texture = ExtResource("4_2g5lh")
+
+[node name="Rock5" type="Sprite2D" parent="." unique_id=785732737]
+position = Vector2(-65, -43.73993)
+rotation = 0.15741473
+texture = ExtResource("5_r1o1m")
+
+[node name="Rock15" type="Sprite2D" parent="." unique_id=212233330]
+position = Vector2(-10.999992, -37.73993)
+rotation = 1.9905856
+texture = ExtResource("5_r1o1m")
+
+[node name="Rock7" type="Sprite2D" parent="." unique_id=264519588]
+position = Vector2(68, -37.73993)
+rotation = -0.42783105
+texture = ExtResource("6_65ier")
+
+[node name="Rock8" type="Sprite2D" parent="." unique_id=62379864]
+position = Vector2(-5, 24.26007)
+rotation = 0.21538322
+texture = ExtResource("7_ywup5")
+
+[node name="Rock21" type="Sprite2D" parent="." unique_id=2126221867]
+position = Vector2(-34, -47.73993)
+rotation = -0.60886943
+texture = ExtResource("7_ywup5")
+
+[node name="Rock9" type="Sprite2D" parent="." unique_id=339954125]
+position = Vector2(-64, 12.260071)
+rotation = 0.8885974
+texture = ExtResource("8_3aiwh")
+
+[node name="Rock20" type="Sprite2D" parent="." unique_id=3509251]
+position = Vector2(29, -23.739933)
+rotation = 0.0022625327
+texture = ExtResource("8_3aiwh")
+
+[node name="Rock6" type="Sprite2D" parent="." unique_id=857210827]
+position = Vector2(3.8146973e-06, -18.73993)
+rotation = -1.1830822
+texture = ExtResource("9_mr0rn")
+
+[node name="Rock10" type="Sprite2D" parent="." unique_id=665178849]
+position = Vector2(32, -4.739929)
+texture = ExtResource("10_unjcx")
+
+[node name="Rock11" type="Sprite2D" parent="." unique_id=902897499]
+position = Vector2(100, 11.26007)
+rotation = -0.6609097
+texture = ExtResource("11_dmpcq")
+
+[node name="Rock12" type="Sprite2D" parent="." unique_id=165824183]
+position = Vector2(74, 16.26007)
+texture = ExtResource("12_20wu4")
+
+[node name="Rock13" type="Sprite2D" parent="." unique_id=521086213]
+position = Vector2(-31, -2.7399292)
+texture = ExtResource("13_rxiy3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1047451165]
+polygon = PackedVector2Array(26, -108, -73, -67, -95, -67, -94, -41, -128, -4, -142, 54, -106, 69, 3, -60, 37, -61, 82, 30, 129, 44, 144, 2)
+
+[node name="MissionEnter" parent="." unique_id=933494602 instance=ExtResource("15_lgff1")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MissionEnter" unique_id=1308932768]
+position = Vector2(6.666668, 5.833332)
+shape = SubResource("RectangleShape2D_2g5lh")

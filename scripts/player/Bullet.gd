@@ -2,17 +2,12 @@ extends Node2D
 class_name Bullet
 
 @onready var bullet_path: RayCast2D = $BulletPath
-@onready var sound_emitter: SoundEmitter = $SoundEmitter
 
 var damage := 10.0
 var speed := 5000.0
 var max_pierce := 1.0
 var knockback_force := 10.0
-var loudness := 5000.0
 
-
-func _ready() -> void:
-	sound_emitter.create_sound(global_position, loudness)
 
 func _process(delta: float) -> void:
 	# 1. Calculate how far the bullet will move this frame

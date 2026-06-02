@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://ckxdvafrtthcx"]
 
-[ext_resource type="Script" uid="uid://cjiib1whmabrt" path="res://scripts/helpers/helpers/WeaponStats.gd" id="1_bq70p"]
+[ext_resource type="Script" uid="uid://cjiib1whmabrt" path="res://scripts/helpers/resources/WeaponStats.gd" id="1_bq70p"]
 [ext_resource type="Resource" uid="uid://m1ec6tfwyy11" path="res://resources/items/ammunition/h_ammo.tres" id="1_cuhm2"]
 
 [resource]

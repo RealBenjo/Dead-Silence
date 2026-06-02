@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://bqul7nmmem476"]
+
+[ext_resource type="PackedScene" uid="uid://ba5sduufhjqin" path="res://scenes/levels/level.tscn" id="1_mfprb"]
+[ext_resource type="Script" uid="uid://e8a8ki3qlals" path="res://scripts/levels/MMission1.gd" id="2_mfprb"]
+[ext_resource type="Texture2D" uid="uid://bsy0k8q6gb0m6" path="res://graphics/ground/sand/sand1.png" id="3_sg4fw"]
+[ext_resource type="PackedScene" uid="uid://cq3w6pekqdyum" path="res://scenes/props/trees/decor/tree_decor_1.tscn" id="4_8pu7l"]
+[ext_resource type="PackedScene" uid="uid://ijgi62tcxwpi" path="res://scenes/survivor/survivor.tscn" id="4_pktge"]
+[ext_resource type="PackedScene" uid="uid://bq23n28alh2ec" path="res://scenes/vehicles/mini truck/mini_truck.tscn" id="6_8pu7l"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mfprb"]
+vertices = PackedVector2Array(-1700.9609, -1717.8594, 3320.6406, -1651.1328, 961.0469, -368.25, 738, -362.7578, 3201.3516, 1652.1797, 955.9531, 597.0469, -1690.0313, 1749.7891, 738, 595.9531)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(6, 0, 3, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(3211, 1662, -1700, 1760, -1711, -1728, 3331, -1661), PackedVector2Array(748, -353, 748, 586, 946, 587, 951, -358)])
+
+[node name="MainMission1" unique_id=1004224708 instance=ExtResource("1_mfprb")]
+script = ExtResource("2_mfprb")
+
+[node name="Sand1" type="Sprite2D" parent="Ground" parent_id_path=PackedInt32Array(275989286) index="0" unique_id=1611714298]
+texture_repeat = 2
+position = Vector2(649, 419)
+texture = ExtResource("3_sg4fw")
+region_enabled = true
+region_rect = Rect2(-14426.801, -18069.29, 31142.578, 33325.477)
+
+[node name="TreeDecor1" parent="Props" parent_id_path=PackedInt32Array(1214181350) index="0" unique_id=1711327493 instance=ExtResource("4_8pu7l")]
+modulate = Color(1, 0.7783333, 0.3, 1)
+position = Vector2(3246.9998, 13463.999)
+rotation = -0.4109586
+scale = Vector2(2.519131, 2.519131)
+
+[node name="TreeDecor2" parent="Props" parent_id_path=PackedInt32Array(1214181350) index="1" unique_id=271657117 instance=ExtResource("4_8pu7l")]
+modulate = Color(1, 0.7783333, 0.3, 1)
+position = Vector2(5751.0005, 13123.999)
+rotation = -1.9431388
+scale = Vector2(2.519131, 2.519131)
+
+[node name="TreeDecor3" parent="Props" parent_id_path=PackedInt32Array(1214181350) index="2" unique_id=31782225 instance=ExtResource("4_8pu7l")]
+modulate = Color(1, 0.7783333, 0.3, 1)
+position = Vector2(7874.9995, 10410.999)
+rotation = -4.4414444
+scale = Vector2(2.519131, 2.519131)
+
+[node name="TreeDecor4" parent="Props" parent_id_path=PackedInt32Array(1214181350) index="3" unique_id=698578344 instance=ExtResource("4_8pu7l")]
+modulate = Color(1, 0.7783333, 0.3, 1)
+position = Vector2(7573.9985, 8208)
+rotation = -4.0149965
+scale = Vector2(2.519131, 2.519131)
+
+[node name="TreeDecor5" parent="Props" parent_id_path=PackedInt32Array(1214181350) index="4" unique_id=528139857 instance=ExtResource("4_8pu7l")]
+modulate = Color(1, 0.7783333, 0.3, 1)
+position = Vector2(5621.0005, 6923)
+rotation = -2.9408507
+scale = Vector2(2.519131, 2.519131)
+
+[node name="TreeDecor6" parent="Props" parent_id_path=PackedInt32Array(1214181350) index="5" unique_id=1063609582 instance=ExtResource("4_8pu7l")]
+modulate = Color(1, 0.7783333, 0.3, 1)
+position = Vector2(3353.0005, 5861.0005)
+rotation = -1.5232543
+scale = Vector2(2.519131, 2.519131)
+
+[node name="DirectionalLight2D" parent="Lighting" parent_id_path=PackedInt32Array(1069630748) index="0" unique_id=1619461653]
+color = Color(0, 0.20900007, 0.57, 1)
+energy = 0.2
+blend_mode = 1
+
+[node name="Patrol1" type="Node2D" parent="Enemies" parent_id_path=PackedInt32Array(1497162964) index="0" unique_id=2023755802]
+
+[node name="Patrol2" type="Node2D" parent="Enemies" parent_id_path=PackedInt32Array(1497162964) index="1" unique_id=1319013720]
+
+[node name="Patrol1" type="Node2D" parent="Patrols" parent_id_path=PackedInt32Array(1644519217) index="0" unique_id=398182526]
+
+[node name="Marker2D32" type="Marker2D" parent="Patrols/Patrol1" index="0" unique_id=2032846559]
+position = Vector2(-799, -170)
+
+[node name="Marker2D33" type="Marker2D" parent="Patrols/Patrol1" index="1" unique_id=1373793341]
+position = Vector2(1002, -222)
+
+[node name="Patrol2" type="Node2D" parent="Patrols" parent_id_path=PackedInt32Array(1644519217) index="1" unique_id=252717684]
+
+[node name="Survivor" parent="Objectives" parent_id_path=PackedInt32Array(943139230) index="0" unique_id=1440120259 instance=ExtResource("4_pktge")]
+position = Vector2(-3919, -9240)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="8" unique_id=1814353064]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_mfprb")
+
+[node name="MiniTruck" parent="MissionEnds" parent_id_path=PackedInt32Array(1622628601) index="0" unique_id=153652473 instance=ExtResource("6_8pu7l")]
+position = Vector2(5393, 9506)
+rotation = -0.80866295
+
+[node name="Player" parent="." index="11" unique_id=964630265]
+position = Vector2(4143, 10051)

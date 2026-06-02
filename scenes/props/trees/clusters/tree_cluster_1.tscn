@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://c2j1amp0256rr"]
+
+[ext_resource type="Texture2D" uid="uid://c0ukaqljmlk0l" path="res://graphics/props/trees/tree1.png" id="1_pwkn6"]
+[ext_resource type="Texture2D" uid="uid://d3ehacc7r4qg4" path="res://graphics/props/trees/tree2.png" id="2_y74pf"]
+[ext_resource type="Texture2D" uid="uid://56u38ysjrnxx" path="res://graphics/props/trees/tree3.png" id="3_3svbc"]
+[ext_resource type="Texture2D" uid="uid://rb5tmusqixf0" path="res://graphics/props/trees/tree4.png" id="4_k4i5q"]
+[ext_resource type="Texture2D" uid="uid://r62jfhnbx6ao" path="res://graphics/props/trees/tree5.png" id="5_iev8m"]
+[ext_resource type="Texture2D" uid="uid://b7p4oxxtk0bdf" path="res://graphics/props/trees/tree6.png" id="6_0eosc"]
+[ext_resource type="Texture2D" uid="uid://h4kvc4p8xenu" path="res://graphics/props/trees/tree7.png" id="7_pr417"]
+[ext_resource type="Texture2D" uid="uid://c8uqi8jbr21o6" path="res://graphics/props/trees/tree8.png" id="8_yvj2l"]
+[ext_resource type="Texture2D" uid="uid://c8eq0kgox11h" path="res://graphics/props/trees/tree9.png" id="9_a2kp1"]
+[ext_resource type="Texture2D" uid="uid://cc4qk6ku08yux" path="res://graphics/props/trees/tree10.png" id="10_x52am"]
+[ext_resource type="Texture2D" uid="uid://dtg68q7ab71kl" path="res://graphics/props/trees/tree11.png" id="11_36yt2"]
+[ext_resource type="Texture2D" uid="uid://dbavjm7ja506v" path="res://graphics/props/trees/tree12.png" id="12_aav32"]
+[ext_resource type="Texture2D" uid="uid://dljftn4qfvdnw" path="res://graphics/props/trees/tree13.png" id="13_drmev"]
+
+[node name="TreeCluster1" type="StaticBody2D" unique_id=1347287323]
+z_index = 5
+scale = Vector2(2.079497, 2.079497)
+collision_layer = 4
+collision_mask = 11
+
+[node name="Tree1" type="Sprite2D" parent="." unique_id=1716829511]
+position = Vector2(-112, -105)
+rotation = -0.19550627
+texture = ExtResource("1_pwkn6")
+
+[node name="Tree20" type="Sprite2D" parent="." unique_id=1309818917]
+position = Vector2(167, -92)
+rotation = 1.6195695
+texture = ExtResource("1_pwkn6")
+
+[node name="Tree18" type="Sprite2D" parent="." unique_id=773928305]
+position = Vector2(38.999996, -6.0000153)
+texture = ExtResource("5_iev8m")
+
+[node name="Tree19" type="Sprite2D" parent="." unique_id=391390147]
+position = Vector2(-121, -1)
+texture = ExtResource("5_iev8m")
+
+[node name="Tree2" type="Sprite2D" parent="." unique_id=1438948456]
+position = Vector2(100, -32)
+rotation = 0.5496949
+texture = ExtResource("2_y74pf")
+
+[node name="Tree14" type="Sprite2D" parent="." unique_id=1175276755]
+position = Vector2(-20, -196)
+rotation = -2.9955091
+texture = ExtResource("2_y74pf")
+
+[node name="Tree3" type="Sprite2D" parent="." unique_id=1327831763]
+position = Vector2(-2, -43)
+texture = ExtResource("3_3svbc")
+
+[node name="Tree4" type="Sprite2D" parent="." unique_id=1834587937]
+position = Vector2(89, 36)
+rotation = 0.2457826
+texture = ExtResource("4_k4i5q")
+
+[node name="Tree5" type="Sprite2D" parent="." unique_id=1722830029]
+position = Vector2(11, 32)
+texture = ExtResource("5_iev8m")
+
+[node name="Tree16" type="Sprite2D" parent="." unique_id=378968389]
+position = Vector2(189, 6)
+rotation = -1.0292823
+texture = ExtResource("5_iev8m")
+
+[node name="Tree6" type="Sprite2D" parent="." unique_id=77917531]
+position = Vector2(-180, -23)
+rotation = 1.0294496
+texture = ExtResource("6_0eosc")
+
+[node name="Tree7" type="Sprite2D" parent="." unique_id=456209359]
+position = Vector2(-23, -118)
+rotation = 0.511628
+texture = ExtResource("7_pr417")
+
+[node name="Tree8" type="Sprite2D" parent="." unique_id=1255629353]
+position = Vector2(48, 110)
+rotation = -0.20312904
+texture = ExtResource("8_yvj2l")
+
+[node name="Tree9" type="Sprite2D" parent="." unique_id=794316689]
+position = Vector2(66, -119)
+texture = ExtResource("9_a2kp1")
+
+[node name="Tree15" type="Sprite2D" parent="." unique_id=1654289726]
+position = Vector2(173, 74)
+rotation = -0.44123682
+texture = ExtResource("9_a2kp1")
+
+[node name="Tree10" type="Sprite2D" parent="." unique_id=260446931]
+position = Vector2(-70, -23)
+texture = ExtResource("10_x52am")
+
+[node name="Tree11" type="Sprite2D" parent="." unique_id=1795498359]
+position = Vector2(-45, 123)
+texture = ExtResource("11_36yt2")
+
+[node name="Tree22" type="Sprite2D" parent="." unique_id=1944911707]
+position = Vector2(-220.00002, -90)
+rotation = -1.178777
+texture = ExtResource("4_k4i5q")
+
+[node name="Tree12" type="Sprite2D" parent="." unique_id=728588227]
+position = Vector2(-49, 48)
+texture = ExtResource("12_aav32")
+
+[node name="Tree21" type="Sprite2D" parent="." unique_id=428754402]
+position = Vector2(-7.999998, 199)
+rotation = -0.04978569
+texture = ExtResource("1_pwkn6")
+
+[node name="Tree13" type="Sprite2D" parent="." unique_id=530842201]
+position = Vector2(-132, 61)
+rotation = -0.16403171
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("13_drmev")
+
+[node name="Tree17" type="Sprite2D" parent="." unique_id=1900094465]
+position = Vector2(-123.999985, 151)
+rotation = 1.3589367
+texture = ExtResource("13_drmev")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1992117858]
+polygon = PackedVector2Array(-13, -220, -67, -202, -41, -145, -61, -125, -111, -149, -153, -111, -187, -108, -232, -123, -251, -100, -217, -63, -180, 2, -131, -1, -158, 81, -128, 109, -151, 148, -135, 182, -63, 129, -21, 158, -45, 204, 4, 224, 25, 191, 14, 148, 82, 108, 78, 67, 149, 64, 164, 92, 201, 82, 171, -46, 201, -79, 176, -119, 132, -100, 86, -111, 74, -149, 6, -117, -8, -142, 16, -203)
