@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dljftn4qfvdnw" path="res://graphics/props/trees/tree13.png" id="13_m0wd0"]
 
 [node name="TreeDecor1" type="Node2D" unique_id=1711327493]
+z_index = 5
 scale = Vector2(2.2251935, 2.2251935)
 
 [node name="Tree1" type="Sprite2D" parent="." unique_id=509263971]

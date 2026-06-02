@@ -5,6 +5,8 @@
 [resource]
 script = ExtResource("1_h63og")
 name = "Where it all began"
-description = "uh oh bad boys"
+description = "This mission is in a desert area.
+You will need to find and extract 1 survivor.
+Please evade the zombies while you're at it."
 path = "res://scenes/levels/missions/main_mission_1.tscn"
 metadata/_custom_type_script = "uid://b1gl6hfydldid"

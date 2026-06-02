@@ -85,7 +85,7 @@ uppercase = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
-text = "asd"
+text = "-- select a mission --"
 
 [node name="StartMission" type="Button" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=226193479]
 unique_name_in_owner = true

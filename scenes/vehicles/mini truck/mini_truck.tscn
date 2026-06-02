@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bq23n28alh2ec"]
 
+[ext_resource type="Texture2D" uid="uid://dxkjv5mqr2t67" path="res://graphics/shadows/car_shadow.png" id="1_ko6cv"]
 [ext_resource type="Texture2D" uid="uid://s0ydakh32mnf" path="res://graphics/vehicles/cars/mini truck/mini_truck.png" id="1_tmbx6"]
 [ext_resource type="Texture2D" uid="uid://45faqb5nc3bf" path="res://graphics/vehicles/cars/mini truck/modulateable.png" id="2_ko6cv"]
 [ext_resource type="PackedScene" uid="uid://d0h5ejfppwrjc" path="res://scenes/mission end/mission_end.tscn" id="3_a1e5g"]
@@ -11,11 +12,18 @@ size = Vector2(224, 484)
 size = Vector2(199.99414, 311.5293)
 
 [node name="MiniTruck" type="StaticBody2D" unique_id=153652473]
+z_index = 2
 collision_layer = 4
 collision_mask = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1719380913]
+visible = false
 shape = SubResource("RectangleShape2D_0sune")
+
+[node name="CarShadow" type="Sprite2D" parent="." unique_id=844547104]
+modulate = Color(1, 1, 1, 0.6313726)
+scale = Vector2(2.3668146, 2.3668146)
+texture = ExtResource("1_ko6cv")
 
 [node name="MiniTruck" type="Sprite2D" parent="." unique_id=414287485]
 scale = Vector2(2.388385, 2.388385)
@@ -26,6 +34,7 @@ modulate = Color(1, 0.975, 0.25, 1)
 texture = ExtResource("2_ko6cv")
 
 [node name="MissionEnd" parent="MiniTruck" unique_id=1348854573 instance=ExtResource("3_a1e5g")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MiniTruck/MissionEnd" unique_id=816900169]
 scale = Vector2(0.9999998, 0.9999998)

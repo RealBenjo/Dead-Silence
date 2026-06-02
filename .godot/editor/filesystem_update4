@@ -1,25 +1,4 @@
-res://scenes/gui/select/mission select/mission_select.tscn
-res://scripts/helpers/helpers/WeaponStats.gd
-res://scripts/helpers/resources/LevelData.gd
-res://resources/levels/missions/lvl1.tres
-res://scripts/globals/Globals.gd
-res://scenes/game controller/game_controller.tscn
-res://resources/levels/headquarters/hq1.tres
-res://scripts/ui/main menu/MainMenu.gd
-res://scenes/menus/mission select/mission_select.tscn
-res://scripts/ui/mission select/mission_select.gd
-res://scripts/ui/mission select/MissionSelect.gd
-res://scenes/mission io/hq/hq_entrance.tscn
-res://scripts/mission/enter/mission_enter.gd
-res://scenes/mission io/mission/enter/mission_enter.tscn
-res://scenes/levels/hqs/head_quarters_1.tscn
-res://scripts/mission/enter/MissionEnter.gd
-res://scenes/menus/main menu/main_menu.tscn
-res://scenes/menus/loading screen/loading_screen.tscn
-res://scenes/player/player.tscn
-res://scripts/menus/loading screen/loading_screen.gd
 res://scenes/levels/missions/main_mission_1.tscn
-res://scenes/survivor/survivor.tscn
-res://scenes/enemies/enemy.tscn
-res://scenes/enemies/zombie.tscn
-res://scenes/vehicles/mini truck/mini_truck.tscn
+res://resources/levels/missions/lvl1.tres
+res://scenes/menus/mission select/mission_select.tscn
+res://scenes/props/trees/decor/tree_decor_1.tscn

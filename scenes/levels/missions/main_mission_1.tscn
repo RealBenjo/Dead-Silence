@@ -86,7 +86,7 @@ navigation_polygon = SubResource("NavigationPolygon_mfprb")
 
 [node name="MiniTruck" parent="MissionEnds" parent_id_path=PackedInt32Array(1622628601) index="0" unique_id=153652473 instance=ExtResource("6_8pu7l")]
 position = Vector2(5393, 9506)
-rotation = -0.80866295
+rotation = -1.1730101
 
 [node name="Player" parent="." index="11" unique_id=964630265]
-position = Vector2(4143, 10051)
+position = Vector2(5128, 9687)
