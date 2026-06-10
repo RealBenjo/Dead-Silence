@@ -21,6 +21,7 @@ var state_vision_mult: float = 1.0
 # awareness vars
 @export var max_awareness: float = 300.0
 var awareness: float = 0.0
+@onready var awareness_sprite: Sprite2D = $Awareness
 
 # state vars
 var player_seen: bool = false
@@ -81,15 +82,23 @@ func update_awareness() -> void:
 	if player_seen:
 		# 50 is so the distance is never negative (player's hitbox size matters)
 		# 250 is just so it is not as extreme and we can manage it easier with the multipliers
-		var distance := ( vision.vis_length + 50 - global_position.distance_to(Globals.player_pos) ) / 250
+		var distance := ( 
+				vision.vis_length + 50 
+				- global_position.distance_to(Globals.player_pos) 
+			) / 250
 		
 		awareness += distance * Globals.enemy.awareness_mult * player_speed_mult
 		awareness = clamp(awareness, 0.0, max_awareness)
+		
+		look_at(Globals.player_pos)
 		
 	else:
 		# gradual linear decay
 		awareness -= 4
 		awareness = clamp(awareness, 0.0, max_awareness) # awareness can only be between 0 and max_awareness
+	
+	var aware_percent := awareness / max_awareness
+	awareness_sprite.modulate = Color(aware_percent, 0, 0, aware_percent)
 	
 	#print(awareness)
 

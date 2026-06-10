@@ -11,10 +11,12 @@
 [ext_resource type="Script" uid="uid://bd5kgtlulah45" path="res://scripts/state/enemy/EnemySearching.gd" id="5_lu5c6"]
 [ext_resource type="PackedScene" uid="uid://o7f2eixvstnj" path="res://scenes/vision/vision_cone.tscn" id="5_y5th1"]
 [ext_resource type="Script" uid="uid://xopl505afwk5" path="res://scripts/state/enemy/EnemyAttacking.gd" id="6_nb6gf"]
+[ext_resource type="Texture2D" uid="uid://djdl3wned1wey" path="res://graphics/ui/awareness/exclamation.png" id="7_p7w77"]
+[ext_resource type="Script" uid="uid://bguq1f7qsejs5" path="res://scripts/ui/awareness/AwarenessGraphic.gd" id="8_k4gvh"]
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1128209967]
 collision_layer = 2
-collision_mask = 15
+collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_6xk8f")
@@ -48,6 +50,13 @@ neighbor_distance = 300.0
 max_neighbors = 3
 time_horizon_agents = 0.8
 time_horizon_obstacles = 0.1
+
+[node name="Awareness" type="Sprite2D" parent="." unique_id=1225691419]
+z_index = 6
+texture_filter = 1
+position = Vector2(0, -100)
+texture = ExtResource("7_p7w77")
+script = ExtResource("8_k4gvh")
 
 [node name="Timers" type="Node" parent="." unique_id=1620055020]
 

@@ -1,3 +1,5 @@
+res://scripts/ui/awareness/
+res://scenes/props/trees/clusters/
 res://scenes/vehicles/mini truck/
 res://scripts/ui/mission select/
 res://resources/levels/headquarters/
@@ -5,8 +7,6 @@ res://resources/levels/
 res://scenes/mission io/mission/enter/
 res://scripts/mission/enter/
 res://scenes/mission io/hq/
-res://scenes/props/trees/decor/
-res://scenes/props/trees/clusters/
 res://scripts/levels/
 res://scenes/levels/
 res://scenes/gui/notifications/

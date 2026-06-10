@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://e8xy2r1phnx6" path="res://scripts/ui/selection wheel/SelectionWheel.gd" id="1_35ikc"]
 
 [node name="SelectionWheel" type="Control" unique_id=887151983]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

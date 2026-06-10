@@ -139,3 +139,8 @@ func stance_update() -> void:
 
 func _on_move_sound_timer_timeout() -> void:
 	can_emit_move_sound = true
+
+
+func _on_option_selected(option: WheelOption) -> void:
+	if option.resource is WeaponStats:
+		Globals.player_weapon = option.resource

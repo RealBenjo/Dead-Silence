@@ -14,6 +14,6 @@ script = ExtResource("1_ohadn")
 [node name="GUI" type="CanvasLayer" parent="." unique_id=351437177]
 
 [node name="MainMenu" parent="GUI" unique_id=850707745 instance=ExtResource("2_mekh3")]
+visible = false
 
 [node name="MissionSelect" parent="GUI" unique_id=413545417 instance=ExtResource("3_621io")]
-visible = false

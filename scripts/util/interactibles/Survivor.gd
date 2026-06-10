@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name Survivor
 
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D

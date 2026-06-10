@@ -944,12 +944,12 @@ radius = 40.0
 size = Vector2(51, 78)
 
 [node name="Zombie" unique_id=1992327125 instance=ExtResource("1_3pt6v")]
+collision_mask = 7
 slide_on_ceiling = false
 script = ExtResource("2_gl10n")
 speed = 200.0
 default_vision_length = 1000
-patrol_time_min = 7.0
-patrol_time_max = 7.0
+patrol_time_min = 20.0
 
 [node name="EntityShadow" parent="." index="0" unique_id=5405675]
 scale = Vector2(0.43025544, 0.43025544)
@@ -979,12 +979,12 @@ shape = SubResource("CircleShape2D_a0lpg")
 position = Vector2(53.5, 0)
 shape = SubResource("RectangleShape2D_rdvt3")
 
-[node name="PathFindTimer" type="Timer" parent="Timers" parent_id_path=PackedInt32Array(1620055020) index="0" unique_id=1803485712]
-wait_time = 0.3
-autostart = true
+[node name="VisionCone" parent="." index="6" unique_id=1579632236]
+fov = 120.0
 
-[node name="LosePlayerTimer" parent="Timers" parent_id_path=PackedInt32Array(1620055020) index="5" unique_id=1942636145]
-wait_time = 15.0
+[node name="Awareness" parent="." index="8" unique_id=1225691419]
+position = Vector2(0, -73)
+scale = Vector2(1.2, 1.2)
 
 [node name="Helpers" type="Node" parent="." index="9" unique_id=1827671117]
 
@@ -992,5 +992,12 @@ wait_time = 15.0
 script = ExtResource("231_ljxh5")
 metadata/_custom_type_script = "uid://brkya0n7xefpl"
 
-[connection signal="timeout" from="Timers/PathFindTimer" to="." method="_on_path_find_timer_timeout"]
+[node name="PathFindTimer" type="Timer" parent="Timers" parent_id_path=PackedInt32Array(1620055020) index="0" unique_id=1803485712]
+wait_time = 0.3
+autostart = true
+
+[node name="LosePlayerTimer" parent="Timers" parent_id_path=PackedInt32Array(1620055020) index="5" unique_id=1942636145]
+wait_time = 15.0
+
 [connection signal="fixed_update" from="Helpers/Updater" to="." method="_on_updater_fixed_update"]
+[connection signal="timeout" from="Timers/PathFindTimer" to="." method="_on_path_find_timer_timeout"]

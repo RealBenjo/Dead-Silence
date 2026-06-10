@@ -178,7 +178,6 @@ interact={
 
 [physics]
 
-common/physics_ticks_per_second=45
 2d/physics_engine="Rapier2D"
 
 [rendering]

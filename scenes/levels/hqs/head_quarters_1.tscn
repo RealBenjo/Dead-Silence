@@ -3,8 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://ba5sduufhjqin" path="res://scenes/levels/level.tscn" id="1_w4i77"]
 [ext_resource type="Texture2D" uid="uid://cpur25jmr74rq" path="res://graphics/ground/grass/close/close_grass3.png" id="2_xj3rl"]
 [ext_resource type="PackedScene" uid="uid://c2j1amp0256rr" path="res://scenes/props/trees/clusters/tree_cluster_1.tscn" id="3_fqvl5"]
-[ext_resource type="PackedScene" uid="uid://cq3w6pekqdyum" path="res://scenes/props/trees/decor/tree_decor_1.tscn" id="4_xj3rl"]
-[ext_resource type="PackedScene" uid="uid://bwj5rfiwuq7ik" path="res://scenes/mission io/hq/hq_entrance.tscn" id="5_q8eh4"]
+[ext_resource type="PackedScene" uid="uid://cq3w6pekqdyum" path="res://scenes/props/trees/clusters/tree_cluster_2.tscn" id="4_xj3rl"]
+[ext_resource type="PackedScene" uid="uid://bq23n28alh2ec" path="res://scenes/vehicles/mini truck/mini_truck.tscn" id="5_t7nbw"]
+[ext_resource type="PackedScene" uid="uid://hv35j1uu2tpx" path="res://scenes/mission io/mission/enter/mission_enter.tscn" id="6_kmvh3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tp107"]
+size = Vector2(354.1692, 1030.303)
 
 [node name="HeadQuarters1" unique_id=1252715679 instance=ExtResource("1_w4i77")]
 
@@ -51,86 +55,88 @@ rotation = -1.462665
 position = Vector2(-612.99994, 548.00006)
 rotation = 0.84477043
 
-[node name="TreeCluster4" parent="Props/Trees" index="8" unique_id=1966242362 instance=ExtResource("3_fqvl5")]
-position = Vector2(50.999996, 1075)
-rotation = -1.5261297
-
-[node name="TreeCluster5" parent="Props/Trees" index="9" unique_id=111334364 instance=ExtResource("3_fqvl5")]
+[node name="TreeCluster5" parent="Props/Trees" index="8" unique_id=111334364 instance=ExtResource("3_fqvl5")]
 position = Vector2(1332.9999, 218.99997)
 rotation = -1.4172454
 
-[node name="TreeCluster6" parent="Props/Trees" index="10" unique_id=2009651227 instance=ExtResource("3_fqvl5")]
+[node name="TreeCluster6" parent="Props/Trees" index="9" unique_id=2009651227 instance=ExtResource("3_fqvl5")]
 position = Vector2(644.00006, 565)
 rotation = -1.5818975
 
-[node name="TreeCluster7" parent="Props/Trees" index="11" unique_id=2068694477 instance=ExtResource("3_fqvl5")]
+[node name="TreeCluster7" parent="Props/Trees" index="10" unique_id=2068694477 instance=ExtResource("3_fqvl5")]
 position = Vector2(1167.9999, -1987.9999)
 rotation = -3.0238888
 
-[node name="TreeCluster9" parent="Props/Trees" index="12" unique_id=1321713560 instance=ExtResource("3_fqvl5")]
+[node name="TreeCluster9" parent="Props/Trees" index="11" unique_id=1321713560 instance=ExtResource("3_fqvl5")]
 position = Vector2(1199.0001, -618)
 rotation = -2.386758
 
-[node name="TreeCluster10" parent="Props/Trees" index="13" unique_id=459754523 instance=ExtResource("3_fqvl5")]
+[node name="TreeCluster10" parent="Props/Trees" index="12" unique_id=459754523 instance=ExtResource("3_fqvl5")]
 position = Vector2(1345, -1230.0001)
 rotation = 1.0964291
 
-[node name="TreeCluster8" parent="Props/Trees" index="14" unique_id=1230775587 instance=ExtResource("3_fqvl5")]
+[node name="TreeCluster8" parent="Props/Trees" index="13" unique_id=1230775587 instance=ExtResource("3_fqvl5")]
 position = Vector2(-1568, -1695.0001)
 rotation = -3.0635288
 
-[node name="TreeDecor1" parent="Props/Trees" index="15" unique_id=1711327493 instance=ExtResource("4_xj3rl")]
-position = Vector2(-1861, 1262.0001)
+[node name="TreeDecor1" parent="Props/Trees" index="14" unique_id=1711327493 instance=ExtResource("4_xj3rl")]
+position = Vector2(-1772, 1173)
 rotation = 0.13677025
 
-[node name="TreeDecor3" parent="Props/Trees" index="16" unique_id=865420399 instance=ExtResource("4_xj3rl")]
-position = Vector2(-2662, 43.99993)
+[node name="TreeDecor3" parent="Props/Trees" index="15" unique_id=865420399 instance=ExtResource("4_xj3rl")]
+position = Vector2(-2584.0002, -44.99993)
 rotation = -0.5363684
 
-[node name="TreeDecor2" parent="Props/Trees" index="17" unique_id=1152996761 instance=ExtResource("4_xj3rl")]
-position = Vector2(-3016.0002, -1404)
+[node name="TreeDecor2" parent="Props/Trees" index="16" unique_id=1152996761 instance=ExtResource("4_xj3rl")]
+position = Vector2(-2844, -1510)
 rotation = 0.47920987
 
-[node name="TreeDecor4" parent="Props/Trees" index="18" unique_id=911794579 instance=ExtResource("4_xj3rl")]
-position = Vector2(-2883.0002, -3169.0002)
+[node name="TreeDecor4" parent="Props/Trees" index="17" unique_id=911794579 instance=ExtResource("4_xj3rl")]
+position = Vector2(-2733.0002, -3213.0002)
 rotation = -3.8460236
 
-[node name="TreeDecor11" parent="Props/Trees" index="19" unique_id=1767991728 instance=ExtResource("4_xj3rl")]
-position = Vector2(-1781.0002, -4645.0005)
-rotation = -2.2919066
+[node name="TreeDecor11" parent="Props/Trees" index="18" unique_id=1767991728 instance=ExtResource("4_xj3rl")]
+position = Vector2(-1568.9998, -4649.9995)
+rotation = -4.3016486
 
-[node name="TreeDecor5" parent="Props/Trees" index="20" unique_id=1065690108 instance=ExtResource("4_xj3rl")]
-position = Vector2(-44.99975, -4057)
-rotation = -4.0349445
+[node name="TreeDecor5" parent="Props/Trees" index="19" unique_id=1065690108 instance=ExtResource("4_xj3rl")]
+position = Vector2(22.000237, -3845.0002)
+rotation = -3.8634827
 
-[node name="TreeDecor6" parent="Props/Trees" index="21" unique_id=589508181 instance=ExtResource("4_xj3rl")]
-position = Vector2(1961, -3714.9998)
+[node name="TreeDecor6" parent="Props/Trees" index="20" unique_id=589508181 instance=ExtResource("4_xj3rl")]
+position = Vector2(1878.0001, -3525.9998)
 rotation = -4.3080316
 
-[node name="TreeDecor7" parent="Props/Trees" index="22" unique_id=2076799452 instance=ExtResource("4_xj3rl")]
-position = Vector2(2694.9998, -1721)
+[node name="TreeDecor7" parent="Props/Trees" index="21" unique_id=2076799452 instance=ExtResource("4_xj3rl")]
+position = Vector2(2550.0002, -1749.0002)
 rotation = -1.2771099
 
-[node name="TreeDecor8" parent="Props/Trees" index="23" unique_id=754878099 instance=ExtResource("4_xj3rl")]
-position = Vector2(2824, 278)
-rotation = -2.4641144
+[node name="TreeDecor8" parent="Props/Trees" index="22" unique_id=754878099 instance=ExtResource("4_xj3rl")]
+position = Vector2(2572, -10.000168)
+rotation = -2.4644845
 
-[node name="TreeDecor9" parent="Props/Trees" index="24" unique_id=1192288607 instance=ExtResource("4_xj3rl")]
-position = Vector2(1503, 1757.9999)
-rotation = -0.037070274
+[node name="TreeDecor9" parent="Props/Trees" index="23" unique_id=1192288607 instance=ExtResource("4_xj3rl")]
+position = Vector2(1663, 1517)
+rotation = 0.6715617
 
-[node name="TreeDecor10" parent="Props/Trees" index="25" unique_id=1528590808 instance=ExtResource("4_xj3rl")]
-position = Vector2(-349.00006, 2707)
-rotation = -1.010947
+[node name="TreeDecor10" parent="Props/Trees" index="24" unique_id=1528590808 instance=ExtResource("4_xj3rl")]
+position = Vector2(288.9998, 2850)
+rotation = -2.4546237
 
 [node name="DirectionalLight2D" parent="Lighting" parent_id_path=PackedInt32Array(1069630748) index="0" unique_id=1619461653]
 color = Color(0.035000008, 0.3009999, 0.7, 1)
 energy = 0.71
 blend_mode = 1
 
-[node name="HqEntrance" parent="MissionEnds" parent_id_path=PackedInt32Array(1622628601) index="0" unique_id=1934217598 instance=ExtResource("5_q8eh4")]
-position = Vector2(24, 375)
-rotation = -3.0410583
+[node name="MiniTruck" parent="MissionEnds" parent_id_path=PackedInt32Array(1622628601) index="0" unique_id=153652473 instance=ExtResource("5_t7nbw")]
+position = Vector2(3.0000045, 968)
+rotation = 4.6298313
 
-[node name="Player" parent="." index="10" unique_id=964630265]
+[node name="MissionEnter" parent="MissionEnds/MiniTruck" index="3" unique_id=933494602 instance=ExtResource("6_kmvh3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MissionEnds/MiniTruck/MissionEnter" index="0" unique_id=735992352]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_tp107")
+
+[node name="Player" parent="." index="11" unique_id=964630265]
 position = Vector2(41, 11)

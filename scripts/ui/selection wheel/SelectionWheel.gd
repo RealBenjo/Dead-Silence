@@ -1,8 +1,11 @@
 @tool
 extends Control
+class_name SelectionWheel
 
 const SPRITE_SIZE = Vector2(64, 64)
 const OFFSET = Vector2(-32, -32)
+
+signal option_selected(option: WheelOption)
 
 @export_group("Visuals")
 @export var segments: int = 4
@@ -38,18 +41,14 @@ func open(is_mouse: bool) -> void:
 		var center = get_viewport_rect().size / 2.0
 		get_viewport().warp_mouse(center)
 
-func close() -> String:
+func close():
 	if not Engine.is_editor_hint() and used_mouse_to_open:
 		get_viewport().warp_mouse(stored_mouse_pos)
 	hide()
 	
-	# Updated to print option_name
+	# if there even are option and if the selected option is in range
 	if options.size() > 0 and selection < options.size():
-		if options[selection].resource is WeaponStats:
-			Globals.player_weapon = options[selection].resource
-		return options[selection].option_name 
-	
-	return ""
+		option_selected.emit(options[selection])
 
 func _process(_delta: float) -> void:
 	# brute-force redraw every frame.

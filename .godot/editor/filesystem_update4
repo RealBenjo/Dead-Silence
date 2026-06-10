@@ -1,4 +1,11 @@
+res://scenes/enemies/enemy.tscn
+res://scripts/state/State.gd
+res://scenes/enemies/zombie.tscn
+res://scripts/ui/awareness/AwarenessGraphic.gd
+res://scripts/enemies/Enemy.gd
 res://scenes/levels/missions/main_mission_1.tscn
-res://resources/levels/missions/lvl1.tres
-res://scenes/menus/mission select/mission_select.tscn
-res://scenes/props/trees/decor/tree_decor_1.tscn
+res://scenes/menus/selection wheel/selection_wheel.tscn
+res://scenes/player/player.tscn
+res://scripts/ui/ui/UI.gd
+res://scripts/ui/selection wheel/SelectionWheel.gd
+res://scripts/player/Player.gd
