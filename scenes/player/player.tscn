@@ -785,7 +785,6 @@ metadata/_custom_type_script = "uid://dg4qljreiu7ax"
 script = ExtResource("141_nssm8")
 
 [node name="SelectPrimary" parent="UI" unique_id=887151983 instance=ExtResource("142_ei0bd")]
-visible = true
 modulate = Color(1, 1, 1, 0.8627451)
 segments = 64
 options = Array[ExtResource("143_wwa77")]([SubResource("AtlasTexture_d4w6o"), SubResource("Resource_xm1em"), SubResource("Resource_mtkxs")])

@@ -42,7 +42,7 @@ func drop_off() -> void:
 func _deferred_drop_off() -> void:
 	# drop back into the level map 
 	# (it does not need to be a child of anything)
-	parent.reparent(Globals.world_2d)
+	parent.reparent(Globals.world_2d.get_child(0))
 	
 	objective_collision.set_deferred("disabled", false)
 	

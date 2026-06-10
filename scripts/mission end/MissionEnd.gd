@@ -3,7 +3,7 @@ class_name MissionEnd
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	# 2. Check if player enters AND has a target with the objective group
+	# check if player enters AND has a target with the objective group
 	if Globals.current_target and Globals.current_target.parent_node.is_in_group("Objective"):
 		deliver_objective(Globals.current_target.parent_node)
 

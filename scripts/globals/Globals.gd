@@ -87,9 +87,8 @@ var total_objectives: int
 ## the player can leave to HQ
 var completed_objectives: int:
 	set(value):
-		if completed_objectives >= total_objectives:
-			# TODO: make a GUI popup notification type shi
-			print("you win :)")
+		if value >= total_objectives:
+			SceneManager.swap_scenes(hqs.hq1.path, world_2d, world_2d.get_child(0), "fade_to_black")
 
 
 

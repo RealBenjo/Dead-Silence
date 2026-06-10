@@ -107,7 +107,7 @@ func fire_weapon() -> void:
 	bullet.global_position = muzzle.global_position #+ Vector2().rotated(mouse_angle)
 	bullet.rotation = mouse_angle
 	
-	Globals.world_2d.add_child(bullet)
+	Globals.world_2d.get_child(0).add_child(bullet)
 	
 	# when the bullet is put in the world we can safely assume the weapon created
 	# some noise, therefore this line runs

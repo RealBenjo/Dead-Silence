@@ -9,3 +9,13 @@ res://scenes/player/player.tscn
 res://scripts/ui/ui/UI.gd
 res://scripts/ui/selection wheel/SelectionWheel.gd
 res://scripts/player/Player.gd
+res://scenes/menus/mission select/mission_select.tscn
+res://scripts/mission end/MissionEnd.gd
+res://scripts/globals/Globals.gd
+res://scenes/vehicles/mini truck/mini_truck.tscn
+res://scenes/game controller/game_controller.tscn
+res://scenes/survivor/survivor.tscn
+res://scripts/objective/Objective.gd
+res://scenes/weapon/weapon.tscn
+res://scenes/weapon/Weapon.gd
+res://scripts/helpers/helpers/SoundEmitter.gd

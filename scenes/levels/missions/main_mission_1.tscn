@@ -117,7 +117,7 @@ position = Vector2(3823, 1118)
 navigation_polygon = SubResource("NavigationPolygon_mfprb")
 
 [node name="Survivor" parent="Objectives" parent_id_path=PackedInt32Array(943139230) index="0" unique_id=1440120259 instance=ExtResource("4_pktge")]
-position = Vector2(-4259, 2191)
+position = Vector2(-417, 3827)
 
 [node name="MiniTruck" parent="MissionEnds" parent_id_path=PackedInt32Array(1622628601) index="0" unique_id=153652473 instance=ExtResource("6_8pu7l")]
 position = Vector2(4654, 3249.9998)

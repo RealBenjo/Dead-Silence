@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 
+@export var debug_speed := false ## gives big speed for debugging
+
 @onready var bullet: PackedScene = preload("res://scenes/player/bullet.tscn")
 @onready var player_animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera: Camera2D = $Camera2D
@@ -130,7 +132,10 @@ func handle_move_sound() -> void:
 ## stance_update() runs only through the state machine, not
 ## through the player script itself
 func stance_update() -> void:
-	speed = MAX_SPEED * speed_mult
+	if debug_speed:
+		speed = 2000 * speed_mult
+	else:
+		speed = MAX_SPEED * speed_mult
 	
 	# the enemy multipliers are placed in a dictionary for the
 	# enemies to access

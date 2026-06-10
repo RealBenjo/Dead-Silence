@@ -10,4 +10,4 @@ func create_sound(pos: Vector2, loudness: float) -> void:
 	sound.position = pos
 	sound.loudness = loudness
 	
-	Globals.world_2d.add_child(sound)
+	Globals.world_2d.get_child(0).add_child(sound)

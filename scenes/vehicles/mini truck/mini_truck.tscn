@@ -34,7 +34,6 @@ modulate = Color(1, 0.975, 0.25, 1)
 texture = ExtResource("2_ko6cv")
 
 [node name="MissionEnd" parent="MiniTruck" unique_id=1348854573 instance=ExtResource("3_a1e5g")]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MiniTruck/MissionEnd" unique_id=816900169]
 scale = Vector2(0.9999998, 0.9999998)

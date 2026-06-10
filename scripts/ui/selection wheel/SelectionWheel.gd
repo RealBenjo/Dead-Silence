@@ -25,7 +25,6 @@ var selection := 1
 var stored_mouse_pos := Vector2.ZERO
 var used_mouse_to_open := true
 
-# will probably make something nicer for this i think maybe
 func _ready() -> void:
 	stored_mouse_pos = get_viewport().get_mouse_position()
 	close()
@@ -38,15 +37,13 @@ func open(is_mouse: bool) -> void:
 	
 	if used_mouse_to_open:
 		stored_mouse_pos = get_viewport().get_mouse_position()
-		var center = get_viewport_rect().size / 2.0
-		get_viewport().warp_mouse(center)
+		get_viewport().warp_mouse(get_viewport_rect().size / 2.0)
 
-func close():
+func close() -> void:
 	if not Engine.is_editor_hint() and used_mouse_to_open:
 		get_viewport().warp_mouse(stored_mouse_pos)
 	hide()
 	
-	# if there even are option and if the selected option is in range
 	if options.size() > 0 and selection < options.size():
 		option_selected.emit(options[selection])
 
@@ -54,35 +51,34 @@ func _process(_delta: float) -> void:
 	# brute-force redraw every frame.
 	queue_redraw()
 	
-	if Engine.is_editor_hint() or not is_visible_in_tree(): return
+	if Engine.is_editor_hint() or not is_visible_in_tree() or options.size() <= 1: return
 	
 	var joy_dir = Input.get_vector("look_left", "look_right", "look_up", "look_down")
 	var mouse_pos = get_local_mouse_position()
-	var opt_count = options.size()
-	if opt_count <= 1: return
 	
 	# Priority 1: Controller Input
 	if joy_dir.length() > 0.2:
-		var sector_count = opt_count - 1
-		var input_rads = fposmod(joy_dir.angle(), TAU)
-		selection = int(floor((input_rads / TAU) * sector_count)) + 1
+		selection = _get_selection_from_angle(joy_dir.angle())
 		
 	# Priority 2: Mouse Input (Only checks if we opened the wheel with the mouse!)
 	elif used_mouse_to_open:
 		if mouse_pos.length() > inner_radius:
-			var sector_count = opt_count - 1
-			var input_rads = fposmod(mouse_pos.angle(), TAU)
-			selection = int(floor((input_rads / TAU) * sector_count)) + 1
+			selection = _get_selection_from_angle(mouse_pos.angle())
 		else:
 			selection = 0
+
+# Pomožna funkcija, ki preprečuje podvajanje kode zgoraj
+func _get_selection_from_angle(angle: float) -> int:
+	var sector_count = options.size() - 1
+	var input_rads = fposmod(angle, TAU)
+	return int( (input_rads / TAU) * sector_count ) + 1
 
 # --- THE MATH FIX ---
 func _get_poly_radius(angle: float, base_radius: float) -> float:
 	if segments < 3: return base_radius
 	var segment_angle = TAU / float(segments)
 	var half_seg = segment_angle / 2.0
-	var wrapped = fposmod(angle, segment_angle)
-	var local_angle = wrapped - half_seg
+	var local_angle = fposmod(angle, segment_angle) - half_seg
 	return base_radius * cos(half_seg) / cos(local_angle)
 
 # --- DRAWING ---
@@ -118,48 +114,41 @@ func _draw() -> void:
 			var draw_pos = (mid_r * Vector2.from_angle(mid_rads)) + OFFSET
 			
 			# Check the texture type for the slices
+			# Fallback for standard images (.png)
 			if options[i+1] and options[i+1].icon:
-				if options[i+1].icon is AtlasTexture:
-					draw_texture_rect_region(options[i+1].icon.atlas, Rect2(draw_pos, SPRITE_SIZE), options[i+1].icon.region)
-				elif options[i+1].icon is Texture2D:
-					# Fallback for standard images (.png)
-					draw_texture_rect(options[i+1].icon, Rect2(draw_pos, SPRITE_SIZE), false)
+				draw_texture_rect(options[i+1].icon, Rect2(draw_pos, SPRITE_SIZE), false)
 	
 	# 5. Inner Ring 
 	var inner_pts = PackedVector2Array()
 	for i in range(segments + 1):
-		var a = (TAU / segments) * i
-		inner_pts.append(Vector2.from_angle(a) * inner_radius)
-	draw_polyline(inner_pts, line_color, line_width, true)
-	
-	# 5. Inner Ring
-	for i in range(segments + 1):
-		var a = (TAU / segments) * i
-		inner_pts.append(Vector2.from_angle(a) * inner_radius)
+		inner_pts.append(Vector2.from_angle((TAU / segments) * i) * inner_radius)
 	draw_polyline(inner_pts, line_color, line_width, true)
 
 func _draw_poly_circle(radius: float, color: Color) -> void:
 	var pts = PackedVector2Array()
 	for i in range(segments):
-		var a = (TAU / segments) * i
-		pts.append(Vector2.from_angle(a) * radius)
+		pts.append(Vector2.from_angle((TAU / segments) * i) * radius)
 	draw_polygon(pts, PackedColorArray([color]))
 
 func _draw_sector_highlight() -> void:
 	var sector_count = options.size() - 1
 	var angle_step = TAU / sector_count
-	var s_rads = angle_step * (selection - 1)
-	var e_rads = angle_step * selection
+	var start_rads = angle_step * (selection - 1)
+	var end_rads = angle_step * selection
 	
-	var res = 32 
+	var resolution = 32
 	var pts = PackedVector2Array()
 	
-	for j in range(res + 1):
-		var a = s_rads + j * (e_rads - s_rads) / res
+	# this gets the OUTER perimeter points of the wheel
+	# and saves those into the pts PackedVector2Array
+	for idx in range(resolution + 1):
+		var a = start_rads + idx * (end_rads - start_rads) / resolution
 		pts.append(Vector2.from_angle(a) * _get_poly_radius(a, outer_radius))
-		
-	for j in range(res, -1, -1):
-		var a = s_rads + j * (e_rads - s_rads) / res
+	
+	# this gets the INNER perimeter points of the wheel
+	# and saves those into the pts PackedVector2Array
+	for idx in range(resolution, -1, -1):
+		var a = start_rads + idx * (end_rads - start_rads) / resolution
 		pts.append(Vector2.from_angle(a) * _get_poly_radius(a, inner_radius))
 		
 	draw_polygon(pts, PackedColorArray([highlight_color]))
