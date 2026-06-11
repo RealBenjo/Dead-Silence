@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://il00rygrkpao"]
+
+[ext_resource type="Script" uid="uid://c8i6lp5ykr1eh" path="res://scripts/menus/mission accomplished/MissionAccomplished.gd" id="1_8r66b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tfu3"]
+
+[node name="MissionAccomplished" type="Control" unique_id=850707745]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8r66b")
+
+[node name="Panel" type="Panel" parent="." unique_id=781648254]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0tfu3")
+
+[node name="Label" type="Label" parent="Panel" unique_id=640752246]
+modulate = Color(1, 0.19999999, 0.19999999, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -231.0
+offset_right = 231.0
+offset_bottom = 103.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 75
+text = "mission accomplished"
+uppercase = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=392020011]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Continue" type="Button" parent="VBoxContainer" unique_id=1675211670]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.86, 1)
+theme_override_font_sizes/font_size = 40
+text = "CONTINUE"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]

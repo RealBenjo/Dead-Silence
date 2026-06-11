@@ -65,7 +65,8 @@ var hqs: Dictionary = {
 ## simple dictionary which holds all menus' paths
 var menus: Dictionary = {
 	main_menu = "res://scenes/menus/main menu/main_menu.tscn",
-	mission_select = "res://scenes/menus/mission select/mission_select.tscn"
+	mission_select = "res://scenes/menus/mission select/mission_select.tscn",
+	mission_accomplished = "res://scenes/menus/mission accomplished/mission_accomplished.tscn"
 }
 
 
@@ -88,7 +89,7 @@ var total_objectives: int
 var completed_objectives: int:
 	set(value):
 		if value >= total_objectives:
-			SceneManager.swap_scenes(hqs.hq1.path, world_2d, world_2d.get_child(0), "fade_to_black")
+			SceneManager.swap_scenes(menus.mission_accomplished, gui, world_2d.get_child(0), "fade_to_black")
 
 
 

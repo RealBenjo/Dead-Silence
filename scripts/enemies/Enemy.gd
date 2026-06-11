@@ -90,8 +90,6 @@ func update_awareness() -> void:
 		awareness += distance * Globals.enemy.awareness_mult * player_speed_mult
 		awareness = clamp(awareness, 0.0, max_awareness)
 		
-		look_at(Globals.player_pos)
-		
 	else:
 		# gradual linear decay
 		awareness -= 4
@@ -146,6 +144,11 @@ func check_sound() -> bool:
 func _on_nav_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
 	move_and_slide()
+
+## look at the player if it's seen
+func try_to_look_at_player() -> void:
+	if awareness > 0.0:
+		look_at(Globals.player_pos)
 
 
 func _on_death() -> void:

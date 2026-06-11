@@ -944,7 +944,6 @@ radius = 40.0
 size = Vector2(51, 78)
 
 [node name="Zombie" unique_id=1992327125 instance=ExtResource("1_3pt6v")]
-collision_mask = 7
 slide_on_ceiling = false
 script = ExtResource("2_gl10n")
 speed = 200.0
@@ -995,9 +994,6 @@ metadata/_custom_type_script = "uid://brkya0n7xefpl"
 [node name="PathFindTimer" type="Timer" parent="Timers" parent_id_path=PackedInt32Array(1620055020) index="0" unique_id=1803485712]
 wait_time = 0.3
 autostart = true
-
-[node name="LosePlayerTimer" parent="Timers" parent_id_path=PackedInt32Array(1620055020) index="5" unique_id=1942636145]
-wait_time = 15.0
 
 [connection signal="fixed_update" from="Helpers/Updater" to="." method="_on_updater_fixed_update"]
 [connection signal="timeout" from="Timers/PathFindTimer" to="." method="_on_path_find_timer_timeout"]

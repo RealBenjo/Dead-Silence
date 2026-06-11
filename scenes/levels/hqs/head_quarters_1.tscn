@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ba5sduufhjqin" path="res://scenes/levels/level.tscn" id="1_w4i77"]
 [ext_resource type="Texture2D" uid="uid://cpur25jmr74rq" path="res://graphics/ground/grass/close/close_grass3.png" id="2_xj3rl"]
-[ext_resource type="PackedScene" uid="uid://c2j1amp0256rr" path="res://scenes/props/trees/clusters/tree_cluster_1.tscn" id="3_fqvl5"]
+[ext_resource type="PackedScene" uid="uid://c2j1amp0256rr" path="res://scenes/props/trees/clusters/tree_cluster1.tscn" id="3_fqvl5"]
 [ext_resource type="PackedScene" uid="uid://cq3w6pekqdyum" path="res://scenes/props/trees/clusters/tree_cluster_2.tscn" id="4_xj3rl"]
 [ext_resource type="PackedScene" uid="uid://bq23n28alh2ec" path="res://scenes/vehicles/mini truck/mini_truck.tscn" id="5_t7nbw"]
 [ext_resource type="PackedScene" uid="uid://hv35j1uu2tpx" path="res://scenes/mission io/mission/enter/mission_enter.tscn" id="6_kmvh3"]
@@ -138,5 +138,5 @@ rotation = 4.6298313
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_tp107")
 
-[node name="Player" parent="." index="11" unique_id=964630265]
+[node name="Player" parent="." index="10" unique_id=964630265]
 position = Vector2(41, 11)

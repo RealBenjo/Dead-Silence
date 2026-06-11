@@ -1,125 +1,125 @@
 [gd_scene format=3 uid="uid://c2j1amp0256rr"]
 
-[ext_resource type="Texture2D" uid="uid://c0ukaqljmlk0l" path="res://graphics/props/trees/tree1.png" id="1_pwkn6"]
-[ext_resource type="PackedScene" uid="uid://8p2b8t15lwag" path="res://scenes/props/trees/clusters/tree_cluster_parent.tscn" id="1_y74pf"]
-[ext_resource type="Texture2D" uid="uid://d3ehacc7r4qg4" path="res://graphics/props/trees/tree2.png" id="2_y74pf"]
-[ext_resource type="Texture2D" uid="uid://56u38ysjrnxx" path="res://graphics/props/trees/tree3.png" id="3_3svbc"]
-[ext_resource type="Texture2D" uid="uid://rb5tmusqixf0" path="res://graphics/props/trees/tree4.png" id="4_k4i5q"]
-[ext_resource type="Texture2D" uid="uid://r62jfhnbx6ao" path="res://graphics/props/trees/tree5.png" id="5_iev8m"]
-[ext_resource type="Texture2D" uid="uid://b7p4oxxtk0bdf" path="res://graphics/props/trees/tree6.png" id="6_0eosc"]
-[ext_resource type="Texture2D" uid="uid://h4kvc4p8xenu" path="res://graphics/props/trees/tree7.png" id="7_pr417"]
-[ext_resource type="Texture2D" uid="uid://c8uqi8jbr21o6" path="res://graphics/props/trees/tree8.png" id="8_yvj2l"]
-[ext_resource type="Texture2D" uid="uid://c8eq0kgox11h" path="res://graphics/props/trees/tree9.png" id="9_a2kp1"]
-[ext_resource type="Texture2D" uid="uid://cc4qk6ku08yux" path="res://graphics/props/trees/tree10.png" id="10_x52am"]
-[ext_resource type="Texture2D" uid="uid://dtg68q7ab71kl" path="res://graphics/props/trees/tree11.png" id="11_36yt2"]
-[ext_resource type="Texture2D" uid="uid://dbavjm7ja506v" path="res://graphics/props/trees/tree12.png" id="12_aav32"]
-[ext_resource type="Texture2D" uid="uid://dljftn4qfvdnw" path="res://graphics/props/trees/tree13.png" id="13_drmev"]
+[ext_resource type="PackedScene" uid="uid://8p2b8t15lwag" path="res://scenes/props/cluster_parent.tscn" id="1_4tgh7"]
+[ext_resource type="Texture2D" uid="uid://c0ukaqljmlk0l" path="res://graphics/props/trees/tree1.png" id="2_ux5r0"]
+[ext_resource type="Texture2D" uid="uid://r62jfhnbx6ao" path="res://graphics/props/trees/tree5.png" id="3_fgmcq"]
+[ext_resource type="Texture2D" uid="uid://d3ehacc7r4qg4" path="res://graphics/props/trees/tree2.png" id="4_x2668"]
+[ext_resource type="Texture2D" uid="uid://56u38ysjrnxx" path="res://graphics/props/trees/tree3.png" id="5_s26lk"]
+[ext_resource type="Texture2D" uid="uid://rb5tmusqixf0" path="res://graphics/props/trees/tree4.png" id="6_8gown"]
+[ext_resource type="Texture2D" uid="uid://b7p4oxxtk0bdf" path="res://graphics/props/trees/tree6.png" id="7_up66i"]
+[ext_resource type="Texture2D" uid="uid://h4kvc4p8xenu" path="res://graphics/props/trees/tree7.png" id="8_puwjp"]
+[ext_resource type="Texture2D" uid="uid://c8uqi8jbr21o6" path="res://graphics/props/trees/tree8.png" id="9_mh3io"]
+[ext_resource type="Texture2D" uid="uid://c8eq0kgox11h" path="res://graphics/props/trees/tree9.png" id="10_qoyf0"]
+[ext_resource type="Texture2D" uid="uid://cc4qk6ku08yux" path="res://graphics/props/trees/tree10.png" id="11_10cqb"]
+[ext_resource type="Texture2D" uid="uid://dtg68q7ab71kl" path="res://graphics/props/trees/tree11.png" id="12_bg7bv"]
+[ext_resource type="Texture2D" uid="uid://dbavjm7ja506v" path="res://graphics/props/trees/tree12.png" id="13_dcrjm"]
+[ext_resource type="Texture2D" uid="uid://dljftn4qfvdnw" path="res://graphics/props/trees/tree13.png" id="14_v7t65"]
 
-[node name="TreeCluster1" unique_id=1725501625 instance=ExtResource("1_y74pf")]
+[node name="TreeCluster1" unique_id=1725501625 instance=ExtResource("1_4tgh7")]
 scale = Vector2(2, 2)
 
 [node name="Tree1" type="Sprite2D" parent="." index="0" unique_id=735878826]
 position = Vector2(-112, -105)
 rotation = -0.19550627
-texture = ExtResource("1_pwkn6")
+texture = ExtResource("2_ux5r0")
 
 [node name="Tree20" type="Sprite2D" parent="." index="1" unique_id=1125726841]
 position = Vector2(167, -92)
 rotation = 1.6195695
-texture = ExtResource("1_pwkn6")
+texture = ExtResource("2_ux5r0")
 
 [node name="Tree18" type="Sprite2D" parent="." index="2" unique_id=752443943]
 position = Vector2(38.999996, -6.0000153)
-texture = ExtResource("5_iev8m")
+texture = ExtResource("3_fgmcq")
 
 [node name="Tree19" type="Sprite2D" parent="." index="3" unique_id=1550110560]
 position = Vector2(-121, -1)
-texture = ExtResource("5_iev8m")
+texture = ExtResource("3_fgmcq")
 
 [node name="Tree2" type="Sprite2D" parent="." index="4" unique_id=1506092658]
 position = Vector2(100, -32)
 rotation = 0.5496949
-texture = ExtResource("2_y74pf")
+texture = ExtResource("4_x2668")
 
 [node name="Tree14" type="Sprite2D" parent="." index="5" unique_id=358790501]
 position = Vector2(-20, -196)
 rotation = -2.9955091
-texture = ExtResource("2_y74pf")
+texture = ExtResource("4_x2668")
 
 [node name="Tree3" type="Sprite2D" parent="." index="6" unique_id=1032227711]
 position = Vector2(-2, -43)
-texture = ExtResource("3_3svbc")
+texture = ExtResource("5_s26lk")
 
 [node name="Tree4" type="Sprite2D" parent="." index="7" unique_id=1254804305]
 position = Vector2(89, 36)
 rotation = 0.2457826
-texture = ExtResource("4_k4i5q")
+texture = ExtResource("6_8gown")
 
 [node name="Tree5" type="Sprite2D" parent="." index="8" unique_id=748323203]
 position = Vector2(11, 32)
-texture = ExtResource("5_iev8m")
+texture = ExtResource("3_fgmcq")
 
 [node name="Tree16" type="Sprite2D" parent="." index="9" unique_id=212056947]
 position = Vector2(189, 6)
 rotation = -1.0292823
-texture = ExtResource("5_iev8m")
+texture = ExtResource("3_fgmcq")
 
 [node name="Tree6" type="Sprite2D" parent="." index="10" unique_id=1121974884]
 position = Vector2(-180, -23)
 rotation = 1.0294496
-texture = ExtResource("6_0eosc")
+texture = ExtResource("7_up66i")
 
 [node name="Tree7" type="Sprite2D" parent="." index="11" unique_id=1250402445]
 position = Vector2(-23, -118)
 rotation = 0.511628
-texture = ExtResource("7_pr417")
+texture = ExtResource("8_puwjp")
 
 [node name="Tree8" type="Sprite2D" parent="." index="12" unique_id=1428894068]
 position = Vector2(48, 110)
 rotation = -0.20312904
-texture = ExtResource("8_yvj2l")
+texture = ExtResource("9_mh3io")
 
 [node name="Tree9" type="Sprite2D" parent="." index="13" unique_id=1247277578]
 position = Vector2(66, -119)
-texture = ExtResource("9_a2kp1")
+texture = ExtResource("10_qoyf0")
 
 [node name="Tree15" type="Sprite2D" parent="." index="14" unique_id=372728514]
 position = Vector2(173, 74)
 rotation = -0.44123682
-texture = ExtResource("9_a2kp1")
+texture = ExtResource("10_qoyf0")
 
 [node name="Tree10" type="Sprite2D" parent="." index="15" unique_id=1007031593]
 position = Vector2(-70, -23)
-texture = ExtResource("10_x52am")
+texture = ExtResource("11_10cqb")
 
 [node name="Tree11" type="Sprite2D" parent="." index="16" unique_id=588232985]
 position = Vector2(-45, 123)
-texture = ExtResource("11_36yt2")
+texture = ExtResource("12_bg7bv")
 
 [node name="Tree22" type="Sprite2D" parent="." index="17" unique_id=1084393871]
 position = Vector2(-220.00002, -90)
 rotation = -1.178777
-texture = ExtResource("4_k4i5q")
+texture = ExtResource("6_8gown")
 
 [node name="Tree12" type="Sprite2D" parent="." index="18" unique_id=435949460]
 position = Vector2(-49, 48)
-texture = ExtResource("12_aav32")
+texture = ExtResource("13_dcrjm")
 
 [node name="Tree21" type="Sprite2D" parent="." index="19" unique_id=1618762895]
 position = Vector2(-7.999998, 199)
 rotation = -0.04978569
-texture = ExtResource("1_pwkn6")
+texture = ExtResource("2_ux5r0")
 
 [node name="Tree13" type="Sprite2D" parent="." index="20" unique_id=658546862]
 position = Vector2(-132, 61)
 rotation = -0.16403171
 scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("13_drmev")
+texture = ExtResource("14_v7t65")
 
 [node name="Tree17" type="Sprite2D" parent="." index="21" unique_id=1053124316]
 position = Vector2(-123.999985, 151)
 rotation = 1.3589367
-texture = ExtResource("13_drmev")
+texture = ExtResource("14_v7t65")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="22" unique_id=1468434242]
 polygon = PackedVector2Array(-54, -206, -41, -145, -61, -125, -111, -149, -164, -101, -232, -123, -251, -100, -180, -4, -131, -1, -158, 81, -128, 109, -151, 148, -135, 182, -63, 129, -16, 146, -33, 207, 24, 208, 14, 148, 82, 108, 78, 67, 149, 64, 164, 92, 201, 82, 164, -40, 201, -79, 176, -119, 132, -100, 86, -111, 74, -149, 6, -117, -8, -142, 16, -203)

@@ -2,12 +2,11 @@ extends Control
 
 
 func _on_start_pressed() -> void:
-	#SceneManager.swap_scenes(Globals.levels.lvl1, Globals.world_2d, self, "fade_to_black")
 	SceneManager.swap_scenes(Globals.hqs.hq1.path, Globals.world_2d, self, "fade_to_black")
 
 
 func _on_settings_pressed() -> void:
-	# make a settings menu
+	# TODO: make a settings menu
 	# SceneManager.swap_scenes(Globals.levels.lvl1, Globals.world_2d, self, "fade_to_black")
 	pass
 

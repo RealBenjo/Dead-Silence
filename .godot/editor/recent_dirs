@@ -1,3 +1,7 @@
+res://scripts/menus/mission accomplished/
+res://scenes/menus/mission accomplished/
+res://scenes/props/rocks/clusters/
+res://scenes/props/
 res://scripts/ui/awareness/
 res://scenes/props/trees/clusters/
 res://scenes/vehicles/mini truck/
@@ -16,7 +20,3 @@ res://scenes/mission end/
 res://scripts/mission end/
 res://scripts/globals/
 res://scripts/util/interactibles/
-res://scenes/survivor/
-res://scenes/weapon/
-res://scripts/game controller/
-res://scenes/game controller/

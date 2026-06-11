@@ -53,7 +53,6 @@ time_horizon_obstacles = 0.1
 
 [node name="Awareness" type="Sprite2D" parent="." unique_id=1225691419]
 z_index = 6
-texture_filter = 1
 position = Vector2(0, -100)
 texture = ExtResource("7_p7w77")
 script = ExtResource("8_k4gvh")
@@ -68,7 +67,7 @@ wait_time = 10.0
 one_shot = true
 
 [node name="StopSearchTimer" type="Timer" parent="Timers" unique_id=1437540595]
-wait_time = 180.0
+wait_time = 60.0
 one_shot = true
 
 [node name="SearchTimer" type="Timer" parent="Timers" unique_id=467249478]
@@ -76,7 +75,7 @@ wait_time = 10.0
 one_shot = true
 
 [node name="LosePlayerTimer" type="Timer" parent="Timers" unique_id=1942636145]
-wait_time = 2.0
+wait_time = 15.0
 one_shot = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=1336569729 node_paths=PackedStringArray("initial_state")]

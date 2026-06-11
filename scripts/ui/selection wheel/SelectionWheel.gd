@@ -57,32 +57,39 @@ func _process(_delta: float) -> void:
 	var mouse_pos = get_local_mouse_position()
 	
 	# Priority 1: Controller Input
+	# 0.2 is just safety deadzone
 	if joy_dir.length() > 0.2:
 		selection = _get_selection_from_angle(joy_dir.angle())
 		
 	# Priority 2: Mouse Input (Only checks if we opened the wheel with the mouse!)
-	elif used_mouse_to_open:
-		if mouse_pos.length() > inner_radius:
-			selection = _get_selection_from_angle(mouse_pos.angle())
-		else:
-			selection = 0
+	elif used_mouse_to_open and mouse_pos.length() > inner_radius:
+		selection = _get_selection_from_angle(mouse_pos.angle())
+	else:
+		selection = 0
 
-# Pomožna funkcija, ki preprečuje podvajanje kode zgoraj
+# depending on the angle it gets the index of the selected item 
 func _get_selection_from_angle(angle: float) -> int:
 	var sector_count = options.size() - 1
 	var input_rads = fposmod(angle, TAU)
+	
+	# get percentually where the angle is according to the circle
+	# multiply that percentage with the sector count,
+	# get rid of the decimal and add 1 as 0 is the middle item index
 	return int( (input_rads / TAU) * sector_count ) + 1
 
 # --- THE MATH FIX ---
 func _get_poly_radius(angle: float, base_radius: float) -> float:
 	if segments < 3: return base_radius
+	
 	var segment_angle = TAU / float(segments)
 	var half_seg = segment_angle / 2.0
 	var local_angle = fposmod(angle, segment_angle) - half_seg
+	
 	return base_radius * cos(half_seg) / cos(local_angle)
 
 # --- DRAWING ---
 func _draw() -> void:
+	# safety check for options Array
 	if options.size() == 0: return
 	
 	# 1. Background Polygon

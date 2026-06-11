@@ -5,7 +5,7 @@ class_name EnemySearching
 @onready var search_timer: Timer = $"../../Timers/SearchTimer"
 @onready var stop_search_timer: Timer = $"../../Timers/StopSearchTimer"
 
-@export var enemy: CharacterBody2D
+@export var enemy: EnemyWalking
 
 func enter():
 	print("enemy is searching")
@@ -20,6 +20,8 @@ func physics_update(_delta: float):
 	
 	if enemy.nav.is_navigation_finished() and search_timer.is_stopped():
 		search_timer.start()
+		
+		enemy.try_to_look_at_player()
 
 
 func _on_search_timer_timeout() -> void:

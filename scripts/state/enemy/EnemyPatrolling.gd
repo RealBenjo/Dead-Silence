@@ -4,7 +4,7 @@ class_name EnemyPatrolling
 
 @onready var patrol_timer: Timer = $"../../Timers/PatrolTimer"
 
-@export var enemy: CharacterBody2D
+@export var enemy: EnemyWalking
 
 func _ready() -> void:
 	# when the enemy is spawned it will have a SET patrol time, that does NOT change during runtime
@@ -24,6 +24,8 @@ func physics_update(_delta: float):
 	
 	if enemy.nav.is_navigation_finished() and patrol_timer.is_stopped():
 		patrol_timer.start()
+		
+		enemy.try_to_look_at_player()
 
 
 func _on_patrol_timer_timeout() -> void:

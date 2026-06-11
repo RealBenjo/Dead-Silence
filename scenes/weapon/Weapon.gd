@@ -104,7 +104,7 @@ func fire_weapon() -> void:
 	bullet.max_pierce = stats.max_pierce
 	bullet.knockback_force = stats.knockback_force
 	
-	bullet.global_position = muzzle.global_position #+ Vector2().rotated(mouse_angle)
+	bullet.global_position = muzzle.global_position
 	bullet.rotation = mouse_angle
 	
 	Globals.world_2d.get_child(0).add_child(bullet)

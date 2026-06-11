@@ -711,13 +711,11 @@ icon = ExtResource("146_wwa77")
 resource = ExtResource("134_x6bw1")
 metadata/_custom_type_script = "uid://kji4xvn8jm0r"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxyg8"]
-size = Vector2(4388, 2564)
-
 [node name="Player" type="CharacterBody2D" unique_id=1065015688 groups=["Player"]]
 z_index = 3
 collision_mask = 30
 script = ExtResource("1_1kbk7")
+debug_speed = true
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=1681127261]
 modulate = Color(1, 1, 1, 0.72156864)
@@ -789,12 +787,6 @@ modulate = Color(1, 1, 1, 0.8627451)
 segments = 64
 options = Array[ExtResource("143_wwa77")]([SubResource("AtlasTexture_d4w6o"), SubResource("Resource_xm1em"), SubResource("Resource_mtkxs")])
 metadata/_edit_use_anchors_ = true
-
-[node name="LodArea" type="Area2D" parent="." unique_id=686930976]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LodArea" unique_id=331580717]
-shape = SubResource("RectangleShape2D_pxyg8")
 
 [connection signal="timeout" from="Timers/MoveSoundTimer" to="." method="_on_move_sound_timer_timeout"]
 [connection signal="option_selected" from="UI/SelectPrimary" to="." method="_on_option_selected"]
